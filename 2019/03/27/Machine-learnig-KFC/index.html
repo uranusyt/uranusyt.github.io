@@ -1,218 +1,60 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-
+    <meta charset="UTF-8">
+    <title>机器学习数据分析极简思路及sklearn算法小试 | Universe Biology Girls and Boys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content>
+    <meta name="description" content="[TOC]
+机器学习数据分析极简思路机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：1）理解和清理数据2）特征选择3）算法建模4）测试评估模型
+1）理解和清理数据
+理解数据数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降...">
     
-
-    
-        <meta name="description" content="Developing Technologies to Improve Human Health">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="Uranusyt">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="机器学习数据分析极简思路及sklearn算法小试">
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="Developing Technologies to Improve Human Health">
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="Universe Biology Girls and Boys">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
-
-    <!--Page Cover-->
+        <link rel="icon" href="/favicon.ico">
     
     
-        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
     
-
-        <meta name="twitter:card" content="summary_large_image">
-
-    
-
-    
-        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-    <!-- Title -->
-    
-    <title>机器学习数据分析极简思路及sklearn算法小试 - Universe Biology Girls and Boys</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
-
-    <!-- Google Analytics -->
-    
-
-
-    <!-- favicon -->
-    
-
 </head>
-
-
+</html>
 <body>
-
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Configurable Title</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="http://www.universebiologygirl.com">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/uranusyt/uranusyt.github.io.git/">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
     </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>机器学习数据分析极简思路及sklearn算法小试</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2019-03-27
-                        
-                    </span>
-                </div>
-            </div>
+    <div class="header-main">
+        <h1><a href="/">Universe Biology Girls and Boys</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            How goes the world with you?
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/algorithm/">#algorithm</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/Machine-Learning/">Machine Learning</a>
-
-                    
-                </div>
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>机器学习数据分析极简思路及sklearn算法小试</h1>
+        <div class="create">
+            <span>Created</span>
             
-
-            <!-- Gallery -->
+                <time datetime="2019-03-27T09:30:23.000Z">
+                    2019-03-27
+                </time>
             
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>[TOC]</p>
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li></ul>
+        </div>
+        <p>[TOC]</p>
 <h1 id="机器学习数据分析极简思路"><a href="#机器学习数据分析极简思路" class="headerlink" title="机器学习数据分析极简思路"></a>机器学习数据分析极简思路</h1><p>机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：<br><strong>1）理解和清理数据<br>2）特征选择<br>3）算法建模<br>4）测试评估模型</strong></p>
 <h2 id="1）理解和清理数据"><a href="#1）理解和清理数据" class="headerlink" title="1）理解和清理数据"></a>1）理解和清理数据</h2><ul>
 <li>理解数据<br>数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降维分析（PCOA、tSNE），理解数据组成主成分贡献度。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pip install seaborn</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pyplot</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sb</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">%matplotlib inline</span><br><span class="line">data=pd.read_csv(<span class="string">'iris.csv'</span>)    <span class="comment">#pandas 读入数据</span></span><br><span class="line">data.head(<span class="number">3</span>)    <span class="comment">#查看数据</span></span><br><span class="line">data.describe() <span class="comment">#数据基本统计</span></span><br><span class="line">sb.pairplot(data.dropna(),hue=<span class="string">'Species'</span>)</span><br></pre></td></tr></table></figure>
@@ -234,85 +76,49 @@
 <p>构建数据集：<br><img src="/img/5.png" alt="c6e3145820fe446499bfe5166f85b29e.png"><br>4种算法预测结果：<br><img src="/img/6.png" alt="a59578cf44dee88a46ef0bcceabf1b2b.png"><br>可以看到，单一算法SVM比较好，集成算法较单一的算法还是有一定的提高。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/28641663?utm_source=wechat_search&amp;utm_medium=organic" target="_blank" rel="noopener">机器学习中，有哪些特征选择的工程方法？</a><br><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;mid=2247485387&amp;idx=1&amp;sn=d22618f98adae3c9038184b9c4991ea2&amp;chksm=c0698f96f71e06807bbb3c667d50aa87899aa8d7b48bab51be33206390a03cb2e28d3ddb27b4&amp;mpshare=1&amp;scene=24&amp;srcid=0327GWk8nsWdgLT2kYwpeazY#rd" target="_blank" rel="noopener">FeatureSlector:一个可以进行机器学习特征选择的python工具</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzI2MjE3OTA1MA==&amp;mid=2247484860&amp;idx=1&amp;sn=7ea3597474f5ceaf443f10d63a8217ee&amp;chksm=ea4e5439dd39dd2f2f0cd95eca909e2ab255fc5dc6e033e9b2d265bf2124751f32e96279188d&amp;scene=7#rd" target="_blank" rel="noopener">机器学习中的交叉验证</a></p>
 
-
+        <div>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+        
+            <a href="/2019/03/20/UBGBs/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        UBGBs
+                </span>
                 
-            </div>
-
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
+            </a>
+        
+    </nav>
 
 
-                </div>
-            
-        </div>
+        
+    </article>
+    <div id="toc">
+        
+            <h2>Table of Contents</h2>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习数据分析极简思路"><span class="toc-number">1.</span> <span class="toc-text">机器学习数据分析极简思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1）理解和清理数据"><span class="toc-number">1.1.</span> <span class="toc-text">1）理解和清理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2）特征选择"><span class="toc-number">1.2.</span> <span class="toc-text">2）特征选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3）算法建模"><span class="toc-number">1.3.</span> <span class="toc-text">3）算法建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4）测试评估模型"><span class="toc-number">1.4.</span> <span class="toc-text">4）测试评估模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sklearn-算法小试"><span class="toc-number">2.</span> <span class="toc-text">sklearn 算法小试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现目的"><span class="toc-number">2.1.</span> <span class="toc-text">实现目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">2.2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码环境"><span class="toc-number">2.3.</span> <span class="toc-text">代码环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码"><span class="toc-number">2.4.</span> <span class="toc-text">源码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+        
     </div>
-</article>
+</div>
 
-    <!-- Footer -->
-    <hr>
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/uranusyt/uranusyt.github.io.git/" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-
-                    
-                </ul>
-		<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-                <p class="copyright text-muted">&copy; 2019 Uranusyt<br></p>
-                <div class="powered-by">
-		<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
- 		 本站访客数:27<span id="busuanzi_value_site_uv"></span>
-		</span>
-		</div>
-		<span id="busuanzi_container_site_pv">
-   		 本站总访问量10000098<span id="busuanzi_value_site_pv"></span>次
-		</span>
-		<p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Uranusyt  2019</div>
+    <div id="theme">
+        Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/markyong/hexo-theme-stage">Stage</a>
     </div>
 </footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
 
-
-    <!-- After footer scripts -->
-    
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
-
-
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
-
 </html>
