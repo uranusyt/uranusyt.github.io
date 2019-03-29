@@ -8,9 +8,7 @@
     <meta name="keywords" content>
     <meta name="description" content="废话这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼吧！
 bioawk简介除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。
-安装分步安装$ sudo apt-get install byacc git    #安装git
-$ git clone git://github.com/lh3/bioawk.git  #默认安装在当前目录
-git cl...">
+安装分步安装1234567891011121314151617    $ sudo apt-get install byacc git    #安装git    $ git clone git://github.com/l...">
     
         <link rel="icon" href="/favicon.ico">
     
@@ -36,7 +34,7 @@ git cl...">
     <div id="nav">
         <div class="nav-img" id="nav-img"></div>
         <div class="sentences">
-            I think,therefore I am
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
         </div>
     </div>
 </header>
@@ -47,7 +45,7 @@ git cl...">
     <article id="post">
         <h1>Date with Bioawk</h1>
         <div class="create">
-            <span>Created</span>
+            <span>创建于</span>
             
                 <time datetime="2019-03-16T08:39:23.000Z">
                     2019-03-16
@@ -57,22 +55,8 @@ git cl...">
         </div>
         <h1 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h1><p>这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼吧！</p>
 <h1 id="bioawk简介"><a href="#bioawk简介" class="headerlink" title="bioawk简介"></a>bioawk简介</h1><p>除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><pre><code>$ sudo apt-get install byacc git    #安装git
-$ git clone git://github.com/lh3/bioawk.git  #默认安装在当前目录
-git clone git://github.com/lh3/bioawk.git ${path}/bioawk #若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下
-$ cd bioawk
-$ make
-$ echo &quot;export PATH=${path}/bioawk/:\${PATH}&quot; &gt;&gt; ~/.bashrc  
-$ .  ~/.bashrc 
-</code></pre><h3 id="一步安装脚本"><a href="#一步安装脚本" class="headerlink" title="一步安装脚本"></a>一步安装脚本</h3><pre><code>#!/bin/bash
-read -p  &apos;Input installed  path: &apos; tmp_path
-path=${tmp_path/\//}
-if [ ! -d &quot;${path}&quot; ];then echo &quot;No such file:${path}&quot; &amp;&amp; exit ;fi
-git clone git://github.com/lh3/bioawk.git ${path}/bioawk &amp;&amp; \
-cd ${path}/bioawk &amp;&amp; make &amp;&amp; \
-echo &quot;export PATH=${path}/bioawk/:\${PATH}&quot; &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \
-echo &apos;Successfully install bioawk!&apos; || echo &apos;Failed install bioawk&apos;
-</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元素封装成变量，直接调用即可。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    $ sudo apt-get install byacc git    <span class="comment">#安装git</span></span><br><span class="line">    $ git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git  <span class="comment">#默认安装在当前目录</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk <span class="comment">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span></span><br><span class="line">    $ <span class="built_in">cd</span> bioawk</span><br><span class="line">    $ make</span><br><span class="line">    $ <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  </span><br><span class="line">    $ .  ~/.bashrc </span><br><span class="line"></span><br><span class="line"><span class="comment">### 一步安装脚本</span></span><br><span class="line">    <span class="comment">#!/bin/bash</span></span><br><span class="line">    <span class="built_in">read</span> -p  <span class="string">'Input installed  path: '</span> tmp_path</span><br><span class="line">    path=<span class="variable">$&#123;tmp_path/\//&#125;</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$&#123;path&#125;</span>"</span> ];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"No such file:<span class="variable">$&#123;path&#125;</span>"</span> &amp;&amp; <span class="built_in">exit</span> ;<span class="keyword">fi</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; \</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; make &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Successfully install bioawk!'</span> || <span class="built_in">echo</span> <span class="string">'Failed install bioawk'</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元素封装成变量，直接调用即可。</p>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>usage: bioawk [-F fs] [-v var=value] [-c fmt] [-tH] [-f progfile | &apos;prog&apos;] [file ...]
 </code></pre><p>-c 支持输入文件格式，查看帮助：</p>
 <pre><code>bioawk -c -h
@@ -152,8 +136,8 @@ echo &apos;Successfully install bioawk!&apos; || echo &apos;Failed install bioaw
     </article>
     <div id="toc">
         
-            <h2>Table of Contents</h2>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#废话"><span class="toc-number">1.</span> <span class="toc-text">废话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bioawk简介"><span class="toc-number">2.</span> <span class="toc-text">bioawk简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分步安装"><span class="toc-number">2.1.1.</span> <span class="toc-text">分步安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一步安装脚本"><span class="toc-number">2.1.2.</span> <span class="toc-text">一步安装脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">2.2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">2.2.2.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#废话"><span class="toc-number">1.</span> <span class="toc-text">废话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bioawk简介"><span class="toc-number">2.</span> <span class="toc-text">bioawk简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分步安装"><span class="toc-number">2.1.1.</span> <span class="toc-text">分步安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">2.2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">2.2.2.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
         
     </div>
 </div>
