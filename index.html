@@ -32,7 +32,7 @@
     <div id="nav">
         <div class="nav-img" id="nav-img"></div>
         <div class="sentences">
-            I think,therefore I am
+            云里写诗，泥里生活，岁月里洒脱。
 	</div>
     </div>
 </header>
@@ -50,7 +50,7 @@
                     </a>
                 </h1>
                 <div class="create">
-                    <span>创建于</span>
+                    <span>Created</span>
                     
                         <time datetime="2019-03-27T09:30:23.000Z">
                             2019-03-27
@@ -84,7 +84,7 @@
                 
                 <div class="readmore">
                     <a href="/2019/03/27/Machine-learnig-KFC/">
-                        阅读更多
+                        Read More
                     </a>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                     </a>
                 </h1>
                 <div class="create">
-                    <span>创建于</span>
+                    <span>Created</span>
                     
                         <time datetime="2019-03-20T08:27:03.000Z">
                             2019-03-20
@@ -105,12 +105,12 @@
                     
                 </div>
                 
-                    <script src="/assets/js/APlayer.min.js"> </script><p><img src="/img/WechatIMG197.jpeg" alt="a"><br><img src="/img/WechatIMG201.jpeg" alt="b"><br><img src="/img/WechatIMG262.jpeg" alt="c"></p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p><img src="/img/WechatIMG201.jpeg" alt="b"><br><img src="/img/WechatIMG262.jpeg" alt="c"></p>
 
                 
                 <div class="readmore">
                     <a href="/2019/03/20/UBGBs/">
-                        阅读更多
+                        Read More
                     </a>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                     </a>
                 </h1>
                 <div class="create">
-                    <span>创建于</span>
+                    <span>Created</span>
                     
                         <time datetime="2019-03-19T07:25:42.000Z">
                             2019-03-19
@@ -145,7 +145,7 @@
                 
                 <div class="readmore">
                     <a href="/2019/03/19/paper-submit-experience/">
-                        阅读更多
+                        Read More
                     </a>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                     </a>
                 </h1>
                 <div class="create">
-                    <span>创建于</span>
+                    <span>Created</span>
                     
                         <time datetime="2019-03-16T08:39:23.000Z">
                             2019-03-16
@@ -167,10 +167,10 @@
                 </div>
                 
                     <script src="/assets/js/APlayer.min.js"> </script><h1 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h1><p>这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼吧！</p>
-<h1 id="bioawk简介"><a href="#bioawk简介" class="headerlink" title="bioawk简介"></a>bioawk简介</h1><p>除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    $ sudo apt-get install byacc git    <span class="comment">#安装git</span></span><br><span class="line">    $ git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git  <span class="comment">#默认安装在当前目录</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk <span class="comment">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span></span><br><span class="line">    $ <span class="built_in">cd</span> bioawk</span><br><span class="line">    $ make</span><br><span class="line">    $ <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  </span><br><span class="line">    $ .  ~/.bashrc </span><br><span class="line"></span><br><span class="line"><span class="comment">### 一步安装脚本</span></span><br><span class="line">    <span class="comment">#!/bin/bash</span></span><br><span class="line">    <span class="built_in">read</span> -p  <span class="string">'Input installed  path: '</span> tmp_path</span><br><span class="line">    path=<span class="variable">$&#123;tmp_path/\//&#125;</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$&#123;path&#125;</span>"</span> ];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"No such file:<span class="variable">$&#123;path&#125;</span>"</span> &amp;&amp; <span class="built_in">exit</span> ;<span class="keyword">fi</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; \</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; make &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Successfully install bioawk!'</span> || <span class="built_in">echo</span> <span class="string">'Failed install bioawk'</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元素封装成变量，直接调用即可。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    usage: bioawk [-F fs] [-v var=value] [-c fmt] [-tH] [-f progfile | <span class="string">'prog'</span>] [file ...]</span><br><span class="line"></span><br><span class="line">-c 支持输入文件格式，查看帮助：</span><br><span class="line"></span><br><span class="line">    bioawk -c -h</span><br><span class="line">    </span><br><span class="line">bed:</span><br><span class="line">        1:chrom 2:start 3:end 4:name 5:score 6:strand 7:thickstart 8:thickend 9:rgb 10:blockcount 11:blocksizes 12:blockstarts</span><br><span class="line">sam:</span><br><span class="line">        1:qname 2:flag 3:rname 4:pos 5:mapq 6:cigar 7:rnext 8:pnext 9:tlen 10:seq 11:qual</span><br><span class="line">vcf:</span><br><span class="line">        1:chrom 2:pos 3:id 4:ref 5:alt 6:qual 7:filter 8:info</span><br><span class="line">gff:</span><br><span class="line">        1:seqname 2:<span class="built_in">source</span> 3:feature 4:start 5:end 6:score 7:strand 8:frame 9:attribute</span><br><span class="line">fastx:</span><br><span class="line">        1:name 2:seq 3:qual 4:comment</span><br></pre></td></tr></table></figure>
+<h1 id="bioawk简介"><a href="#bioawk简介" class="headerlink" title="bioawk简介"></a>bioawk简介</h1><p>除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk<br>供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    $ sudo apt-get install byacc git    <span class="comment">#安装git</span></span><br><span class="line">    $ git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git  <span class="comment">#默认安装在当前目录</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk <span class="comment">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span></span><br><span class="line">    $ <span class="built_in">cd</span> bioawk</span><br><span class="line">    $ make</span><br><span class="line">    $ <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">    $ .  ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment">### 一步安装脚本</span></span><br><span class="line">    <span class="comment">#!/bin/bash</span></span><br><span class="line">    <span class="built_in">read</span> -p  <span class="string">'Input installed  path: '</span> tmp_path</span><br><span class="line">    path=<span class="variable">$&#123;tmp_path/\//&#125;</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$&#123;path&#125;</span>"</span> ];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"No such file:<span class="variable">$&#123;path&#125;</span>"</span> &amp;&amp; <span class="built_in">exit</span> ;<span class="keyword">fi</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; \</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; make &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Successfully install bioawk!'</span> || <span class="built_in">echo</span> <span class="string">'Failed install bioawk'</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元<br>素封装成变量，直接调用即可。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">usage: bioawk [-F fs] [-v var=value] [-c fmt] [-tH] [-f progfile | <span class="string">'prog'</span>] [file ...]</span><br><span class="line"></span><br><span class="line">-c 支持输入文件格式，查看帮助：</span><br><span class="line"></span><br><span class="line">    bioawk -c -h</span><br><span class="line"></span><br><span class="line">bed:</span><br><span class="line">        1:chrom 2:start 3:end 4:name 5:score 6:strand 7:thickstart 8:thickend 9:rgb 10:blockcount 11:blocksizes 12:blockstarts</span><br><span class="line">sam:</span><br><span class="line">        1:qname 2:flag 3:rname 4:pos 5:mapq 6:cigar 7:rnext 8:pnext 9:tlen 10:seq 11:qual</span><br><span class="line">vcf:</span><br><span class="line">        1:chrom 2:pos 3:id 4:ref 5:alt 6:qual 7:filter 8:info</span><br><span class="line">gff:</span><br><span class="line">        1:seqname 2:<span class="built_in">source</span> 3:feature 4:start 5:end 6:score 7:strand 8:frame 9:attribute</span><br><span class="line">fastx:</span><br><span class="line">        1:name 2:seq 3:qual 4:comment</span><br></pre></td></tr></table></figure>
 <p><strong>上面出现的名称即可引用其变量</strong></p>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
 <li>打印fasta序列ID、序列、长度、GC含量<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'&#123;print "ID: "$name"\tlength: "length($seq)"\tGC: "gc($seq)"\t"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
@@ -183,14 +183,10 @@
 <p>结果：<br>  g1      atcccccccccccccttt      aaagggggggggggggat<br>  g2      cattatatcttatttttttttttttt      aaaaaaaaaaaaaataagatataatg<br>  g3      acccccccccctttttttttttttcatttttttttttttttttttttt        aaaaaaaaaaaaaaaaaaaaaatgaaaaaaaaaaaaaggggggggggt</p>
 </li>
 <li><p>根据序列ID提取序列，这个是最爱的功能</p>
-<pre><code class="bash">bioawk -cfastx <span class="string">'BEGIN{while((getline k &lt;"id.txt")&gt;0)i[k]=1}{if(i[$name])print "&gt;"$name"\n"$seq}'</span> demo.fa  
-</code></pre>
-<p>id.txt:<br>  g1<br>  g2<br>  g2 enzyme</p>
-<blockquote>
-<p>g3</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'BEGIN&#123;while((getline k &lt;"id.txt")&gt;0)i[k]=1&#125;&#123;if(i[$name])print "&gt;"$name"\n"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>id.txt:<br>    g1<br>    g2<br>    g2 enzyme<br>    &gt;g3</p>
 <p>结果：<br>    &gt;g1<br>    atcccccccccccccttt<br>    &gt;g2<br>    cattatatcttatttttttttttttt<br>注意：id.txt 需要去掉&gt;</p>
 <ul>
 <li>当然还有其他的花样，大家自己去探索吧</li>
@@ -200,7 +196,7 @@
                 
                 <div class="readmore">
                     <a href="/2019/03/16/Date-with-Bioawk/">
-                        阅读更多
+                        Read More
                     </a>
                 </div>
             </div>
@@ -212,7 +208,7 @@
                     </a>
                 </h1>
                 <div class="create">
-                    <span>创建于</span>
+                    <span>Created</span>
                     
                         <time datetime="2019-03-16T07:59:26.000Z">
                             2019-03-16
@@ -326,7 +322,7 @@
                 
                 <div class="readmore">
                     <a href="/2019/03/16/MARKDOWN-s-KFC/">
-                        阅读更多
+                        Read More
                     </a>
                 </div>
             </div>
@@ -376,23 +372,23 @@
     
         <div class="content-aside-about">
             <h2>
-                <a href="/about">关于</a>
+                <a href="/about">About</a>
             </h2>
         </div>
     
     <div class="content-aside-tags">
         <h2>
             <a href="/tags">
-                标签
+                Tags
                 <sup style="font-size: 12px">
-                    [5]
+                    [7]
                 </sup>
             </a>
         </h2>
     </div>
     
 <aside id="categories">
-    <h2>分类</h2>
+    <h2>Categories</h2>
     
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li></ul>
     
@@ -400,7 +396,7 @@
 
     
 <aside id="acchives">
-    <h2>归档</h2>
+    <h2>Archives</h2>
     
     <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
     
