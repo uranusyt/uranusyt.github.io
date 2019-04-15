@@ -37,7 +37,7 @@
     <div id="nav">
         <div class="nav-img" id="nav-img"></div>
         <div class="sentences">
-            我跑的胶，叠起来可以绕地球一整圈
+            三年八班的周杰伦，来跑个PCR
 	</div>
     </div>
 </header>
@@ -48,7 +48,7 @@
     <article id="post">
         <h1>ChIP-seq实验以及分析总结(上篇)</h1>
         <div class="create">
-            <span>创建于</span>
+            <span>Created</span>
             
                 <time datetime="2019-04-01T14:56:51.000Z">
                     2019-04-01
@@ -57,7 +57,7 @@
             <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bio-Cooking/">Bio Cooking</a></li></ul>
         </div>
         <p><strong>原创：丸子 宇宙实验媛</strong><br>
-    <div id="aplayer-DwXXtJCU" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div><br><strong>由于基因表达调控机制的复杂性，从不同的层面探究生物问题越来越重要，因此需要我们对多种组学数据的整合分析。从RNA-Seq层面，我们可以探究哪些基因具有显著差异，上调或下调；但是想进一步探究调控某一生物学过程的关键因子（包括顺式调控元件和转录因子），以及哪个转录因子调控了感兴趣的基因，需要结合ChIP-Seq来分析。从ChIP-Seq层面，我们可以研究某个特定转录因子的调控作用，以及调控区的组蛋白修饰等。今天，我们就来学习下ChIP-Seq的实验部分，之后的推送也会为您献上ChIP-Seq的数据分析。</strong><br><a id="more"></a></p>
+    <div id="aplayer-KlirQpJU" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div><br><strong>由于基因表达调控机制的复杂性，从不同的层面探究生物问题越来越重要，因此需要我们对多种组学数据的整合分析。从RNA-Seq层面，我们可以探究哪些基因具有显著差异，上调或下调；但是想进一步探究调控某一生物学过程的关键因子（包括顺式调控元件和转录因子），以及哪个转录因子调控了感兴趣的基因，需要结合ChIP-Seq来分析。从ChIP-Seq层面，我们可以研究某个特定转录因子的调控作用，以及调控区的组蛋白修饰等。今天，我们就来学习下ChIP-Seq的实验部分，之后的推送也会为您献上ChIP-Seq的数据分析。</strong><br><a id="more"></a></p>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>染色质免疫共沉淀技术(Chromatin Immunoprecipitation,ChIP)是一种用于研究蛋白质DNA的体内相互作用的经典实验技术。<strong>采用特异性抗体将目的蛋白进行免疫沉淀，由此可以把目的蛋白所结合的基因组DNA片段也富集下来。通过与高通量测序技术的结合，对ChIP后的DNA产物进行测序分析，从全基因组范围内寻找目的蛋白的DNA结合位点，以高效率的测序手段得到高通量的数据结果。</strong><br><img src="/img/chip_seq1.webp" alt="10ba5218a81e48864161922c98e79f75.jpeg"><br>ENCODE数据总览</p>
 <h1 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h1><p>在生理状态下，把细胞内的DNA与蛋白质交联（Crosslink）后裂解细胞，分离染色体，通过超声或酶处理将染色质随机切割； 利用抗原抗体的特异性识别反应，将与目的蛋白相结合的DNA片段沉淀下来； 再通过反交联（Reverse crosslink）释放结合蛋白的DNA片段； 纯化； 测序获得DNA片段的序列，最后将这些DNA片段比对到对应的参考基因组上。<br><img src="/img/chip_seq2.webp" alt="10ba5218a81e48864161922c98e79f75.jpeg"><br>ChIP实验原理</p>
 <h1 id="应用领域以及技术优势"><a href="#应用领域以及技术优势" class="headerlink" title="应用领域以及技术优势"></a>应用领域以及技术优势</h1><p>由于 ChIP-Seq 的数据是 DNA 测序的结果，为研究者提供了进一步深度挖掘生物信息的资源，研究者可以在以下几方面展开研究：<br><strong>（1）判断 DNA 链的某一特定位置会出现何种组蛋白修饰； <br>（2）检测 RNA polymerase II 及其它反式因子在基因组上结合位点的精确定位；<br>（3）研究组蛋白共价修饰与基因表达的关系； <br>（4）转录因子研究。ChIP-Seq能够在全基因范围内捕获转录因子或者表观修饰标记结合的目标DNA，鉴定转录因子结合位点，揭示基因调控网络，并且适合多种多样的样本。</strong><br><img src="/img/chip_seq3.webp" alt="10ba5218a81e48864161922c98e79f75.jpeg"><br>表观遗传修饰与转录调控</p>
@@ -123,7 +123,7 @@
     </article>
     <div id="toc">
         
-            <h2>文章目录</h2>
+            <h2>Table of Contents</h2>
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技术原理"><span class="toc-number">2.</span> <span class="toc-text">技术原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用领域以及技术优势"><span class="toc-number">3.</span> <span class="toc-text">应用领域以及技术优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验流程"><span class="toc-number">4.</span> <span class="toc-text">实验流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建库流程"><span class="toc-number">5.</span> <span class="toc-text">建库流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">6.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li></ol>
         
     </div>
