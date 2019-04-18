@@ -1,65 +1,336 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 
-<!DOCTYPE html>
-<html>
+	<!DOCTYPE html>
+	<html class="scrollbar">
+		
+
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <title>浅说动力学模型（上篇） | Universe Biology Girls and Boys</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content>
-    <meta name="description" content="
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
     
-原创： 赵洪龙 宇宙实验媛 
-插曲以前我还在中科院-马普学会计算生物学伙伴研究所的时候，常常有朋友问我诸如“会不会做DNA数据分析？”，“会不会做甲基化数据分析？”之类的生物信息学（狭义）问题。很惭愧，我没有这方面的经验。又有朋友觉得奇怪， 追问：“你不做实验，又不做生物信息学分析，那你到底是干什么的？”我是做动力学模型的。“什么模型？”基于常微分方程的动力学模型，是动力学模型中的一种。每次说到这里，对方的反应总是一愣，随后一蒙，然后一呵呵。这里，我就来简单说说动力学模型到底是个什么东西。
-关于模型的简介说到模型，很多人首先就是一哆嗦，因为想到了一堆符号公式和复杂的拓扑结构图形等等。其实大可不必紧张，模型实际...">
+      浅说动力学模型（上篇） | Universe Biology Girls and Boys
     
-        <link rel="icon" href="/favicon.ico">
-    
-    
-        
-            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-        
-            <link rel="stylesheet" href="/css/stage.css">
-        
-            <link rel="stylesheet" href="/css/avatar-bg.css">
-        
-    
+  </title>
+  <meta name="author" content="Uranusyt">
+  <meta name="keywords" content>
+  <meta name="description" content="I think,therefore I am">
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+    <!-- jquery -->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
 <link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
 <script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
 </head>
-</html>
-<body>
-<header id="header">
-    <div class="menu">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="header-main">
-        <h1><a href="/">Universe Biology Girls and Boys</a></h1>
-    </div>
-    <div id="nav">
-        <div class="nav-img" id="nav-img"></div>
-        <div class="sentences">
-            我跑的胶，叠起来可以绕地球一整圈
-	</div>
-    </div>
-</header>
+	<body>
+		<!-- Preloader -->
 
-<div id="content-outer">
-    <div id="content-inner">
-        <div class="clearfix">
-    <article id="post">
-        <h1>浅说动力学模型（上篇）</h1>
-        <div class="create">
-            <span>Created</span>
-            
-                <time datetime="2019-04-09T11:38:49.000Z">
-                    2019-04-09
-                </time>
-            
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bio-Cooking/">Bio Cooking</a></li></ul>
-        </div>
-        
-    <div id="aplayer-OKeeaiAD" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="26989255" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<div class="h-header">
+			<div id="logo-S">
+				
+					<a href="/">
+						<img src="/img/logo.png" alt="Logo">
+					</a>
+				
+			</div>
+			<!-- Navigation in header(id="navigation-S") -->
+			<div id="navigation-S">
+				<ul>
+					
+						<li class="menu-home">
+							<a href="/" class="menu-item-home">主页</a>
+						</li>
+					
+						<li class="menu-archive">
+							<a href="/archives" class="menu-item-archive">归档</a>
+						</li>
+					
+						<li class="menu-categories">
+							<a href="/categories" class="menu-item-categories">分类</a>
+						</li>
+					
+						<li class="menu-tags">
+							<a href="/tags" class="menu-item-tags">标签</a>
+						</li>
+					
+						<li class="menu-about">
+							<a href="/about" class="menu-item-about">关于</a>
+						</li>
+					
+						<li class="menu-gallery">
+							<a href="/gallery" class="menu-item-gallery">相册</a>
+						</li>
+					
+
+					
+				</ul>			
+			</div>				
+		</div>
+
+		<div class="h-body">	
+			<!-- motto -->
+			
+				<div id="page-motto">
+					<p class="motto">
+						
+					</p>
+				</div>
+			
+
+			<div id="navigation-H">
+				<!-- Page title -->
+				<p>
+					
+						当前文章&nbsp;:&nbsp;《浅说动力学模型（上篇）》
+					
+				</p>
+				<!-- Progress bar -->
+				<div id="progress-bar"></div>
+
+				<!-- Progress percent -->
+				<div id="progress-percentage">
+					<h1>0.0%</h1>
+				</div>
+			</div>
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<ul>
+				<li>
+					<a><i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>切换背景</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down"></i>继续阅读</a>
+				</li>
+				<li>
+					<a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank"><i class="fa fa-download"></i>克隆主题</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- This is only a demo, please go to "https://time.is" to set your city time! -->
+<style type="text/css">
+	.header-date {
+		position: absolute;
+		left: 40px;
+		bottom: 30px;
+		writing-mode: tb-rl;
+		font-size: 36px;
+	}	
+	.header-date a {
+		border-bottom: none;
+	}
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			position: absolute;
+			left: 40px;
+			bottom: 30px;
+			writing-mode: tb-rl;
+			font-size: 20px;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+</div></header>
+
+<!-- Navigation in div(id="navigation-H") -->
+<a class="nav-trigger">
+	<span></span>
+</a>
+
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+			
+				<li class="menu-home">
+					<a href="/" class="menu-item-home">主页</a>
+				</li>
+			
+				<li class="menu-archive">
+					<a href="/archives" class="menu-item-archive">归档</a>
+				</li>
+			
+				<li class="menu-categories">
+					<a href="/categories" class="menu-item-categories">分类</a>
+				</li>
+			
+				<li class="menu-tags">
+					<a href="/tags" class="menu-item-tags">标签</a>
+				</li>
+			
+				<li class="menu-about">
+					<a href="/about" class="menu-item-about">关于</a>
+				</li>
+			
+				<li class="menu-gallery">
+					<a href="/gallery" class="menu-item-gallery">相册</a>
+				</li>
+			
+
+			
+		</ul>
+	</div>
+
+	<div class="nav-footer">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+</nav>
+
+		
+		<!--main-->
+		<main>
+			<div class="layout-post">
+	
+	
+	<div class="article-title">
+		
+	<a href="/2019/04/09/dynamic-model1/" itemprop="url">
+		浅说动力学模型（上篇）
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			
+	发布于
+	<a href="/2019/04/09/dynamic-model1/" itemprop="url">
+		<time datetime="2019-04-09T11:38:49.000Z" itemprop="datePublished">
+	  		2019-04-09
+	  </time>
+	</a> 
+
+	/
+	更新于
+	<a href="/2019/04/09/dynamic-model1/" itemprop="url">
+		<time datetime="2019-04-09T11:38:49.000Z" itemprop="dateUpdated">
+	  		2019-04-09
+	  </time>
+	</a> 	
+
+		</span>
+		/
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/dynamic-model/" class=" ">
+			dynamic model
+		</a>
+	
+		
+		</span>
+		/
+		
+
+    <span class="leancloud_visitors" id="/2019/04/09/dynamic-model1/_visitors" data-url="/2019/04/09/dynamic-model1/" data-title="浅说动力学模型（上篇）">
+        热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+    /
+
+
+
+    <span class="leancloud_likes" id="/2019/04/09/dynamic-model1/_likes" data-url="/2019/04/09/dynamic-model1/" data-title="浅说动力学模型（上篇）" rel="unlike">
+        喜欢
+        <i class="fa fa-heart"></i>
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		
+    <div id="aplayer-MZPcWlbt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="26989255" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <p><strong>原创： 赵洪龙 宇宙实验媛</strong> </p>
 <h1 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h1><p><strong>以前我还在中科院-马普学会计算生物学伙伴研究所的时候，常常有朋友问我诸如“会不会做DNA数据分析？”，“会不会做甲基化数据分析？”之类的生物信息学（狭义）问题。很惭愧，我没有这方面的经验。又有朋友觉得奇怪， 追问：“你不做实验，又不做生物信息学分析，那你到底是干什么的？”我是做动力学模型的。“什么模型？”基于常微分方程的动力学模型，是动力学模型中的一种。每次说到这里，对方的反应总是一愣，随后一蒙，然后一呵呵。这里，我就来简单说说动力学模型到底是个什么东西。</strong><br><img src="/img/dynamic1_1.webp" alt="01"><br><a id="more"></a></p>
 <h1 id="关于模型的简介"><a href="#关于模型的简介" class="headerlink" title="关于模型的简介"></a>关于模型的简介</h1><p>说到模型，很多人首先就是一哆嗦，因为想到了一堆符号公式和复杂的拓扑结构图形等等。其实大可不必紧张，模型实际上就是我们对客观世界认知和归纳的一个抽象体。就像我们买房子的时候，售楼小姐姐和小哥哥给我们展示的小区规划图、等比缩放沙盘一样，这些都是模型。地产商只是把一些我们想了解的楼盘信息抽象出来，用图画或者微缩造型的形式呈现在我们面前，再或者直接用语言表达：这个楼背靠青山，那个楼面朝大海。这些模型能告诉我们哪些楼有哪些特点，让我们不用亲临现场就能明白住进去后的基本感受。<br>同样地，科学家们说是在研究自然，实际上大部分的工作都是在观察，以及建立模型来描述研究对象，最后再基于模型的研究结果去改造这个世界。而那些带有令人望而生畏的符号和公式的数学模型与生物学中心法则的描述的差别在于，前者用的是数学语言，后者用的是自然语言。<br>要了解数学模型，首先就要了解其基本的功能：<strong>第一，整合信息</strong>，根据所研究的问题综合现有的信息对研究对象进行系统地描述。<strong>第二，预测</strong>，通过对模型中的参数和环境条件的扰动可预测系统在宏观层面的表现和变化。<strong>第三，提出可验证的假说</strong>。<br><img src="/img/dynamic1_2.webp" alt="35800716e266902e4fe68ab558d981fb.gif"></p>
@@ -67,86 +338,407 @@
 <h1 id="模型构建的原则和方法"><a href="#模型构建的原则和方法" class="headerlink" title="模型构建的原则和方法"></a>模型构建的原则和方法</h1><p>数学模型包括两个基本要素：<strong>结构和参数</strong>。说白了，结构就是关系，就是所研究的问题中包含的要素（转录因子，基因，酶等等）和要素之间的相互作用与联系（如化学计量学比例，事件发生先后，调控等等）。而每一种要素的状态变化及其相互作用都需要用数学表达式来描述。建模的具体步骤如图1所示。<br><img src="/img/dynamic1_3.webp" alt="35800716e266902e4fe68ab558d981fb.gif"><br>图1. 数学建模的关键步骤下面将通过一个简单的例子来说明建模的必要性和过程（本例子也许不是最合适的，但却能够简单描述建模的过程及意义）：<br><strong>（1）确立研究目标</strong>：A同学研究一个酶促反应的反应特征，并希望通过构建反应速率与底物浓度之间的模型，利用模型预测来指导工程改造酶的特征，以更好地得到产物B。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S→B</span><br></pre></td></tr></table></figure></p>
 <p><strong>（2）收集信息</strong>：根据前人研究发现，该反应服从米氏动力学特征的不可逆反应。故可以用米氏动力学方程来描述这个反应过程。并且文献记载该酶的最大催化速率V1为2，米氏常数Km1为2。<br><strong>（3）建立模型</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v=V*[S]/(Km+[S] )</span><br></pre></td></tr></table></figure></p>
 <p>其中，[S]表示底物浓度；V表示目标酶在特定条件下的最大催化速率；Km表示米氏常数（最大反应速率一半时底物的浓度）；v表示因变量，即在底物S的浓度为[S]时对应的实际反应速率。<br><strong>（4）模型的参数化及验证</strong>：将V1 = 2，Km1 = 2作为参数输入模型，在所有浓度范围内，均可计算出该反应的实际反应速率（图2蓝线所示）。并且文献查找获得了一系列底物浓度条件下该反应的反应速率数据（图2中黑色实心点）。<br><strong>（5）模型预测并提出假设</strong>：通过改变模型中参数V和Km比较反应速率与底物浓度之间的关系，发现改变V时改变了该反应的最大催化能力，而改变Km时改变了催化过程对底物的敏感度。提出假设：在底物浓度高的反应器中需要增加该酶的量，而在反应物浓度比较低的反应器中需要改变酶对底物的敏感性！<br>（6）<strong>用实验构建</strong>分别改变V和Km的酶，测量底物与反应速率之间的关系，如果能和预测结果吻合，说明该模型对于需要研究的目标问题具有一定的预测能力，并且用于实际的化工合成或者生物合成；否则，需要重新建模或者补充信息，直至能吻合为止。<br><img src="/img/dynamic1_4.webp" alt="04"><br>图2. 反应速率与反应物S的浓度在不同特征酶催化条件下的关系。图中的蓝线表示当前条件下模型模拟的关系趋势线，其余的线条表示模型预测改变酶特征后可能的关系；黑色实心圆点表示实验测量在当前酶特征条件下，不同底物浓度时对应的反应速率；彩色实心椭圆点表示改造后最大反应速率的一半以及对应的底物所需浓度。<br><img src="/img/vazyme.png" alt="vazyme"><br><a href="http://m.vazyme.com/Home.html" target="_blank" rel="noopener">南京诺维赞南京诺唯赞生物科技有限公司</a></p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
 
-        <div>
-            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/dynamic-model/">dynamic model</a></li></ul>
-        </div>
-        <div class="bottom-line"></div>
-        
-    <nav id="article-nav">
-        
-            <a href="/2019/04/10/push-us/" id="article-nav-newer" class="article-nav-link-wrap">
-        <span class="article-nav-title">
-            
-                来吧，让我们相爱吧--硬核推送
-            
-        </span>
-                <strong class="article-nav-caption">&gt;</strong>
-            </a>
-        
-        
-            <a href="/2019/04/01/chip-seq1/" id="article-nav-older" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">&lt;</strong>
-                <span class="article-nav-title">
-                    
-                        ChIP-seq实验以及分析总结(上篇)
-                </span>
-                
-            </a>
-        
-    </nav>
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/04/10/push-us/" title="来吧，让我们相爱吧--硬核推送" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/04/01/chip-seq1/" title="ChIP-seq实验以及分析总结(上篇)" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	<ul>
+		
+				<li>
+					<div>
+						<a href="/2019/04/01/chip-seq1/" title="ChIP-seq实验以及分析总结(上篇)">
+							ChIP-seq实验以及分析总结(上篇)
+						</a>
+						<p>
+							原创：丸子 宇宙实验媛
+    由于基因表达调控机制的复杂性，从不同的层面探究生物问题越来越重要，因此需要我们对多种组学数据的整合分析。从RNA-Seq层面，我们可以探究哪些基因具有显著差异，上调或下调；但是想进一步探究调控某一生物学...
+						</p>
+					</div>
+
+					<a href="/2019/04/01/chip-seq1/" title="ChIP-seq实验以及分析总结(上篇)">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="ChIP-seq实验以及分析总结(上篇)">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/31/western-blot/" title="师兄又在胡扯了-Western Blot">
+							师兄又在胡扯了-Western Blot
+						</a>
+						<p>
+							大家好，阿呆师兄又出现了。不知道上个月说的几本书有几个人看了或准备看的。其实原本我应该深藏功与名，大隐隐于市了，不知道大家还记不记得短腿师妹前阵子说“宇宙实验媛喊你来拿三位数稿费了”阿呆  宇宙实验媛大家好，阿呆师兄又出现了。不知道上...
+						</p>
+					</div>
+
+					<a href="/2019/03/31/western-blot/" title="师兄又在胡扯了-Western Blot">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="师兄又在胡扯了-Western Blot">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/10/push-us/" title="来吧，让我们相爱吧--硬核推送">
+							来吧，让我们相爱吧--硬核推送
+						</a>
+						<p>
+							
+    
+原创: 伊颜落芸 宇宙实验媛
+友情公众号推送​     一直关注我们生信技能树公众号的小伙伴肯定知道，我们一向的原则是分享学习心得，提供知识的干货。所以今天就向大友情家推荐一个亲民又有料的公众号—宇宙实验媛。
+生信技能树 ...
+						</p>
+					</div>
+
+					<a href="/2019/04/10/push-us/" title="来吧，让我们相爱吧--硬核推送">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="来吧，让我们相爱吧--硬核推送">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/31/paper-writing01/" title="浅谈期刊筛选与文章投稿-上篇">
+							浅谈期刊筛选与文章投稿-上篇
+						</a>
+						<p>
+							原创： 伊颜落芸 宇宙实验媛 1月3日
+    随着近十年生物医学科技的迅猛发展，SCI文章的在线发表量以及PubMed等主流数据库对文章的收录数呈指数型增长；尤其是伴随着几大出版集团&gt;的合并重组，开源期刊（OA）的流行，科学研...
+						</p>
+					</div>
+
+					<a href="/2019/03/31/paper-writing01/" title="浅谈期刊筛选与文章投稿-上篇">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="浅谈期刊筛选与文章投稿-上篇">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/27/Machine-learnig-KFC/" title="机器学习数据分析极简思路及sklearn算法小试">
+							机器学习数据分析极简思路及sklearn算法小试
+						</a>
+						<p>
+							原创：老板，来一打TPU
+
+    
+机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：1）理解和清理数据2）特征选择3）算法建模4）测试评估模型
+机器学习数据分析极简思路1...
+						</p>
+					</div>
+
+					<a href="/2019/03/27/Machine-learnig-KFC/" title="机器学习数据分析极简思路及sklearn算法小试">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="机器学习数据分析极简思路及sklearn算法小试">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/20/UBGBs/" title="UBGBs">
+							UBGBs
+						</a>
+						<p>
+							Yeap,Family!
+
+						</p>
+					</div>
+
+					<a href="/2019/03/20/UBGBs/" title="UBGBs">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="UBGBs">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/19/paper-submit-experience/" title="浅谈科研论文发表与投稿-下篇">
+							浅谈科研论文发表与投稿-下篇
+						</a>
+						<p>
+							原创： 伊颜落芸  宇宙实验媛生物医学科学研究的过程犹如马拉松长跑，投稿的经历更是具有西天取经般的朝圣感。上线发表的文章只是最后的工作总结之一，背后的故事&gt;往往更精彩。 上篇我们已经就期刊筛选分享了初步经验，本期将以发表在Nat...
+						</p>
+					</div>
+
+					<a href="/2019/03/19/paper-submit-experience/" title="浅谈科研论文发表与投稿-下篇">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="浅谈科研论文发表与投稿-下篇">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/16/Date-with-Bioawk/" title="Date with Bioawk">
+							Date with Bioawk
+						</a>
+						<p>
+							原创：老板，来一打TPU
+废话这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入写blog的坑。第一篇就拿生信李恒大神的神作bioaw...
+						</p>
+					</div>
+
+					<a href="/2019/03/16/Date-with-Bioawk/" title="Date with Bioawk">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="Date with Bioawk">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/16/MARKDOWN-s-KFC/" title="MARKDOWN's KFC">
+							MARKDOWN's KFC
+						</a>
+						<p>
+							Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markd...
+						</p>
+					</div>
+
+					<a href="/2019/03/16/MARKDOWN-s-KFC/" title="MARKDOWN's KFC">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="MARKDOWN's KFC">
+					</a>
+				</li>											
+		
+		
+	</ul>
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know 【表情】-->
+			
+		
+		
+	
+
+</div>
+			</div>
+		</div>	
+	</div>
+</div>
 
 
-        
-            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-  var notify = 'false' == true ? true : false;
-  var verify = 'false' == true ? true : false;
-  window.onload = function() {
-    new Valine({
-      el: '#stageComment',
-      notify: notify,
-      verify: verify,
-      app_id: "aok3pCDe5ao2IIhmO7Cwjmgi-gzGzoHsz",
-      app_key: "QT8zl1KLRblAYwCsuCcj6JAz",
-      placeholder: "小姐姐、小哥哥，快来夸我啊!",
-      avatar:"mm"
-    });
-  }
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'dX--',
+            appkey = 'dx--';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+
+ 
+
+<!-- show math formula -->
+
+
+
+
+<!-- TODO: There seems to be a bug when you close the post gallery! -->
+<link rel="stylesheet" href="/plugin/lightgallery/css/lightgallery.css">
+<script src="/plugin/lightgallery/js/jquery-1.11.0.min.js"></script>
+<script src="/plugin/lightgallery/js/lightgallery-all.min.js"></script>
+
+<script type="text/javascript">
+	var postTitle = $('.article-title a').text() ? $('.article-title a').text() : "No post title!";
+	$('.article-content img').each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+		$(this).wrap('<div class="img-responsive" data-src="' + imgPath + '" data-responsive="' + imgPath + '" data-sub-html="<p>图片 ' + imgTitle + '</p><h4>文章' + postTitle + '</h4>"></div>');
+	});
+
+	$('.article-content').lightGallery({
+		mode: 'lg-slide',
+		selector: '.img-responsive',
+		share: false,
+		zoom: false,
+		download: false
+	});
+	//TODO：支持video
 </script>
 
-        
-    </article>
-    <div id="toc">
-        
-            <h2>Table of Contents</h2>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插曲"><span class="toc-number">1.</span> <span class="toc-text">插曲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于模型的简介"><span class="toc-number">2.</span> <span class="toc-text">关于模型的简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型在生物学研究中的必要性"><span class="toc-number">3.</span> <span class="toc-text">模型在生物学研究中的必要性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型构建的原则和方法"><span class="toc-number">4.</span> <span class="toc-text">模型构建的原则和方法</span></a></li></ol>
-        
-    </div>
-</div>
+<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
 
-    </div>
-</div>
-<footer id="footer">
-    <div id="copyright">&copy; Uranusyt  2019</div>
-    <div id="theme">
-        Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/markyong/hexo-theme-stage">Stage</a>
-    </div>
+		
+
+		<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by Uranusyt. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay. 					
+		</p>
+	</div>		
 </footer>
-<script src="/lib/js/waterrippleeffect.min.js"></script>
-<script src="/js/header-bg.main.js"></script>
+		
+    <!-- set '1' to show motto in all pages! -->
 
-    <script src="/lib/js/smooth-scroll.min.js"></script>
-    <script src="/js/toc.main.js"></script>
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_uv"> 
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
-    <span id="busuanzi_container_page_pv">
-   本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
-</html>
+
+
+
+
+
+    <script src="/js/love.js"></script>
+
+
+<!--back to top-->
+
+    
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+	<div id="tobuttom">
+		<a href="javascript:;" name="TOBUTTOM" class="fa fa-arrow-down"></a>
+	</div>
+ 
+
+
+ 
+
+<script src="/js/vibrant.js"></script>
+<script src="/js/chinese.js"></script>
+<script src="/js/main.js"></script>
+	<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+	</html>

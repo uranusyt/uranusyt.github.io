@@ -1,167 +1,640 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 
-<!DOCTYPE html>
-<html>
+	<!DOCTYPE html>
+	<html class="scrollbar">
+		
+
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <title>Category: Software | Universe Biology Girls and Boys</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content>
-    <meta name="description" content="Developing Technologies to Improve Human Health">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
     
-        <link rel="icon" href="/favicon.ico">
+      category: Software | Universe Biology Girls and Boys
     
-    
-        
-            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-        
-            <link rel="stylesheet" href="/css/stage.css">
-        
-            <link rel="stylesheet" href="/css/avatar-bg.css">
-        
-    
+  </title>
+  <meta name="author" content="Uranusyt">
+  <meta name="keywords" content>
+  <meta name="description" content="I think,therefore I am">
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+    <!-- jquery -->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
 </head>
-</html>
-<body>
-<header id="header">
-    <div class="menu">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="header-main">
-        <h1><a href="/">Universe Biology Girls and Boys</a></h1>
-    </div>
-    <div id="nav">
-        <div class="nav-img" id="nav-img"></div>
-        <div class="sentences">
-            我跑的胶，叠起来可以绕地球一整圈
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
 	</div>
-    </div>
-</header>
 
-<div id="content-outer">
-    <div id="content-inner">
-        <div class="clearfix">
-    <div id="category">
-        <h1>Software</h1>
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<div class="h-header">
+			<div id="logo-S">
+				
+					<a href="/">
+						<img src="/img/logo.png" alt="Logo">
+					</a>
+				
+			</div>
+			<!-- Navigation in header(id="navigation-S") -->
+			<div id="navigation-S">
+				<ul>
+					
+						<li class="menu-home">
+							<a href="/" class="menu-item-home">主页</a>
+						</li>
+					
+						<li class="menu-archive">
+							<a href="/archives" class="menu-item-archive">归档</a>
+						</li>
+					
+						<li class="menu-categories">
+							<a href="/categories" class="menu-item-categories">分类</a>
+						</li>
+					
+						<li class="menu-tags">
+							<a href="/tags" class="menu-item-tags">标签</a>
+						</li>
+					
+						<li class="menu-about">
+							<a href="/about" class="menu-item-about">关于</a>
+						</li>
+					
+						<li class="menu-gallery">
+							<a href="/gallery" class="menu-item-gallery">相册</a>
+						</li>
+					
+
+					
+				</ul>			
+			</div>				
+		</div>
+
+		<div class="h-body">	
+			<!-- motto -->
+			
+				<div id="page-motto">
+					<p class="motto">
+						
+					</p>
+				</div>
+			
+
+			<div id="navigation-H">
+				<!-- Page title -->
+				<p>
+					
+						分类
+					
+				</p>
+				<!-- Progress bar -->
+				<div id="progress-bar"></div>
+
+				<!-- Progress percent -->
+				<div id="progress-percentage">
+					<h1>0.0%</h1>
+				</div>
+			</div>
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<ul>
+				<li>
+					<a><i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>切换背景</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down"></i>继续阅读</a>
+				</li>
+				<li>
+					<a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank"><i class="fa fa-download"></i>克隆主题</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- This is only a demo, please go to "https://time.is" to set your city time! -->
+<style type="text/css">
+	.header-date {
+		position: absolute;
+		left: 40px;
+		bottom: 30px;
+		writing-mode: tb-rl;
+		font-size: 36px;
+	}	
+	.header-date a {
+		border-bottom: none;
+	}
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			position: absolute;
+			left: 40px;
+			bottom: 30px;
+			writing-mode: tb-rl;
+			font-size: 20px;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+</div></header>
+
+<!-- Navigation in div(id="navigation-H") -->
+<a class="nav-trigger">
+	<span></span>
+</a>
+
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+			
+				<li class="menu-home">
+					<a href="/" class="menu-item-home">主页</a>
+				</li>
+			
+				<li class="menu-archive">
+					<a href="/archives" class="menu-item-archive">归档</a>
+				</li>
+			
+				<li class="menu-categories">
+					<a href="/categories" class="menu-item-categories">分类</a>
+				</li>
+			
+				<li class="menu-tags">
+					<a href="/tags" class="menu-item-tags">标签</a>
+				</li>
+			
+				<li class="menu-about">
+					<a href="/about" class="menu-item-about">关于</a>
+				</li>
+			
+				<li class="menu-gallery">
+					<a href="/gallery" class="menu-item-gallery">相册</a>
+				</li>
+			
+
+			
+		</ul>
+	</div>
+
+	<div class="nav-footer">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+</nav>
+
+		
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-08
+	描述：The archive module refers to 'https://1984n.win/archives-post/' & 'http://1900.live/one-theme/', include js、css. Relevant rights reserved by them! 
+-->
+<div class="layout-archive">
+    <div class="i-container">
+        <i class="fa fa-book">
+			
+				Software 2 篇
+			
+		</i>
+    </div>
+
+    <!-- Archive by year, display in page( archive ) -->
+    <div 10 2019 id="layout-archive-year" style="display: 
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-03-16T08:39:23.000Z">
-                    2019-03-16
-                </time>
-                
-                <a href="/2019/03/16/Date-with-Bioawk/">
-                    Date with Bioawk
-                </a>
-                
-            </h3>
-        </div>
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-03-16T07:59:26.000Z">
-                    2019-03-16
-                </time>
+        <ul>
+            
+                <li>
+                    <a href=" 04 push-us ">
+            			<em year="2019">
+                            04-10
+                        </em>
+        			    <span itemprop="name">
+                            来吧，让我们相爱吧--硬核推送
+                        </span>
+        			    
+                    
                 
-                <a href="/2019/03/16/MARKDOWN-s-KFC/">
-                    MARKDOWN's KFC
-                </a>
-                
-            </h3>
-        </div>
+            
+                <li>
+                    <a href="/2019/04/09/dynamic-model1/">
+            			<em year="2019">
+                            04-09
+                        </em>
+        			    <span itemprop="name">
+                            浅说动力学模型（上篇）
+                        </span>
+        			    
+                			<a href="/tags/dynamic-model/" class="tag">
+                				dynamic model
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/04/01/chip-seq1/">
+            			<em year="2019">
+                            04-01
+                        </em>
+        			    <span itemprop="name">
+                            ChIP-seq实验以及分析总结(上篇)
+                        </span>
+        			    
+                			<a href="/tags/chip-seq/" class="tag">
+                				chip-seq
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/31/paper-writing01/">
+            			<em year="2019">
+                            03-31
+                        </em>
+        			    <span itemprop="name">
+                            浅谈期刊筛选与文章投稿-上篇
+                        </span>
+        			    
+                			<a href="/tags/paper-writing/" class="tag">
+                				paper writing
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/31/western-blot/">
+            			<em year="2019">
+                            03-31
+                        </em>
+        			    <span itemprop="name">
+                            师兄又在胡扯了-Western Blot
+                        </span>
+        			    
+                			<a href="/tags/western-blot/" class="tag">
+                				western blot
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/27/Machine-learnig-KFC/">
+            			<em year="2019">
+                            03-27
+                        </em>
+        			    <span itemprop="name">
+                            机器学习数据分析极简思路及sklearn算法小试
+                        </span>
+        			    
+                			<a href="/tags/algorithm/" class="tag">
+                				algorithm
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/20/UBGBs/">
+            			<em year="2019">
+                            03-20
+                        </em>
+        			    <span itemprop="name">
+                            UBGBs
+                        </span>
+        			    
+                			<a href="/tags/photo/" class="tag">
+                				photo
+                			</a>
+                        
+                			<a href="/tags/family/" class="tag">
+                				family
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/19/paper-submit-experience/">
+            			<em year="2019">
+                            03-19
+                        </em>
+        			    <span itemprop="name">
+                            浅谈科研论文发表与投稿-下篇
+                        </span>
+        			    
+                			<a href="/tags/paper-writing/" class="tag">
+                				paper writing
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/16/Date-with-Bioawk/">
+            			<em year="2019">
+                            03-16
+                        </em>
+        			    <span itemprop="name">
+                            Date with Bioawk
+                        </span>
+        			    
+                			<a href="/tags/bioinformatics/" class="tag">
+                				bioinformatics
+                			</a>
+                        
+                			<a href="/tags/bioawk/" class="tag">
+                				bioawk
+                			</a>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/2019/03/16/MARKDOWN-s-KFC/">
+            			<em year="2019">
+                            03-16
+                        </em>
+        			    <span itemprop="name">
+                            MARKDOWN&#39;s KFC
+                        </span>
+        			    
+                			<a href="/tags/markdown-usage/" class="tag">
+                				markdown usage
+                			</a>
+                        
+                    </a>
+                </li>
+            
         
     </div>
-    <div id="content-aside">
-    <div class="content-aside-owner">
-        <div id="owner">
-    <div class="avatar-bg">
-        <div class="index-page">
-            <div class="banner">
-                <div class="slide slide1">
-                    <div class="bg-wrapper">
-                        <div class="bg" id="container_left">
-                            <div id="canvas_left"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide2">
-                    <div class="bg-wrapper">
-                        <div class="bg" id="container_right">
-                            <div id="canvas_right"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="/"><img class="avatar" src="/images/coverage.png" alt></a>
-    <a href="/"><h3 class="author">Uranusyt</h3></a>
-    <h4>I think,therefore I am</h4>
-    <div class="social">
+
+     <!-- Archive by month, called by page( categories, tags... ) -->
+    <div id="layout-archive-month" style="display: 
+         
+            block"> 
+        
+
+        
         
             
-              <a href="http://www.universebiologygirl.com/" title="github" class="fa fa-github" target="_blank"></a>
+
             
+                
+                <h3 class="archive-year">
+                    <!-- <a href="/archives/2019/03"> -->
+                    <a>
+                        2019 - 03
+                    </a>
+                </h3>
+            
+
+            <ul>
+                <li>
+                    <a href="/2019/03/16/Date-with-Bioawk/">
+                        <em>
+                            03-16
+                        </em>
+                        <span itemprop="name">
+                            Date with Bioawk
+                        </span>
+                        
+                            <a href="/tags/bioinformatics/" class="tag">
+                                bioinformatics
+                            </a>
+                        
+                            <a href="/tags/bioawk/" class="tag">
+                                bioawk
+                            </a>
+                               
+                    </a>
+                </li>
+            </ul>
         
             
-              <a href="#" title="weibo" class="fa fa-weibo" target="_blank"></a>
+
             
+
+            <ul>
+                <li>
+                    <a href="/2019/03/16/MARKDOWN-s-KFC/">
+                        <em>
+                            03-16
+                        </em>
+                        <span itemprop="name">
+                            MARKDOWN&#39;s KFC
+                        </span>
+                        
+                            <a href="/tags/markdown-usage/" class="tag">
+                                markdown usage
+                            </a>
+                               
+                    </a>
+                </li>
+            </ul>
         
     </div>
-</div>
-    </div>
-    
-        <div class="content-aside-about">
-            <h2>
-                <a href="/about">About</a>
-            </h2>
-        </div>
-    
-    <div class="content-aside-tags">
-        <h2>
-            <a href="/tags">
-                Tags
-                <sup style="font-size: 12px">
-                    [10]
-                </sup>
-            </a>
-        </h2>
-    </div>
-    
-<aside id="categories">
-    <h2>Categories</h2>
-    
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bio-Cooking/">Bio Cooking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper-Writing/">Paper Writing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Photo/">Photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software/">Software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/We/">We</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/We/Photo/">Photo</a></li></ul></li></ul>
-    
-</aside>
 
     
-<aside id="acchives">
-    <h2>Archives</h2>
+        
+	
+
     
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
-    
-</aside>
+</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
 
-</div>
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by Uranusyt. All Rights Reserved.
+			
+			
+			
 
-</div>
-<div id="category-paginator" class="clearfix">
-    <span class="page-number current">1</span>
-</div>
+	<!-- busuanzi -->
+	<!-- busuanzi -->
 
-    </div>
-</div>
-<footer id="footer">
-    <div id="copyright">&copy; Uranusyt  2019</div>
-    <div id="theme">
-        Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/markyong/hexo-theme-stage">Stage</a>
-    </div>
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_site_pv">
+	    	本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+
+		<span id="busuanzi_container_site_uv">
+	  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+		</span>
+		
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay. 					
+		</p>
+	</div>		
 </footer>
-<script src="/lib/js/waterrippleeffect.min.js"></script>
-<script src="/js/header-bg.main.js"></script>
+		
+    <!-- set '1' to show motto in all pages! -->
 
-    <script src="/lib/js/cav.js"></script>
-    <script src="/js/avatar-bg.main.js"></script>
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
-</html>
+
+
+
+
+
+    <script src="/js/love.js"></script>
+
+
+<!--back to top-->
+
+    
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+	<div id="tobuttom">
+		<a href="javascript:;" name="TOBUTTOM" class="fa fa-arrow-down"></a>
+	</div>
+ 
+
+
+ 
+
+<script src="/js/vibrant.js"></script>
+<script src="/js/chinese.js"></script>
+<script src="/js/main.js"></script>
+	<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+	</html>
