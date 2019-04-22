@@ -1,0 +1,961 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="taxonkit usage, Universe Biology Girls and Boys">
+    <meta name="description" content="原创：老板，来一打TPU
+    [toc]
+遇到的问题   在做宏基因组分析时，通过基因注释得到一个包含10k之多种微生物物种名list(scientific name)，现在想统计这些物种在界、门、纲、目、科、属等不同分类水平的总的数量">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>taxonkit usage | Universe Biology Girls and Boys</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Universe Biology Girls and Boys</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="http://lc-aok3pCDe.cn-n1.lcfile.com/5d59cceb6c0ae4cee779/ubg_wechat.jpg" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="http://www.vazyme.com" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Universe Biology Girls and Boys</div>
+        <div class="logo-desc">
+            
+            Developing Technologies to Improve Human Health
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="http://lc-aok3pCDe.cn-n1.lcfile.com/5d59cceb6c0ae4cee779/ubg_wechat.jpg" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="http://www.vazyme.com" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        taxonkit usage
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/taxonomy/" target="_blank">
+                                <span class="chip bg-color">taxonomy</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                Bioinformatics
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-04-22
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>原创：老板，来一打TPU</strong><br>
+    <div id="aplayer-WTznAlGd" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2786189" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div><br>[toc]</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>   在做宏基因组分析时，通过基因注释得到一个包含10k之多种微生物物种名list(scientific name)，现在想统计这些物种在界、门、纲、目、科、属等不同分类水平的总的数量。这就是本篇推送想解决的问题，10000多种微生物的拉丁名称示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Abiotrophia defectiva<br>Abiotrophia sp.<br>Absiella dolichum<br>Acaryochloris marina<br>Acetanaerobacterium sp.<br>Acetivibrio cellulolyticus<br>Acetoanaerobium noterae<br>Acetoanaerobium sticklandii<br>Acetobacter aceti<br>Acetobacter ghanensis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] wc -l all_bacteria_genomic_fna.species</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>10146 all_bacteria_genomic_fna.species</p>
+</blockquote>
+<p> 打开<a href="https://www.ncbi.nlm.nih.gov/taxonomy/" target="_blank" rel="noopener">NCBI Taxonomy</a>输入一个拉丁名，如Acetobacter aceti，搜索之后默认获得完整的lineage信息，但我们这里只需要7个层次的，因此再点击一次Lineage获得缩略的谱系信息，如下：<br>   <img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p925" alt="e6cbb27a22c5c7a2b3a2ba23edb1a805.png"><br>得到的Lineage字段后以分号隔开的就是对应于7个分类层次的结果，后续以分号切割之后统计不同列的结果即可。<br>很自然的，我们想到爬虫，其搜索接口为<a href="https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），如https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，然后对结果页面进行后续解析。但是10k之多的查询量，必然要设置爬取频率，否则就要被NCBI关小黑屋了，考虑时间代价，果断放弃。其实，从网上查询的原理也是基于Taxonomy后台的数据库，而这个文件在ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，可以从解压之后的names.dmp和nodes.dmp文件写代码解析，但是其内容过于妖孽，为了少撸掉点头发，因此先看看网上是否有造好的轮子。" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），如https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，然后对结果页面进行后续解析。但是10k之多的查询量，必然要设置爬取频率，否则就要被NCBI关小黑屋了，考虑时间代价，果断放弃。其实，从网上查询的原理也是基于Taxonomy后台的数据库，而这个文件在ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，可以从解压之后的names.dmp和nodes.dmp文件写代码解析，但是其内容过于妖孽，为了少撸掉点头发，因此先看看网上是否有造好的轮子。</a><br><img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p926" alt="a779d01a5ad056030870717c9834834c.png"><br>果然，动动手指发现有三个工具可以实现以上诉求，ETE toolkit, taxadb和 TaxonKit，这里选择最近发表的TaxonKit，优势在于其直接基于names.dmp和nodes.dmp文件的解析，本地搜索速度块，尤其是大批量的查找和格式转换，另外使用也极简单。<br><img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p927" alt="b3fdb657d91fc76b4cce0794a9133157.png"><br> <a href="http://dx.doi.org/10.1101/513523" target="_blank" rel="noopener">TaxonKit paper</a><br>相比于另外两种工具，TaxonKit在处理大批量数据时更快，占用内存也可接受</p>
+<h2 id="taxonkit-概述"><a href="#taxonkit-概述" class="headerlink" title="taxonkit 概述"></a>taxonkit 概述</h2><p>说完废话，进入今天的主题，说说TaxonKit这个工具的使用。<br>TaxonKit是处理NCBI Taxonomy数据库中结构性数据的良心工具，19年1月在bioRxiv上online，作者Wei Shen, Jie Xiong，隶属于Department of ClinicalLaboratory, General Hospital of Western Theater Command，特地查了一下，原来是位于成都的中国人民解放军西部战区总医院（好牛的感觉），看来生信真是无处不在。<br><img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p924" alt="e8237772973853ffcfd38f570c47f371.png"><br>它是Go语言编写的，可以在Windows，Linux和Mac OS X运行，直接使用NCBI Taxonomy的数据（需手动下载）而无需构建本地数据库。</p>
+<h2 id="taxonkit安装"><a href="#taxonkit安装" class="headerlink" title="taxonkit安装"></a>taxonkit安装</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>选择对应系统的版本安装，推荐conda安装。详见<a href="https://github.com/shenwei356/taxonkit" target="_blank" rel="noopener">https://github.com/shenwei356/taxonkit</a><br>conda安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">conda install -c bioconda taxonkit </span><br><span class="line">``` </span><br><span class="line">### 下载依赖数据</span><br><span class="line">下载NCBI taxonomy数据库的taxdump.tar.gz文件，解压后将names.dmp和 nodes.dmp拷贝到家目录下的.taxonkit目录下。</span><br><span class="line">```bash</span><br><span class="line">wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz </span><br><span class="line">tar -zxvf taxdump.tar.gz</span><br><span class="line">mkdir -p $HOME/.taxonkit</span><br><span class="line">cp names.dmp nodes.dmp $HOME/.taxonkit</span><br></pre></td></tr></table></figure></p>
+<p>确认文件完整：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT]$ ll -h  ~/.taxonkit/</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>total 155494<br>-rw-r–r–    1 xx    UsersGrp  169.3M Mar 18 16:07 names.dmp<br>-rw-r–r–    1 xx    UsersGrp  134.4M Mar 18 16:07 nodes.dmp</p>
+</blockquote>
+<p>配置完成，开始使用。</p>
+<h2 id="taonkit使用"><a href="#taonkit使用" class="headerlink" title="taonkit使用"></a>taonkit使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit --help</span><br><span class="line">```    </span><br><span class="line">   &gt;Usage:</span><br><span class="line">  taxonkit [command]</span><br><span class="line">Available Commands:</span><br><span class="line">  genautocomplete generate shell autocompletion script</span><br><span class="line">  help            Help about any command</span><br><span class="line">  lineage         query lineage of given taxids</span><br><span class="line">  list            list taxon tree of given taxids</span><br><span class="line">  name2taxid      query taxid by taxon scientific name</span><br><span class="line">  reformat        reformat lineage</span><br><span class="line">  version         print version information and check for update</span><br><span class="line">...</span><br><span class="line">Use &quot;taxonkit [command] --help&quot; for more information about a command.</span><br><span class="line"></span><br><span class="line">taxonkit按照功能分成不同的子命令，其中最主要的功能包括4块：</span><br><span class="line">1）列出给定taxonomy id(taxid)的子分类树：list</span><br><span class="line">2）从taxid获取完整谱系：lineage</span><br><span class="line">3）重新构造谱系的格式：reformat</span><br><span class="line">4）通过物种拉丁名查询taxid：name2taxid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 1）列出给定taxonomy id的子分类树</span><br><span class="line">```    </span><br><span class="line"> [NeptuneYT$] taxonkit list --help   #查看list子命令使用方法</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>list taxon tree of given taxids<br>Usage:<br>  taxonkit list [flags]<br>Flags:<br>  -h, –help            help for list<br>      –ids string      taxid(s), multiple values should be separated by comma<br>      –indent string   indent (default “  “)<br>      –json            output in JSON format. you can save the result in file with suffix “.json” and open with modern text editor<br>      –show-name       output scientific name<br>      –show-rank       output rank<br>Global Flags:<br>      –data-dir string   directory containing nodes.dmp and names.dmp (default “/home/xx/.taxonkit”)<br>      –line-buffered     use line buffering on output, i.e., immediately writing to stdin/file for every line of output<br>  -o, –out-file string   out file (“-“ for stdout, suffix .gz for gzipped out) (default “-“)<br>  -j, –threads int       number of CPUs. (default value: 1 for single-CPU PC, 2 for others) (default 2)<br>      –verbose           print verbose information</p>
+</blockquote>
+<p>实例：<br>给定taxid：9606和10090<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit list --ids 9606,10090 --show-name  --show-rank -j 2</span><br></pre></td></tr></table></figure></p>
+<p> #–ids 给定的taxid，多个以英文逗号分割</p>
+<p> #–show-name    输出科学命名</p>
+<p> #–show-rank    输出分类等级</p>
+<p> #-j 线程数，默认是2</p>
+<blockquote>
+<p>9606 [species] Homo sapiens<br>  63221 [subspecies] Homo sapiens neanderthalensis<br>  741158 [subspecies] Homo sapiens subsp. ‘Denisova’</p>
+</blockquote>
+<blockquote>
+<p>10090 [species] Mus musculus<br>  10091 [subspecies] Mus musculus castaneus<br>  10092 [subspecies] Mus musculus domesticus<br>  35531 [subspecies] Mus musculus bactrianus<br>  39442 [subspecies] Mus musculus musculus<br>  46456 [subspecies] Mus musculus wagneri<br>  57486 [subspecies] Mus musculus molossinus<br>  80274 [subspecies] Mus musculus gentilulus<br>  116058 [subspecies] Mus musculus brevirostris<br>  179238 [subspecies] Mus musculus homourus<br>  477815 [subspecies] Mus musculus musculus x M. m. domesticus<br>  477816 [subspecies] Mus musculus musculus x M. m. castaneus<br>  947985 [subspecies] Mus musculus albula<br>  1266728 [subspecies] Mus musculus domesticus x M. m. molossinus<br>  1385377 [subspecies] Mus musculus gansuensis<br>  1643390 [subspecies] Mus musculus helgolandicus<br>  1879032 [subspecies] Mus musculus isatissus</p>
+</blockquote>
+<h3 id="2）从taxid获取完整谱系"><a href="#2）从taxid获取完整谱系" class="headerlink" title="2）从taxid获取完整谱系"></a>2）从taxid获取完整谱系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage  -d &quot;-&quot; -t -r</span><br></pre></td></tr></table></figure>
+<p> #-d 输出谱系树分割符，默认分号</p>
+<p> #-t 显示包含taxid的谱系树</p>
+<p> #-r 显示给定taxid的分类等级</p>
+<blockquote>
+<p>9606    cellular organisms-Eukaryota-Opisthokonta-Metazoa-Eumetazoa-Bilateria-Deuterostomia-Chordata-Craniata-Vertebrata-Gnathostomata-Teleostomi-Euteleostomi-Sarcopterygii-Dipnotetrapodomorpha-Tetrapoda-Amniota-Mammalia-Theria-Eutheria-Boreoeutheria-Euarchontoglires-Primates-Haplorrhini-Simiiformes-Catarrhini-Hominoidea-Hominidae-Homininae-Homo-Homo sapiens      131567-2759-33154-33208-6072-33213-33511-7711-89593-7742-7776-117570-117571-8287-1338369-32523-32524-40674-32525-9347-1437010-314146-9443-376913-314293-9526-314295-9604-207598-9605-9606   species</p>
+</blockquote>
+<h3 id="3）重新构造谱系的格式"><a href="#3）重新构造谱系的格式" class="headerlink" title="3）重新构造谱系的格式"></a>3）重新构造谱系的格式</h3><p>上一步通过taxid提取的谱系信息复杂，往往需要根据我们的需求重新格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage |taxonkit reformat</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>9606    cellular organisms;Eukaryota;Opisthokonta;Metazoa;Eumetazoa;Bilateria;Deuterostomia;Chordata;Craniata;Vertebrata;Gnathostomata;Teleostomi;Euteleostomi;Sarcopterygii;Dipnotetrapodomorpha;Tetrapoda;Amniota;Mammalia;Theria;Eutheria;Boreoeutheria;Euarchontoglires;Primates;Haplorrhini;Simiiformes;Catarrhini;Hominoidea;Hominidae;Homininae;Homo;Homo sapiens      Eukaryota;Chordata;Mammalia;Primates;Hominidae;Homo;Homo sapiens</p>
+</blockquote>
+<p>输出结果的第三列就是重新格式化的结果，默认是(“{k};{p};{c};{o};{f};{g};{s}”)7个水平。<br>查询给定taxid9606的谱系，并按照门：科；属的格式输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage |taxonkit reformat -f &quot;&#123;p&#125;:&#123;f&#125;;&#123;s&#125;&quot; |cut -f3</span><br></pre></td></tr></table></figure></p>
+<p> #{}内是分类等级，大括号之间是输出的连接符</p>
+<blockquote>
+<p>Chordata:Hominidae;Homo sapiens</p>
+</blockquote>
+<h3 id="4）通过物种拉丁名查询taxid：name2taxid"><a href="#4）通过物种拉丁名查询taxid：name2taxid" class="headerlink" title="4）通过物种拉丁名查询taxid：name2taxid"></a>4）通过物种拉丁名查询taxid：name2taxid</h3><p>按人的拉丁名查询taxid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo &quot;Homo sapiens&quot; |taxonkit name2taxid</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Homo sapiens    9606<br>批量查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt |taxonkit name2taxid --show-rank</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>Abiotrophia defectiva   46125   species<br>Abiotrophia sp. 76631   species<br>Absiella dolichum       31971   species<br>Acaryochloris marina    155978  species<br>Acetanaerobacterium sp.<br>Acetivibrio cellulolyticus      35830   species<br>Acetoanaerobium noterae 745369  species<br>Acetoanaerobium sticklandii     1511    species<br>Acetobacter aceti       435     species<br>Acetobacter ghanensis   431306  species</p>
+</blockquote>
+<h2 id="回到问题"><a href="#回到问题" class="headerlink" title="回到问题"></a>回到问题</h2><p>基于Taxonkit上述用法，回到之前的问题就好解决了<br>1.将scientific name先转化成taxid，便于查找lineage<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">time taxonkit name2taxid  scientific_name.txt &gt;scientific_name_taxid.txt &amp;</span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2!=""&#123;print $2&#125;'</span>  scientific_name.txt &gt;find_taxid.txt  <span class="comment">#去掉未查到的，即空值</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2==""'</span>  scientific_name_taxid.txt &gt;NotFindName.txt <span class="comment">#输出未查到物种名</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'BEGIN&#123;OFS="\t";print "findTaxid\tNull\tTotal"&#125;&#123;$2!=""?taxid++:null++&#125;END&#123;print taxid,null,taxid+null&#125;'</span> scientific_name_taxid.txt |column -t <span class="comment">#统计查找到的和未查到的数量</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>real    0m6.279s<br>findTaxid  Null  Total<br>9606       541   10147</p>
+</blockquote>
+<p>可以看到，查询速度相当之快。<br>由于待批量查询的物种名不是规范的拉丁名称，导致出现两个问题，一是输入的list是10146个,转换id后（找到和未找到）的行数却增加了1个，统计之后发现是同一个物种名有两个taxid；二是没找到的高达541个！！！为了说明完整的处理过程，541个后面再说。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$]$ awk -F<span class="string">"\t"</span> <span class="string">'&#123;print $1&#125;'</span> scientific_name_taxid.txt |sort |uniq -d</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Deinococcus soli</p>
+</blockquote>
+<p>手工查询发现是两个种，但是根据部分拉丁名Deinococcus soli可以查到俩taxid我也是醉了。<br><img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p985" alt="2ddde788a6b5337cc8d843678c18b043.png"></p>
+<p>2.查找lineage<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] time taxonkit lineage find_taxid.txt &gt;lineage.txt&amp;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>real    0m7.860s</p>
+</blockquote>
+<p>3.重新格式化lineage<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] time taxonkit reformat lineage.txt|cut -f3 &gt;newformat.txt&amp;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>real    0m11.465s</p>
+</blockquote>
+<p>结果：<br><img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p928" alt="a5b75e8f601a793caab21771ee9d2630.png"><br>现在就按照界门纲目科属种的层次变成整齐划一的格式了，通过简单处理即可统计不同层次的物种数量和分布，首先构建一个用于循环处理的分类标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>1 Kingdom<br>2 Phylum<br>3 Class<br>4 Order<br>5 Family<br>6 Genus<br>7 Species</p>
+</blockquote>
+<p>详细的物种分类层次数量统计：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> num lev;<span class="keyword">do</span>  awk -v v=<span class="variable">$num</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span> newformat.txt|sort |uniq -c|sort -nr |awk -v v=<span class="variable">$lev</span> <span class="string">'&#123;print v"\t"$0&#125;'</span> |awk <span class="string">'$3!=""'</span>;<span class="keyword">done</span> &gt;detail_taxonomy_range.txt</span><br><span class="line">[NeptuneYT$] head detail_taxonomy_range.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Kingdom       6722 Bacteria<br>Kingdom             4 Eukaryota<br>Phylum          2682 Proteobacteria<br>Phylum         1390 Firmicutes<br>Phylum         1099 Actinobacteria<br>Phylum          729 Bacteroidetes</p>
+</blockquote>
+<p>按7个类别统计数量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> index level;<span class="keyword">do</span> num=$(awk -v v=<span class="variable">$index</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span> newformat.txt|sort |uniq |wc -l);<span class="built_in">printf</span>  <span class="string">"<span class="variable">$&#123;level&#125;</span>\t<span class="variable">$&#123;num&#125;</span>\n"</span>;<span class="keyword">done</span> |tee taxonomy_stat.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Kingdom      2<br>Phylum       118<br>Class     82<br>Order      181<br>Family      401<br>Genus       1824<br>Species      6519</p>
+</blockquote>
+<p>简单画个图瞅瞅：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data&lt;-read.table(<span class="string">'taxonomy_stat.txt'</span>)</span><br><span class="line"><span class="keyword">library</span>(<span class="string">'ggplot2'</span>)</span><br><span class="line">ggplot(data,aes(reorder(V1,-V2),V2,fill=V1))+geom_bar(stat=<span class="string">'identity'</span>)+xlab(<span class="string">'Taxonomy level'</span>)+ylab(<span class="string">'Numbers'</span>)+geom_text(aes(label=V2),position=position_dodge(<span class="number">.9</span>),vjust=-<span class="number">1.5</span>)+theme(text=element_text(size=<span class="number">16</span>,family=<span class="string">'Times New Roman'</span>,face=<span class="string">'bold'</span>))+labs(fill=<span class="string">'level'</span>)</span><br></pre></td></tr></table></figure></p>
+<p> <img src="evernotecid://7526024C-9E45-4F5B-9ACD-8B8C99291F7B/appyinxiangcom/20641877/ENResource/p929" alt="7a4bd388c517c803b8abe18473d705c7.png"></p>
+<h2 id="一个也不能少"><a href="#一个也不能少" class="headerlink" title="一个也不能少"></a>一个也不能少</h2><p>首先看看没有找到的541个输入物种名长啥样：</p>
+<blockquote>
+<p>Bacillus sp.<br>[Bacillus thuringiensis]<br>bacteria symbiont<br>Bacteriovorax sp.<br>bacterium 42 11<br>bacterium BRH c32<br>bacterium Candidatus<br>bacterium CG06 land 8 20 14 3 00 33 50<br>bacterium CG09 39 24<br>bacterium CG1 02 42 9<br>…</p>
+</blockquote>
+<p>这个物种list是师妹们给的，实在太好（yao）看(nie)可了，拷问了一遍奈何就只有这样的查询list，那就只能手工挑了几个去网页上查了，发现没有找到taxid的原因包括：<br>1）出现多个搜索结果：原物种名Acaryochloris sp.，搜到的拉丁名：Acaryochloris sp. A4cAcaryochloris marinaAsterochloris sp. DA2Asterochloris sp. 101Asterochloris sp. 103<br>2）截短名称：原物种名Acetothermia bacterium，搜到结果：Candidatus Acetothermia bacterium<br>3）多加中括号：[Bacillus thuringiensis]<br>4）没有下划线：bacterium 42 11，搜到结果：bacterium 42_11<br>针对多加中括号和没有下划线的问题，可以先处理一下，其他的就只能手工查了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">"s/\[//g;s/\]//g"</span>   NotFindName.txt &gt;bracket_minus_name.txt <span class="comment">#minus all bracket</span></span><br><span class="line">awk <span class="string">'&#123;filed1=$1;$1="";sub(/ /,"");gsub(/ /,"_");print filed1,$0&#125;'</span>  NotFindName.txt  &gt;underline_plus_name.txt <span class="comment">#plus all filed of split underline except first one</span></span><br></pre></td></tr></table></figure></p>
+<p>将后面查到的taxid加到之前的taxid list再按之前的流程跑一遍即可，实在查不到的那就手工吧。（此时配乐起~“这是自由的感觉，鼠标咔哒咔哒点击这些可爱的物种名称，<br>凭着一颗永不哭泣勇敢的心”）</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/shenwei356/taxonkit" target="_blank" rel="noopener">taxonkit github</a><br><a href="http://dx.doi.org/10.1101/513523" target="_blank" rel="noopener">TaxonKit: a cross-platform and efficient NCBI taxonomy toolkit</a></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Reprint please specify:
+                    </span>
+                    <a href="http://yoursite.com" class="b-link-green">Universe Biology Girls and Boys</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/04/22/taxonkit-usage/" class="b-link-green">taxonkit usage</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2019/04/22/taxonkit-usage/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="taxonkit usage">
+                        
+                        <span class="card-title">taxonkit usage</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">原创：老板，来一打TPU
+    [toc]
+遇到的问题   在做宏基因组分析时，通过基因注释得到一个包含10k之多种微生物物种名list(scientific name)，现在想统计这些物种在界、门、纲、目、科、属等不同分类水平的总的数量</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/taxonomy/" target="_blank">
+                        <span class="chip bg-color">taxonomy</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/19/source-about-about-md/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="source/about/about.md">
+                        
+                        <span class="card-title">source/about/about.md</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text"></div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Uranusyt
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/neptuneyt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:Neptuneyt@icloud.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=88888888" class="tooltipped" data-tooltip="QQ联系我: 88888888" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
