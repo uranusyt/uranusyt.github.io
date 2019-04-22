@@ -29,10 +29,14 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
         
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
 <script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
 </head>
@@ -409,6 +413,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
+                        2.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
+                        9 Min
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -423,10 +441,10 @@
             <div id="articleContent">
                 <p><strong>原创：老板，来一打TPU</strong></p>
 
-    <div id="aplayer-emIbInsx" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-vnCFYKzm" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <p><strong>机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：<br>1）理解和清理数据<br>2）特征选择<br>3）算法建模<br>4）测试评估模型</strong><br><a id="more"></a></p>
 <h1 id="机器学习数据分析极简思路"><a href="#机器学习数据分析极简思路" class="headerlink" title="机器学习数据分析极简思路"></a>机器学习数据分析极简思路</h1><h2 id="1）理解和清理数据"><a href="#1）理解和清理数据" class="headerlink" title="1）理解和清理数据"></a>1）理解和清理数据</h2><ul>
-<li>理解数据<br>数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降维分析（PCOA、tSNE），理解数据组成主成分贡献度。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pip install seaborn</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pyplot</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sb</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">%matplotlib inline</span><br><span class="line">data=pd.read_csv(<span class="string">'iris.csv'</span>)    <span class="comment">#pandas 读入数据</span></span><br><span class="line">data.head(<span class="number">3</span>)    <span class="comment">#查看数据</span></span><br><span class="line">data.describe() <span class="comment">#数据基本统计</span></span><br><span class="line">sb.pairplot(data.dropna(),hue=<span class="string">'Species'</span>)</span><br></pre></td></tr></table></figure>
+<li>理解数据<br>数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降维分析（PCOA、tSNE），理解数据组成主成分贡献度。<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pip install seaborn</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pyplot</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sb</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">%matplotlib inline</span><br><span class="line">data=pd.read_csv(<span class="string">'iris.csv'</span>)    <span class="comment">#pandas 读入数据</span></span><br><span class="line">data.head(<span class="number">3</span>)    <span class="comment">#查看数据</span></span><br><span class="line">data.describe() <span class="comment">#数据基本统计</span></span><br><span class="line">sb.pairplot(data.dropna(),hue=<span class="string">'Species'</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>鸢尾花数据组成<br><img src="/img/1.png" alt="32bc1a777af3001e5fc1dea42b93c0d1.png"><br>鸢尾花数据所有feature基本数理统计<br><img src="/img/2.png" alt="2b240766f89ac4edf021b4341265784a.png"><br>鸢尾花数据不同feature相互关系<br><img src="/img/3.png" alt="c6662ebd0cefd5735191807c454d879a.png"></p>
@@ -441,7 +459,7 @@
 <h1 id="sklearn-算法小试"><a href="#sklearn-算法小试" class="headerlink" title="sklearn 算法小试"></a>sklearn 算法小试</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>sklearn是python中一个强大的机器学习模块,拥有众多的机器学习算法和功能。这里，通过sklearn的datasets构建一个数据集，并用4种常用算法：逻辑回归（LogisticRegression）、支持向量机（SVM）、决策树（DecisionTree）和集成算法（VotingClassifier）对训练集建模，然后对测试集预测，最终通过得分看一下4种算法的差异。</p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1）构建本次使用的数据集<br>2）将数据拆分成训练集和测试集<br>3）用4种算法分别建模、预测</p>
 <h2 id="代码环境"><a href="#代码环境" class="headerlink" title="代码环境"></a>代码环境</h2><p>python版本：python3<br>1）如果不想被python各种安装包困扰，推荐Jupyter在线python，<a href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter官网</a>，点击”Try Jupyter with Python”，点击“+”号即可。安装包的时候直接pip install packages_name,例如pip install sklearn,点击“Run”，提示“Successfully installed sklearn-0.0”即安装完成。<br><img src="/img/4.png" alt="a3e70c182d26dd77208c02cab6571af5.png"><br>2）Pycharm，专业、高效、强大的python开发端。</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets <span class="comment">#built-in datasets</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#make_moons,generated datasets</span></span><br><span class="line">X,y = datasets.make_moons(n_samples=<span class="number">500</span>,noise=<span class="number">0.3</span>,random_state=<span class="number">42</span>)</span><br><span class="line">plt.scatter(X[y==<span class="number">0</span>,<span class="number">0</span>],X[y==<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">plt.scatter(X[y==<span class="number">1</span>,<span class="number">0</span>],X[y==<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">plt.show()  <span class="comment">#plot for datasets</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#split datasets for train and test part</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#1.logistic regression model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">log_clf=LogisticRegression() <span class="comment">#create LR classifer</span></span><br><span class="line">log_clf.fit(X_train,y_train) <span class="comment">#train and fit the model</span></span><br><span class="line">log_score=log_clf.score(X_test,y_test) <span class="comment">#test the model</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2.svm model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line">svm_clf=SVC()</span><br><span class="line">svm_clf.fit(X_train,y_train)</span><br><span class="line">svm_score=svm_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.decision tree model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">dt_clf=DecisionTreeClassifier()</span><br><span class="line">dt_clf.fit(X_train,y_train)</span><br><span class="line">dt_score=dt_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.ensemble method</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> VotingClassifier</span><br><span class="line">voting_clf=VotingClassifier(estimators=</span><br><span class="line">                            [(<span class="string">'log_clf'</span>,LogisticRegression()),</span><br><span class="line">                             (<span class="string">'svm_clf'</span>,SVC()),</span><br><span class="line">                             (<span class="string">'dt_clf'</span>,DecisionTreeClassifier())</span><br><span class="line">                             ],voting=<span class="string">"hard"</span>)</span><br><span class="line">voting_clf.fit(X_train,y_train)</span><br><span class="line">voting_score=voting_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"log score:%s"</span>%log_score)</span><br><span class="line">print(<span class="string">"svm score:%s"</span>%svm_score)</span><br><span class="line">print(<span class="string">"dt score:%s"</span>%dt_score)</span><br><span class="line">print(<span class="string">"voting score:%s"</span>%voting_score)</span><br></pre></td></tr></table></figure>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets <span class="comment">#built-in datasets</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#make_moons,generated datasets</span></span><br><span class="line">X,y = datasets.make_moons(n_samples=<span class="number">500</span>,noise=<span class="number">0.3</span>,random_state=<span class="number">42</span>)</span><br><span class="line">plt.scatter(X[y==<span class="number">0</span>,<span class="number">0</span>],X[y==<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">plt.scatter(X[y==<span class="number">1</span>,<span class="number">0</span>],X[y==<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">plt.show()  <span class="comment">#plot for datasets</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#split datasets for train and test part</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#1.logistic regression model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">log_clf=LogisticRegression() <span class="comment">#create LR classifer</span></span><br><span class="line">log_clf.fit(X_train,y_train) <span class="comment">#train and fit the model</span></span><br><span class="line">log_score=log_clf.score(X_test,y_test) <span class="comment">#test the model</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2.svm model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line">svm_clf=SVC()</span><br><span class="line">svm_clf.fit(X_train,y_train)</span><br><span class="line">svm_score=svm_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.decision tree model</span></span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">dt_clf=DecisionTreeClassifier()</span><br><span class="line">dt_clf.fit(X_train,y_train)</span><br><span class="line">dt_score=dt_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.ensemble method</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> VotingClassifier</span><br><span class="line">voting_clf=VotingClassifier(estimators=</span><br><span class="line">                            [(<span class="string">'log_clf'</span>,LogisticRegression()),</span><br><span class="line">                             (<span class="string">'svm_clf'</span>,SVC()),</span><br><span class="line">                             (<span class="string">'dt_clf'</span>,DecisionTreeClassifier())</span><br><span class="line">                             ],voting=<span class="string">"hard"</span>)</span><br><span class="line">voting_clf.fit(X_train,y_train)</span><br><span class="line">voting_score=voting_clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"log score:%s"</span>%log_score)</span><br><span class="line">print(<span class="string">"svm score:%s"</span>%svm_score)</span><br><span class="line">print(<span class="string">"dt score:%s"</span>%dt_score)</span><br><span class="line">print(<span class="string">"voting score:%s"</span>%voting_score)</span><br></pre></td></tr></table></figure>
 <p>构建数据集：<br><img src="/img/5.png" alt="c6e3145820fe446499bfe5166f85b29e.png"><br>4种算法预测结果：<br><img src="/img/6.png" alt="a59578cf44dee88a46ef0bcceabf1b2b.png"><br>可以看到，单一算法SVM比较好，集成算法较单一的算法还是有一定的提高。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/28641663?utm_source=wechat_search&amp;utm_medium=organic" target="_blank" rel="noopener">机器学习中，有哪些特征选择的工程方法？</a><br><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;mid=2247485387&amp;idx=1&amp;sn=d22618f98adae3c9038184b9c4991ea2&amp;chksm=c0698f96f71e06807bbb3c667d50aa87899aa8d7b48bab51be33206390a03cb2e28d3ddb27b4&amp;mpshare=1&amp;scene=24&amp;srcid=0327GWk8nsWdgLT2kYwpeazY#rd" target="_blank" rel="noopener">FeatureSlector:一个可以进行机器学习特征选择的python工具</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzI2MjE3OTA1MA==&amp;mid=2247484860&amp;idx=1&amp;sn=7ea3597474f5ceaf443f10d63a8217ee&amp;chksm=ea4e5439dd39dd2f2f0cd95eca909e2ab255fc5dc6e033e9b2d265bf2124751f32e96279188d&amp;scene=7#rd" target="_blank" rel="noopener">机器学习中的交叉验证</a></p>
 
@@ -605,6 +623,265 @@
 
     
 
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '',
+        appKey: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: '' === 'true',
+        avatar: 'mm',
+        pageSize: '',
+        lang: 'en',
+        placeholder: '小姐姐、小哥哥，快来夸我啊!'
+    });
+</script>
     
 
     
@@ -816,6 +1093,9 @@
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">16.7k</span>
             
 
             

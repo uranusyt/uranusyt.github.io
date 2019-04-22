@@ -27,10 +27,14 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
         
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
 <script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
 </head>
@@ -407,6 +411,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
+                        2.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
+                        11 Min
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -420,27 +438,34 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>原创：老板，来一打TPU</strong><br>
-    <div id="aplayer-gkSLFjUX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2786189" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>   在做宏基因组分析时，通过基因注释得到一个包含10k之多种微生物物种名list(scientific name)，现在想统计这些物种在界、门、纲、目、科、属等不同分类水平的总的数量。这就是本篇推送想解决的问题，10000多种微生物的拉丁名称示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt</span><br></pre></td></tr></table></figure></p>
+    <div id="aplayer-WBbbyMWm" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2786189" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>   在做宏基因组分析时，通过基因注释得到一个包含10k之多种微生物物种名list(scientific name)，现在想统计这些物种在界、门、纲、目、科、属等不同分类水平的总的数量。这就是本篇推送想解决的问题，10000多种微生物的拉丁名称示例如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Abiotrophia defectiva<br>Abiotrophia sp.<br>Absiella dolichum<br>Acaryochloris marina<br>Acetanaerobacterium sp.<br>Acetivibrio cellulolyticus<br>Acetoanaerobium noterae<br>Acetoanaerobium sticklandii<br>Acetobacter aceti<br>Acetobacter ghanensis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] wc -l all_bacteria_genomic_fna.species</span><br></pre></td></tr></table></figure></p>
+<p>Abiotrophia defectiva<br>Abiotrophia sp.<br>Absiella dolichum<br>Acaryochloris marina<br>Acetanaerobacterium sp.<br>Acetivibrio cellulolyticus<br>Acetoanaerobium noterae<br>Acetoanaerobium sticklandii<br>Acetobacter aceti<br>Acetobacter ghanensis</p>
 </blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[NeptuneYT$]</span> <span class="selector-tag">wc</span> <span class="selector-tag">-l</span> <span class="selector-tag">all_bacteria_genomic_fna</span><span class="selector-class">.species</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>10146 all_bacteria_genomic_fna.species</p>
 </blockquote>
-<p> 打开<a href="https://www.ncbi.nlm.nih.gov/taxonomy/" target="_blank" rel="noopener">NCBI Taxonomy</a>输入一个拉丁名，如Acetobacter aceti，搜索之后默认获得完整的lineage信息，但我们这里只需要7个层次的，因此再点击一次Lineage获得缩略的谱系信息，如下：<br><img src="/img/taxonkit_usage1.webp" alt="1"><br>得到的Lineage字段后以分号隔开的就是对应于7个分类层次的结果，后续以分号切割之后统计不同列的结果即可。<br>很自然的，我们想到爬虫，其搜索接口为<a href="https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），如https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，然后对结果页面进行后续解析。但是10k之多的查询量，必然要设置爬取频率，否则就要被NCBI关小黑屋了，考虑时间代价，果断放弃。其实，从网上查询的原理也是基于Taxonomy后台的数据库，而这个文件在ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，可以从解压之后的names.dmp和nodes.dmp文件写代码解析，但是其内容过于妖孽，为了少撸掉点头发，因此先看看网上是否有造好的轮子。" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），如https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，然后对结果页面进行后续解析。但是10k之多的查询量，必然要设置爬取频率，否则就要被NCBI关小黑屋了，考虑时间代价，果断放弃。其实，从网上查询的原理也是基于Taxonomy后台的数据库，而这个文件在ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，可以从解压之后的names.dmp和nodes.dmp文件写代码解析，但是其内容过于妖孽，为了少撸掉点头发，因此先看看网上是否有造好的轮子。</a><br><img src="/img/taxonkit_usage2.webp" alt="2"><br>果然，动动手指发现有三个工具可以实现以上诉求，ETE toolkit, taxadb和 TaxonKit，这里选择最近发表的TaxonKit，优势在于其直接基于names.dmp和nodes.dmp文件的解析，本地搜索速度块，尤其是大批量的查找和格式转换，另外使用也极简单。<br> <img src="/img/taxonkit_usage3.webp" alt="3"><br><a href="http://dx.doi.org/10.1101/513523" target="_blank" rel="noopener">TaxonKit paper</a><br>相比于另外两种工具，TaxonKit在处理大批量数据时更快，占用内存也可接受</p>
+<p> 打开<a href="https://www.ncbi.nlm.nih.gov/taxonomy/" target="_blank" rel="noopener">NCBI Taxonomy</a>输入一个拉丁名，如Acetobacter aceti，搜索之后默认获得完整的lineage信息，但我们这里只需要7个层次的，因此再点击一次Lineage获得缩略的谱系信息，如下：<br><img src="/img/taxonkit_usage1.webp" alt="1"><br>得到的Lineage字段后以分号隔开的就是对应于7个分类层次的结果，后续以分号切割之后统计不同列的结果即可。<br>很自然的，我们想到爬虫，其搜索接口为:<br><a href="https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/taxonomy/?term=拉丁名（空格以+号连接），</a><br>如<a href="https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/taxonomy/?term=Acetobacter+aceti，</a><br>然后对结果页面进行后续解析。<br>但是10k之多的查询量，必然要设置爬取频率，否则就要被NCBI关小黑屋了，考虑时间代价，果断放弃。其实，从网上查询的原理也是基于Taxonomy后台的数据库，而这个文件在<a href="ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，" target="_blank" rel="noopener">ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz，</a><br>可以从解压之后的names.dmp和nodes.dmp文件写代码解析，但是其内容过于妖孽，为了少撸掉点头发，因此先看看网上是否有造好的轮子。<br><img src="/img/taxonkit_usage2.webp" alt="2"><br>果然，动动手指发现有三个工具可以实现以上诉求，ETE toolkit, taxadb和 TaxonKit，这里选择最近发表的TaxonKit，优势在于其直接基于names.dmp和nodes.dmp文件的解析，本地搜索速度块，尤其是大批量的查找和格式转换，另外使用也极简单。<br><img src="/img/taxonkit_usage3.webp" alt="3"><br><a href="http://dx.doi.org/10.1101/513523" target="_blank" rel="noopener">TaxonKit paper</a><br>相比于另外两种工具，TaxonKit在处理大批量数据时更快，占用内存也可接受</p>
 <h2 id="taxonkit-概述"><a href="#taxonkit-概述" class="headerlink" title="taxonkit 概述"></a>taxonkit 概述</h2><p>说完废话，进入今天的主题，说说TaxonKit这个工具的使用。<br>TaxonKit是处理NCBI Taxonomy数据库中结构性数据的良心工具，19年1月在bioRxiv上online，作者Wei Shen, Jie Xiong，隶属于Department of ClinicalLaboratory, General Hospital of Western Theater Command，特地查了一下，原来是位于成都的中国人民解放军西部战区总医院（好牛的感觉），看来生信真是无处不在。<br><img src="/img/taxonkit_usage4.webp" alt="4"><br>它是Go语言编写的，可以在Windows，Linux和Mac OS X运行，直接使用NCBI Taxonomy的数据（需手动下载）而无需构建本地数据库。</p>
-<h2 id="taxonkit安装"><a href="#taxonkit安装" class="headerlink" title="taxonkit安装"></a>taxonkit安装</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>选择对应系统的版本安装，推荐conda安装。详见<a href="https://github.com/shenwei356/taxonkit" target="_blank" rel="noopener">https://github.com/shenwei356/taxonkit</a><br>conda安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">conda install -c bioconda taxonkit </span><br><span class="line">``` </span><br><span class="line">### 下载依赖数据</span><br><span class="line">下载NCBI taxonomy数据库的taxdump.tar.gz文件，解压后将names.dmp和 nodes.dmp拷贝到家目录下的.taxonkit目录下。</span><br><span class="line">```bash</span><br><span class="line">wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz </span><br><span class="line">tar -zxvf taxdump.tar.gz</span><br><span class="line">mkdir -p $HOME/.taxonkit</span><br><span class="line">cp names.dmp nodes.dmp $HOME/.taxonkit</span><br></pre></td></tr></table></figure></p>
-<p>确认文件完整：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT]$ ll -h  ~/.taxonkit/</span><br></pre></td></tr></table></figure></p>
+<h2 id="taxonkit安装"><a href="#taxonkit安装" class="headerlink" title="taxonkit安装"></a>taxonkit安装</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>选择对应系统的版本安装，推荐conda安装。详见<a href="https://github.com/shenwei356/taxonkit" target="_blank" rel="noopener">https://github.com/shenwei356/taxonkit</a>,<br>conda安装:<br>conda install -c bioconda taxonkit</p>
+<h3 id="下载依赖数据"><a href="#下载依赖数据" class="headerlink" title="下载依赖数据"></a>下载依赖数据</h3><p>下载NCBI taxonomy数据库的taxdump.tar.gz文件，解压后将names.dmp和 nodes.dmp拷贝到家目录下的.taxonkit目录下。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz </span><br><span class="line">tar -zxvf taxdump.tar.gz</span><br><span class="line">mkdir -p <span class="variable">$HOME</span>/.taxonkit</span><br><span class="line">cp names.dmp nodes.dmp <span class="variable">$HOME</span>/.taxonkit</span><br></pre></td></tr></table></figure></p>
+<p>确认文件完整：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT]$ ll -h  ~/.taxonkit/</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>total 155494<br>-rw-r–r–    1 xx    UsersGrp  169.3M Mar 18 16:07 names.dmp<br>-rw-r–r–    1 xx    UsersGrp  134.4M Mar 18 16:07 nodes.dmp</p>
 </blockquote>
 <p>配置完成，开始使用。</p>
-<h2 id="taonkit使用"><a href="#taonkit使用" class="headerlink" title="taonkit使用"></a>taonkit使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit --help</span><br><span class="line">```    </span><br><span class="line">   &gt;Usage:</span><br><span class="line">  taxonkit [command]</span><br><span class="line">Available Commands:</span><br><span class="line">  genautocomplete generate shell autocompletion script</span><br><span class="line">  help            Help about any command</span><br><span class="line">  lineage         query lineage of given taxids</span><br><span class="line">  list            list taxon tree of given taxids</span><br><span class="line">  name2taxid      query taxid by taxon scientific name</span><br><span class="line">  reformat        reformat lineage</span><br><span class="line">  version         print version information and check for update</span><br><span class="line">...</span><br><span class="line">Use &quot;taxonkit [command] --help&quot; for more information about a command.</span><br><span class="line"></span><br><span class="line">taxonkit按照功能分成不同的子命令，其中最主要的功能包括4块：</span><br><span class="line">1）列出给定taxonomy id(taxid)的子分类树：list</span><br><span class="line">2）从taxid获取完整谱系：lineage</span><br><span class="line">3）重新构造谱系的格式：reformat</span><br><span class="line">4）通过物种拉丁名查询taxid：name2taxid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 1）列出给定taxonomy id的子分类树</span><br><span class="line">```    </span><br><span class="line"> [NeptuneYT$] taxonkit list --help   #查看list子命令使用方法</span><br></pre></td></tr></table></figure>
+<h2 id="taonkit使用"><a href="#taonkit使用" class="headerlink" title="taonkit使用"></a>taonkit使用</h2><p>taxonkit –help</p>
+<blockquote>
+<p>Usage:<br>  taxonkit [command]<br>  Available Commands:<br>  genautocomplete generate shell autocompletion script<br>  help            Help about any command<br>  lineage         query lineage of given taxids<br>  list            list taxon tree of given taxids<br>  name2taxid      query taxid by taxon scientific name<br>  reformat        reformat lineage<br>  version         print version information and check for update<br>…<br>Use “taxonkit [command] –help” for more information about a command.</p>
+</blockquote>
+<p>taxonkit按照功能分成不同的子命令，其中最主要的功能包括4块：<br>1）列出给定taxonomy id(taxid)的子分类树：list<br>2）从taxid获取完整谱系：lineage<br>3）重新构造谱系的格式：reformat<br>4）通过物种拉丁名查询taxid：name2taxid</p>
+<h3 id="1）列出给定taxonomy-id的子分类树"><a href="#1）列出给定taxonomy-id的子分类树" class="headerlink" title="1）列出给定taxonomy id的子分类树"></a>1）列出给定taxonomy id的子分类树</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit list --<span class="built_in">help</span>   <span class="comment">#查看list子命令使用方法</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>list taxon tree of given taxids<br>Usage:<br>  taxonkit list [flags]<br>Flags:<br>  -h, –help            help for list<br>      –ids string      taxid(s), multiple values should be separated by comma<br>      –indent string   indent (default “  “)<br>      –json            output in JSON format. you can save the result in file with suffix “.json” and open with modern text editor<br>      –show-name       output scientific name<br>      –show-rank       output rank<br>Global Flags:<br>      –data-dir string   directory containing nodes.dmp and names.dmp (default “/home/xx/.taxonkit”)<br>      –line-buffered     use line buffering on output, i.e., immediately writing to stdin/file for every line of output<br>  -o, –out-file string   out file (“-“ for stdout, suffix .gz for gzipped out) (default “-“)<br>  -j, –threads int       number of CPUs. (default value: 1 for single-CPU PC, 2 for others) (default 2)<br>      –verbose           print verbose information</p>
 </blockquote>
-<p>实例：<br>给定taxid：9606和10090<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit list --ids 9606,10090 --show-name  --show-rank -j 2</span><br></pre></td></tr></table></figure></p>
+<p>实例：<br>给定taxid：9606和10090<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] taxonkit <span class="type">list</span> --ids <span class="number">9606</span>,<span class="number">10090</span> --show-name  --show-rank -j <span class="number">2</span></span><br></pre></td></tr></table></figure></p>
 <p> #–ids 给定的taxid，多个以英文逗号分割</p>
 <p> #–show-name    输出科学命名</p>
 <p> #–show-rank    输出分类等级</p>
@@ -451,64 +476,64 @@
 <blockquote>
 <p>10090 [species] Mus musculus<br>  10091 [subspecies] Mus musculus castaneus<br>  10092 [subspecies] Mus musculus domesticus<br>  35531 [subspecies] Mus musculus bactrianus<br>  39442 [subspecies] Mus musculus musculus<br>  46456 [subspecies] Mus musculus wagneri<br>  57486 [subspecies] Mus musculus molossinus<br>  80274 [subspecies] Mus musculus gentilulus<br>  116058 [subspecies] Mus musculus brevirostris<br>  179238 [subspecies] Mus musculus homourus<br>  477815 [subspecies] Mus musculus musculus x M. m. domesticus<br>  477816 [subspecies] Mus musculus musculus x M. m. castaneus<br>  947985 [subspecies] Mus musculus albula<br>  1266728 [subspecies] Mus musculus domesticus x M. m. molossinus<br>  1385377 [subspecies] Mus musculus gansuensis<br>  1643390 [subspecies] Mus musculus helgolandicus<br>  1879032 [subspecies] Mus musculus isatissus</p>
 </blockquote>
-<h3 id="2）从taxid获取完整谱系"><a href="#2）从taxid获取完整谱系" class="headerlink" title="2）从taxid获取完整谱系"></a>2）从taxid获取完整谱系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage  -d &quot;-&quot; -t -r</span><br></pre></td></tr></table></figure>
+<h3 id="2）从taxid获取完整谱系"><a href="#2）从taxid获取完整谱系" class="headerlink" title="2）从taxid获取完整谱系"></a>2）从taxid获取完整谱系</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">[NeptuneYT$</span><span class="bash">] <span class="built_in">echo</span> 9606|taxonkit lineage  -d <span class="string">"-"</span> -t -r</span></span><br></pre></td></tr></table></figure>
 <p> #-d 输出谱系树分割符，默认分号</p>
 <p> #-t 显示包含taxid的谱系树</p>
 <p> #-r 显示给定taxid的分类等级</p>
 <blockquote>
 <p>9606    cellular organisms-Eukaryota-Opisthokonta-Metazoa-Eumetazoa-Bilateria-Deuterostomia-Chordata-Craniata-Vertebrata-Gnathostomata-Teleostomi-Euteleostomi-Sarcopterygii-Dipnotetrapodomorpha-Tetrapoda-Amniota-Mammalia-Theria-Eutheria-Boreoeutheria-Euarchontoglires-Primates-Haplorrhini-Simiiformes-Catarrhini-Hominoidea-Hominidae-Homininae-Homo-Homo sapiens      131567-2759-33154-33208-6072-33213-33511-7711-89593-7742-7776-117570-117571-8287-1338369-32523-32524-40674-32525-9347-1437010-314146-9443-376913-314293-9526-314295-9604-207598-9605-9606   species</p>
 </blockquote>
-<h3 id="3）重新构造谱系的格式"><a href="#3）重新构造谱系的格式" class="headerlink" title="3）重新构造谱系的格式"></a>3）重新构造谱系的格式</h3><p>上一步通过taxid提取的谱系信息复杂，往往需要根据我们的需求重新格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage |taxonkit reformat</span><br></pre></td></tr></table></figure></p>
+<h3 id="3）重新构造谱系的格式"><a href="#3）重新构造谱系的格式" class="headerlink" title="3）重新构造谱系的格式"></a>3）重新构造谱系的格式</h3><p>上一步通过taxid提取的谱系信息复杂，往往需要根据我们的需求重新格式化<br><figure class="highlight smalltalk"><table><tr><td class="code"><pre><span class="line">[<span class="type">NeptuneYT</span><span class="string">$]</span> echo <span class="number">9606</span>|taxonkit lineage |taxonkit reformat</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>9606    cellular organisms;Eukaryota;Opisthokonta;Metazoa;Eumetazoa;Bilateria;Deuterostomia;Chordata;Craniata;Vertebrata;Gnathostomata;Teleostomi;Euteleostomi;Sarcopterygii;Dipnotetrapodomorpha;Tetrapoda;Amniota;Mammalia;Theria;Eutheria;Boreoeutheria;Euarchontoglires;Primates;Haplorrhini;Simiiformes;Catarrhini;Hominoidea;Hominidae;Homininae;Homo;Homo sapiens      Eukaryota;Chordata;Mammalia;Primates;Hominidae;Homo;Homo sapiens</p>
+<p>9606    cellular organisms;Eukaryota;Opisthokonta;Metazoa;Eumetazoa;Bilateria;Deuterostomia;Chordata;<br>Craniata;Vertebrata;Gnathostomata;Teleostomi;Euteleostomi;Sarcopterygii;Dipnotetrapodomorpha;Tetrapoda;<br>Amniota;Mammalia;Theria;Eutheria;Boreoeutheria;Euarchontoglires;Primates;Haplorrhini;Simiiformes;<br>Catarrhini;Hominoidea;Hominidae;Homininae;Homo;Homo sapiens<br>Eukaryota;Chordata;Mammalia;Primates;Hominidae;Homo;Homo sapiens</p>
 </blockquote>
-<p>输出结果的第三列就是重新格式化的结果，默认是(“{k};{p};{c};{o};{f};{g};{s}”)7个水平。<br>查询给定taxid9606的谱系，并按照门：科；属的格式输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo 9606|taxonkit lineage |taxonkit reformat -f &quot;&#123;p&#125;:&#123;f&#125;;&#123;s&#125;&quot; |cut -f3</span><br></pre></td></tr></table></figure></p>
+<p>输出结果的第三列就是重新格式化的结果，默认是(“{k};{p};{c};{o};{f};{g};{s}”)7个水平。<br>查询给定taxid9606的谱系，并按照门：科；属的格式输出<br><figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] echo <span class="number">9606</span>|<span class="type">taxonkit</span> lineage |<span class="type">taxonkit</span> reformat -f <span class="string">"&#123;p&#125;:&#123;f&#125;;&#123;s&#125;"</span> |<span class="type">cut</span> -f3</span><br></pre></td></tr></table></figure></p>
 <p> #{}内是分类等级，大括号之间是输出的连接符</p>
 <blockquote>
 <p>Chordata:Hominidae;Homo sapiens</p>
 </blockquote>
-<h3 id="4）通过物种拉丁名查询taxid：name2taxid"><a href="#4）通过物种拉丁名查询taxid：name2taxid" class="headerlink" title="4）通过物种拉丁名查询taxid：name2taxid"></a>4）通过物种拉丁名查询taxid：name2taxid</h3><p>按人的拉丁名查询taxid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] echo &quot;Homo sapiens&quot; |taxonkit name2taxid</span><br></pre></td></tr></table></figure></p>
+<h3 id="4）通过物种拉丁名查询taxid：name2taxid"><a href="#4）通过物种拉丁名查询taxid：name2taxid" class="headerlink" title="4）通过物种拉丁名查询taxid：name2taxid"></a>4）通过物种拉丁名查询taxid：name2taxid</h3><p>按人的拉丁名查询taxid<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">[NeptuneYT$</span><span class="bash">] <span class="built_in">echo</span> <span class="string">"Homo sapiens"</span> |taxonkit name2taxid</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Homo sapiens    9606<br>批量查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt |taxonkit name2taxid --show-rank</span><br></pre></td></tr></table></figure></p>
+<p>Homo sapiens    9606<br>批量查询<br><figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] head scientific_name.txt |taxonkit name2taxid --<span class="keyword">show</span>-<span class="built_in">rank</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <blockquote>
 <p>Abiotrophia defectiva   46125   species<br>Abiotrophia sp. 76631   species<br>Absiella dolichum       31971   species<br>Acaryochloris marina    155978  species<br>Acetanaerobacterium sp.<br>Acetivibrio cellulolyticus      35830   species<br>Acetoanaerobium noterae 745369  species<br>Acetoanaerobium sticklandii     1511    species<br>Acetobacter aceti       435     species<br>Acetobacter ghanensis   431306  species</p>
 </blockquote>
-<h2 id="回到问题"><a href="#回到问题" class="headerlink" title="回到问题"></a>回到问题</h2><p>基于Taxonkit上述用法，回到之前的问题就好解决了<br>1.将scientific name先转化成taxid，便于查找lineage<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">time taxonkit name2taxid  scientific_name.txt &gt;scientific_name_taxid.txt &amp;</span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2!=""&#123;print $2&#125;'</span>  scientific_name.txt &gt;find_taxid.txt  <span class="comment">#去掉未查到的，即空值</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2==""'</span>  scientific_name_taxid.txt &gt;NotFindName.txt <span class="comment">#输出未查到物种名</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'BEGIN&#123;OFS="\t";print "findTaxid\tNull\tTotal"&#125;&#123;$2!=""?taxid++:null++&#125;END&#123;print taxid,null,taxid+null&#125;'</span> scientific_name_taxid.txt |column -t <span class="comment">#统计查找到的和未查到的数量</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="回到问题"><a href="#回到问题" class="headerlink" title="回到问题"></a>回到问题</h2><p>基于Taxonkit上述用法，回到之前的问题就好解决了<br>1.将scientific name先转化成taxid，便于查找lineage<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time taxonkit name2taxid  scientific_name.txt &gt;scientific_name_taxid.txt &amp;</span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2!=""&#123;print $2&#125;'</span>  scientific_name.txt &gt;find_taxid.txt  <span class="comment">#去掉未查到的，即空值</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'$2==""'</span>  scientific_name_taxid.txt &gt;NotFindName.txt <span class="comment">#输出未查到物种名</span></span><br><span class="line">awk -F<span class="string">"\t"</span> <span class="string">'BEGIN&#123;OFS="\t";print "findTaxid\tNull\tTotal"&#125;&#123;$2!=""?taxid++:null++&#125;\</span></span><br><span class="line"><span class="string">END&#123;print taxid,null,taxid+null&#125;'</span> scientific_name_taxid.txt |column -t <span class="comment">#统计查找到的和未查到的数量</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>real    0m6.279s<br>findTaxid  Null  Total<br>9606       541   10147</p>
 </blockquote>
-<p>可以看到，查询速度相当之快。<br>由于待批量查询的物种名不是规范的拉丁名称，导致出现两个问题，一是输入的list是10146个,转换id后（找到和未找到）的行数却增加了1个，统计之后发现是同一个物种名有两个taxid；二是没找到的高达541个！！！为了说明完整的处理过程，541个后面再说。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$]$ awk -F<span class="string">"\t"</span> <span class="string">'&#123;print $1&#125;'</span> scientific_name_taxid.txt |sort |uniq -d</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，查询速度相当之快。<br>由于待批量查询的物种名不是规范的拉丁名称，导致出现两个问题，一是输入的list是10146个,转换id后（找到和未找到）的行数却增加了1个，统计之后发现是同一个物种名有两个taxid；二是没找到的高达541个！！！为了说明完整的处理过程，541个后面再说。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$]$ awk -F<span class="string">"\t"</span> <span class="string">'&#123;print $1&#125;'</span> scientific_name_taxid.txt |sort |uniq -d</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Deinococcus soli</p>
 </blockquote>
-<p>手工查询发现是两个种，但是根据部分拉丁名Deinococcus soli可以查到俩taxid我也是醉了。<br><img src="/img/taxonkit_usage5.webp" alt="7"><br>2.查找lineage<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] time taxonkit lineage find_taxid.txt &gt;lineage.txt&amp;</span><br></pre></td></tr></table></figure></p>
+<p>手工查询发现是两个种，但是根据部分拉丁名Deinococcus soli可以查到俩taxid我也是醉了。<br><img src="/img/taxonkit_usage5.webp" alt="7"><br>2.查找lineage<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] time taxonkit lineage find_taxid.txt &gt;lineage.txt&amp;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>real    0m7.860s</p>
 </blockquote>
-<p>3.重新格式化lineage<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] time taxonkit reformat lineage.txt|cut -f3 &gt;newformat.txt&amp;</span><br></pre></td></tr></table></figure></p>
+<p>3.重新格式化lineage<br><figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] <span class="built_in">time</span> taxonkit reformat lineage.txt|<span class="type">cut</span> -f3 &gt;newformat.txt&amp;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>real    0m11.465s</p>
 </blockquote>
-<p>结果：<br><img src="/img/taxonkit_usage6.webp" alt="1"><br>现在就按照界门纲目科属种的层次变成整齐划一的格式了，通过简单处理即可统计不同层次的物种数量和分布，首先构建一个用于循环处理的分类标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="/img/taxonkit_usage6.webp" alt="1"><br>现在就按照界门纲目科属种的层次变成整齐划一的格式了，通过简单处理即可统计不同层次的物种数量和分布，首先构建一个用于循环处理的分类标签<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[NeptuneYT$]</span> <span class="selector-tag">cat</span> <span class="selector-tag">tag</span><span class="selector-class">.txt</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>1 Kingdom<br>2 Phylum<br>3 Class<br>4 Order<br>5 Family<br>6 Genus<br>7 Species</p>
 </blockquote>
-<p>详细的物种分类层次数量统计：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> num lev;<span class="keyword">do</span>  awk -v v=<span class="variable">$num</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span> newformat.txt|sort |uniq -c|sort -nr |awk -v v=<span class="variable">$lev</span> <span class="string">'&#123;print v"\t"$0&#125;'</span> |awk <span class="string">'$3!=""'</span>;<span class="keyword">done</span> &gt;detail_taxonomy_range.txt</span><br><span class="line">[NeptuneYT$] head detail_taxonomy_range.txt</span><br></pre></td></tr></table></figure></p>
+<p>详细的物种分类层次数量统计：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> num lev;<span class="keyword">do</span>  awk -v v=<span class="variable">$num</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span></span><br><span class="line"> newformat.txt|sort |uniq -c|sort -nr |awk -v v=<span class="variable">$lev</span> <span class="string">'&#123;print v"\t"$0&#125;'</span> \</span><br><span class="line">|awk <span class="string">'$3!=""'</span>;<span class="keyword">done</span> &gt;detail_taxonomy_range.txt</span><br><span class="line">[NeptuneYT$] head detail_taxonomy_range.txt</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Kingdom       6722 Bacteria<br>Kingdom             4 Eukaryota<br>Phylum          2682 Proteobacteria<br>Phylum         1390 Firmicutes<br>Phylum         1099 Actinobacteria<br>Phylum          729 Bacteroidetes</p>
 </blockquote>
-<p>按7个类别统计数量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> index level;<span class="keyword">do</span> num=$(awk -v v=<span class="variable">$index</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span> newformat.txt|sort |uniq |wc -l);<span class="built_in">printf</span>  <span class="string">"<span class="variable">$&#123;level&#125;</span>\t<span class="variable">$&#123;num&#125;</span>\n"</span>;<span class="keyword">done</span> |tee taxonomy_stat.txt</span><br></pre></td></tr></table></figure></p>
+<p>按7个类别统计数量：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[NeptuneYT$] cat tag.txt|<span class="keyword">while</span> <span class="built_in">read</span> index level;<span class="keyword">do</span> num=$(awk -v v=<span class="variable">$index</span> -F<span class="string">";"</span> <span class="string">'&#123;print $v&#125;'</span> \</span><br><span class="line">newformat.txt|sort |uniq |wc -l);<span class="built_in">printf</span>  <span class="string">"<span class="variable">$&#123;level&#125;</span>\t<span class="variable">$&#123;num&#125;</span>\n"</span>;<span class="keyword">done</span> |tee taxonomy_stat.txt</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Kingdom      2<br>Phylum       118<br>Class     82<br>Order      181<br>Family      401<br>Genus       1824<br>Species      6519</p>
 </blockquote>
-<p>简单画个图瞅瞅：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data&lt;-read.table(<span class="string">'taxonomy_stat.txt'</span>)</span><br><span class="line"><span class="keyword">library</span>(<span class="string">'ggplot2'</span>)</span><br><span class="line">ggplot(data,aes(reorder(V1,-V2),V2,fill=V1))+geom_bar(stat=<span class="string">'identity'</span>)+xlab(<span class="string">'Taxonomy level'</span>)+ylab(<span class="string">'Numbers'</span>)+geom_text(aes(label=V2),position=position_dodge(<span class="number">.9</span>),vjust=-<span class="number">1.5</span>)+theme(text=element_text(size=<span class="number">16</span>,family=<span class="string">'Times New Roman'</span>,face=<span class="string">'bold'</span>))+labs(fill=<span class="string">'level'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>简单画个图瞅瞅：<br><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">data&lt;-read.table(<span class="string">'taxonomy_stat.txt'</span>)</span><br><span class="line"><span class="keyword">library</span>(<span class="string">'ggplot2'</span>)</span><br><span class="line">ggplot(data,aes(reorder(V1,-V2),V2,fill=V1))+geom_bar(stat=<span class="string">'identity'</span>)+xlab(<span class="string">'Taxonomy level'</span>)\</span><br><span class="line">+ylab(<span class="string">'Numbers'</span>)+geom_text(aes(label=V2),position=position_dodge(<span class="number">.9</span>),vjust=-<span class="number">1.5</span>)+theme(text=\</span><br><span class="line">element_text(size=<span class="number">16</span>,family=<span class="string">'Times New Roman'</span>,face=<span class="string">'bold'</span>))+labs(fill=<span class="string">'level'</span>)</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/taxonkit_usage7.webp" alt="1"> </p>
 <h2 id="一个也不能少"><a href="#一个也不能少" class="headerlink" title="一个也不能少"></a>一个也不能少</h2><p>首先看看没有找到的541个输入物种名长啥样：</p>
 <blockquote>
 <p>Bacillus sp.<br>[Bacillus thuringiensis]<br>bacteria symbiont<br>Bacteriovorax sp.<br>bacterium 42 11<br>bacterium BRH c32<br>bacterium Candidatus<br>bacterium CG06 land 8 20 14 3 00 33 50<br>bacterium CG09 39 24<br>bacterium CG1 02 42 9<br>…</p>
 </blockquote>
-<p>这个物种list是师妹们给的，实在太好（yao）看(nie)可了，拷问了一遍奈何就只有这样的查询list，那就只能手工挑了几个去网页上查了，发现没有找到taxid的原因包括：<br>1）出现多个搜索结果：原物种名Acaryochloris sp.，搜到的拉丁名：Acaryochloris sp. A4cAcaryochloris marinaAsterochloris sp. DA2Asterochloris sp. 101Asterochloris sp. 103<br>2）截短名称：原物种名Acetothermia bacterium，搜到结果：Candidatus Acetothermia bacterium<br>3）多加中括号：[Bacillus thuringiensis]<br>4）没有下划线：bacterium 42 11，搜到结果：bacterium 42_11<br>针对多加中括号和没有下划线的问题，可以先处理一下，其他的就只能手工查了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">"s/\[//g;s/\]//g"</span>   NotFindName.txt &gt;bracket_minus_name.txt <span class="comment">#minus all bracket</span></span><br><span class="line">awk <span class="string">'&#123;filed1=$1;$1="";sub(/ /,"");gsub(/ /,"_");print filed1,$0&#125;'</span>  NotFindName.txt  &gt;underline_plus_name.txt <span class="comment">#plus all filed of split underline except first one</span></span><br></pre></td></tr></table></figure></p>
+<p>这个物种list是师妹们给的，实在太好（yao）看(nie)可了，拷问了一遍奈何就只有这样的查询list，那就只能手工挑了几个去网页上查了，发现没有找到taxid的原因包括：<br>1）出现多个搜索结果：原物种名Acaryochloris sp.，搜到的拉丁名：Acaryochloris sp. A4cAcaryochloris marinaAsterochloris sp. DA2Asterochloris sp. 101Asterochloris sp. 103<br>2）截短名称：原物种名Acetothermia bacterium，搜到结果：Candidatus Acetothermia bacterium<br>3）多加中括号：[Bacillus thuringiensis]<br>4）没有下划线：bacterium 42 11，搜到结果：bacterium 42_11<br>针对多加中括号和没有下划线的问题，可以先处理一下，其他的就只能手工查了。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -e <span class="string">"s/\[//g;s/\]//g"</span>   NotFindName.txt &gt;bracket_minus_name.txt <span class="comment">#minus all bracket</span></span><br><span class="line">awk <span class="string">'&#123;filed1=$1;$1="";sub(/ /,"");gsub(/ /,"_");print filed1,$0&#125;'</span>\</span><br><span class="line">NotFindName.txt  &gt;underline_plus_name.txt <span class="comment">#plus all filed of split underline except first one</span></span><br></pre></td></tr></table></figure></p>
 <p>将后面查到的taxid加到之前的taxid list再按之前的流程跑一遍即可，实在查不到的那就手工吧。（此时配乐起~“这是自由的感觉，鼠标咔哒咔哒点击这些可爱的物种名称，<br>凭着一颗永不哭泣勇敢的心”）</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/shenwei356/taxonkit" target="_blank" rel="noopener">taxonkit github</a><br><a href="http://dx.doi.org/10.1101/513523" target="_blank" rel="noopener">TaxonKit: a cross-platform and efficient NCBI taxonomy toolkit</a><br><img src="/img/vazyme.png" alt="vazyme"></p>
 
@@ -672,6 +697,265 @@
 
     
 
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '',
+        appKey: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: '' === 'true',
+        avatar: 'mm',
+        pageSize: '',
+        lang: 'en',
+        placeholder: '小姐姐、小哥哥，快来夸我啊!'
+    });
+</script>
     
 
     
@@ -870,6 +1154,9 @@
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">16.7k</span>
             
 
             

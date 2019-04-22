@@ -25,10 +25,14 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
         
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -496,7 +500,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Software","value":2},{"name":"Photo","value":1},{"name":"Paper Writing","value":2},{"name":"We","value":1},{"name":"Bio Cooking","value":3},{"name":"Photo","value":1},{"name":"Machine Learning","value":1},{"name":"Bioinformatics","value":1}],
+                data: [{"name":"Software","value":2},{"name":"Photo","value":1},{"name":"Bio Cooking","value":3},{"name":"Paper Writing","value":2},{"name":"We","value":1},{"name":"Photo","value":1},{"name":"Machine Learning","value":1},{"name":"Bioinformatics","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -520,7 +524,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["paper writing","bioinformatics","markdown usage","photo","family","bioawk","chip-seq","western blot","dynamic model","algorithm"]
+                data: ["paper writing","chip-seq","markdown usage","photo","family","bioawk","dynamic model","bioinformatics","western blot","algorithm"]
             }
         ],
         yAxis: [
@@ -722,26 +726,26 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/paper-writing/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">paper writing</span>
-            </a>
-            
-            
-            
             <a href="/tags/chip-seq/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">chip-seq</span>
             </a>
             
             
             
-            <a href="/tags/western-blot/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">western blot</span>
+            <a href="/tags/dynamic-model/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">dynamic model</span>
             </a>
             
             
             
-            <a href="/tags/dynamic-model/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">dynamic model</span>
+            <a href="/tags/paper-writing/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">paper writing</span>
+            </a>
+            
+            
+            
+            <a href="/tags/western-blot/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">western blot</span>
             </a>
             
             
@@ -818,6 +822,9 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">16.7k</span>
             
 
             

@@ -26,10 +26,14 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
         
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -407,6 +411,20 @@
                 </div>
 
                 
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
+                        719
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
+                        3 Min
+                    </div>
+                    
+                
 				
 				
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -422,22 +440,22 @@
                 <p><strong>原创：老板，来一打TPU</strong></p>
 <h1 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h1><p>这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入<br>写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼吧！**<br><a id="more"></a></p>
 <h1 id="bioawk简介"><a href="#bioawk简介" class="headerlink" title="bioawk简介"></a>bioawk简介</h1><p>除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk<br>供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    $ sudo apt-get install byacc git    <span class="comment">#安装git</span></span><br><span class="line">    $ git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git  <span class="comment">#默认安装在当前目录</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk <span class="comment">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span></span><br><span class="line">    $ <span class="built_in">cd</span> bioawk</span><br><span class="line">    $ make</span><br><span class="line">    $ <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">    $ .  ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment">### 一步安装脚本</span></span><br><span class="line">    <span class="comment">#!/bin/bash</span></span><br><span class="line">    <span class="built_in">read</span> -p  <span class="string">'Input installed  path: '</span> tmp_path</span><br><span class="line">    path=<span class="variable">$&#123;tmp_path/\//&#125;</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$&#123;path&#125;</span>"</span> ];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"No such file:<span class="variable">$&#123;path&#125;</span>"</span> &amp;&amp; <span class="built_in">exit</span> ;<span class="keyword">fi</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; \</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; make &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Successfully install bioawk!'</span> || <span class="built_in">echo</span> <span class="string">'Failed install bioawk'</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">    $ sudo apt-get install byacc git    <span class="comment">#安装git</span></span><br><span class="line">    $ git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git  <span class="comment">#默认安装在当前目录</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk <span class="comment">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span></span><br><span class="line">    $ <span class="built_in">cd</span> bioawk</span><br><span class="line">    $ make</span><br><span class="line">    $ <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">    $ .  ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment">### 一步安装脚本</span></span><br><span class="line">    <span class="comment">#!/bin/bash</span></span><br><span class="line">    <span class="built_in">read</span> -p  <span class="string">'Input installed  path: '</span> tmp_path</span><br><span class="line">    path=<span class="variable">$&#123;tmp_path/\//&#125;</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$&#123;path&#125;</span>"</span> ];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"No such file:<span class="variable">$&#123;path&#125;</span>"</span> &amp;&amp; <span class="built_in">exit</span> ;<span class="keyword">fi</span></span><br><span class="line">    git <span class="built_in">clone</span> git://github.com/lh3/bioawk.git <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; \</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;path&#125;</span>/bioawk &amp;&amp; make &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$&#123;path&#125;</span>/bioawk/:\$&#123;PATH&#125;"</span> &gt;&gt; ~/.bashrc  &amp;&amp; .  ~/.bashrc &amp;&amp; \</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'Successfully install bioawk!'</span> || <span class="built_in">echo</span> <span class="string">'Failed install bioawk'</span></span><br></pre></td></tr></table></figure>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元<br>素封装成变量，直接调用即可。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">usage: bioawk [-F fs] [-v var=value] [-c fmt] [-tH] [-f progfile | <span class="string">'prog'</span>] [file ...]</span><br><span class="line"></span><br><span class="line">-c 支持输入文件格式，查看帮助：</span><br><span class="line"></span><br><span class="line">    bioawk -c -h</span><br><span class="line"></span><br><span class="line">bed:</span><br><span class="line">        1:chrom 2:start 3:end 4:name 5:score 6:strand 7:thickstart 8:thickend 9:rgb 10:blockcount 11:blocksizes 12:blockstarts</span><br><span class="line">sam:</span><br><span class="line">        1:qname 2:flag 3:rname 4:pos 5:mapq 6:cigar 7:rnext 8:pnext 9:tlen 10:seq 11:qual</span><br><span class="line">vcf:</span><br><span class="line">        1:chrom 2:pos 3:id 4:ref 5:alt 6:qual 7:filter 8:info</span><br><span class="line">gff:</span><br><span class="line">        1:seqname 2:<span class="built_in">source</span> 3:feature 4:start 5:end 6:score 7:strand 8:frame 9:attribute</span><br><span class="line">fastx:</span><br><span class="line">        1:name 2:seq 3:qual 4:comment</span><br></pre></td></tr></table></figure>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">usage: bioawk [-F fs] [-v var=value] [-c fmt] [-tH] [-f progfile | <span class="string">'prog'</span>] [file ...]</span><br><span class="line"></span><br><span class="line">-c 支持输入文件格式，查看帮助：</span><br><span class="line"></span><br><span class="line">    bioawk -c -h</span><br><span class="line"></span><br><span class="line">bed:</span><br><span class="line">        1:chrom 2:start 3:end 4:name 5:score 6:strand 7:thickstart 8:thickend 9:rgb 10:blockcount 11:blocksizes 12:blockstarts</span><br><span class="line">sam:</span><br><span class="line">        1:qname 2:flag 3:rname 4:pos 5:mapq 6:cigar 7:rnext 8:pnext 9:tlen 10:seq 11:qual</span><br><span class="line">vcf:</span><br><span class="line">        1:chrom 2:pos 3:id 4:ref 5:alt 6:qual 7:filter 8:info</span><br><span class="line">gff:</span><br><span class="line">        1:seqname 2:<span class="built_in">source</span> 3:feature 4:start 5:end 6:score 7:strand 8:frame 9:attribute</span><br><span class="line">fastx:</span><br><span class="line">        1:name 2:seq 3:qual 4:comment</span><br></pre></td></tr></table></figure>
 <p><strong>上面出现的名称即可引用其变量</strong></p>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
-<li>打印fasta序列ID、序列、长度、GC含量<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'&#123;print "ID: "$name"\tlength: "length($seq)"\tGC: "gc($seq)"\t"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
+<li>打印fasta序列ID、序列、长度、GC含量<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'&#123;print "ID: "$name"\tlength: "length($seq)"\tGC: "gc($seq)"\t"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>结果:<br>    ID: g1  length: 18      GC: 0.722222    atcccccccccccccttt<br>    ID: g2  length: 26      GC: 0.0769231   cattatatcttatttttttttttttt<br>    ID: g3  length: 48      GC: 0.229167    acccccccccctttttttttttttcatttttttttttttttttttttt<br>原始文件：<br>    &gt;g1<br>    atcccccccccccccttt<br>    &gt;g2 enzyme<br>    cattatatcttatttttttttttttt<br>    &gt;g3<br>    accccccccccttttttttttttt<br>    catttttttttttttttttttttt<br>注意：<br><strong>可以看到bioawk在提取ID的时候只提取了空格分隔后的第一个字段，默认输出域分割符是\t</strong></p>
 <ul>
 <li><p>输出反向互补序列</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'&#123;print $name,$seq,revcomp($seq)&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'&#123;print $name,$seq,revcomp($seq)&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
 <p>结果：<br>  g1      atcccccccccccccttt      aaagggggggggggggat<br>  g2      cattatatcttatttttttttttttt      aaaaaaaaaaaaaataagatataatg<br>  g3      acccccccccctttttttttttttcatttttttttttttttttttttt        aaaaaaaaaaaaaaaaaaaaaatgaaaaaaaaaaaaaggggggggggt</p>
 </li>
 <li><p>根据序列ID提取序列，这个是最爱的功能</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'BEGIN&#123;while((getline k &lt;"id.txt")&gt;0)i[k]=1&#125;&#123;if(i[$name])print "&gt;"$name"\n"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bioawk -cfastx <span class="string">'BEGIN&#123;while((getline k &lt;"id.txt")&gt;0)i[k]=1&#125;&#123;if(i[$name])print "&gt;"$name"\n"$seq&#125;'</span> demo.fa</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>id.txt:<br>    g1<br>    g2<br>    g2 enzyme<br>    &gt;g3</p>
@@ -607,6 +625,265 @@
 
     
 
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '',
+        appKey: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: '' === 'true',
+        avatar: 'mm',
+        pageSize: '',
+        lang: 'en',
+        placeholder: '小姐姐、小哥哥，快来夸我啊!'
+    });
+</script>
     
 
     
@@ -813,6 +1090,9 @@
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">16.7k</span>
             
 
             
