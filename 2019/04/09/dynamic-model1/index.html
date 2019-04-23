@@ -435,13 +435,17 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 
-    <div id="aplayer-QjtvcOHk" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="26989255" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-AikyGfsK" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="26989255" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <p><strong>原创： 赵洪龙 宇宙实验媛</strong> </p>
 <h1 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h1><p><strong>以前我还在中科院-马普学会计算生物学伙伴研究所的时候，常常有朋友问我诸如“会不会做DNA数据分析？”，“会不会做甲基化数据分析？”之类的生物信息学（狭义）问题。很惭愧，我没有这方面的经验。又有朋友觉得奇怪， 追问：“你不做实验，又不做生物信息学分析，那你到底是干什么的？”我是做动力学模型的。“什么模型？”基于常微分方程的动力学模型，是动力学模型中的一种。每次说到这里，对方的反应总是一愣，随后一蒙，然后一呵呵。这里，我就来简单说说动力学模型到底是个什么东西。</strong><br><img src="/img/dynamic1_1.webp" alt="01"><br><a id="more"></a></p>
 <h1 id="关于模型的简介"><a href="#关于模型的简介" class="headerlink" title="关于模型的简介"></a>关于模型的简介</h1><p>说到模型，很多人首先就是一哆嗦，因为想到了一堆符号公式和复杂的拓扑结构图形等等。其实大可不必紧张，模型实际上就是我们对客观世界认知和归纳的一个抽象体。就像我们买房子的时候，售楼小姐姐和小哥哥给我们展示的小区规划图、等比缩放沙盘一样，这些都是模型。地产商只是把一些我们想了解的楼盘信息抽象出来，用图画或者微缩造型的形式呈现在我们面前，再或者直接用语言表达：这个楼背靠青山，那个楼面朝大海。这些模型能告诉我们哪些楼有哪些特点，让我们不用亲临现场就能明白住进去后的基本感受。<br>同样地，科学家们说是在研究自然，实际上大部分的工作都是在观察，以及建立模型来描述研究对象，最后再基于模型的研究结果去改造这个世界。而那些带有令人望而生畏的符号和公式的数学模型与生物学中心法则的描述的差别在于，前者用的是数学语言，后者用的是自然语言。<br>要了解数学模型，首先就要了解其基本的功能：<strong>第一，整合信息</strong>，根据所研究的问题综合现有的信息对研究对象进行系统地描述。<strong>第二，预测</strong>，通过对模型中的参数和环境条件的扰动可预测系统在宏观层面的表现和变化。<strong>第三，提出可验证的假说</strong>。<br><img src="/img/dynamic1_2.webp" alt="35800716e266902e4fe68ab558d981fb.gif"></p>
 <h1 id="模型在生物学研究中的必要性"><a href="#模型在生物学研究中的必要性" class="headerlink" title="模型在生物学研究中的必要性"></a>模型在生物学研究中的必要性</h1><p>经过过去几百年的观察和研究，人类越来越意识到生物学系统的复杂性。由于技术和资源的限制，大量的研究都是局限于特定过程的离散的研究。这些离散的研究让我们获得了对特定生命过程的了解，并建立了生物学模型。然而，在实际的生命体中，这些生命过程往往相互联系并交织成一张极为复杂的网络，很多现象并不能直观地根据已有的法则和原理所解释，也不能根据经验进行可靠地预测。即使现在我们能够轻易获得海量的组学数据，但是当面对如此复杂的网络时，我们也几乎无法对其进行人为的归纳和演绎。因此，数学建模结合计算机模拟应运而生。<strong>它们能够整合这些网络中的主要原件和内在互作过程进行模拟仿真，从而帮助我们理解复杂网络中的扰动对系统表现的影响</strong>。通过这样的方式，我们知道了，生命过程是遵循一些共性或者说是规律而自发涌现出来的一种状态。</p>
-<h1 id="模型构建的原则和方法"><a href="#模型构建的原则和方法" class="headerlink" title="模型构建的原则和方法"></a>模型构建的原则和方法</h1><p>数学模型包括两个基本要素：<strong>结构和参数</strong>。说白了，结构就是关系，就是所研究的问题中包含的要素（转录因子，基因，酶等等）和要素之间的相互作用与联系（如化学计量学比例，事件发生先后，调控等等）。而每一种要素的状态变化及其相互作用都需要用数学表达式来描述。建模的具体步骤如图1所示。<br><img src="/img/dynamic1_3.webp" alt="35800716e266902e4fe68ab558d981fb.gif"><br>图1. 数学建模的关键步骤下面将通过一个简单的例子来说明建模的必要性和过程（本例子也许不是最合适的，但却能够简单描述建模的过程及意义）：<br><strong>（1）确立研究目标</strong>：A同学研究一个酶促反应的反应特征，并希望通过构建反应速率与底物浓度之间的模型，利用模型预测来指导工程改造酶的特征，以更好地得到产物B。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S→B</span><br></pre></td></tr></table></figure></p>
-<p><strong>（2）收集信息</strong>：根据前人研究发现，该反应服从米氏动力学特征的不可逆反应。故可以用米氏动力学方程来描述这个反应过程。并且文献记载该酶的最大催化速率V1为2，米氏常数Km1为2。<br><strong>（3）建立模型</strong>：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">v=V*[S]/(Km+[S] )</span><br></pre></td></tr></table></figure></p>
+<h1 id="模型构建的原则和方法"><a href="#模型构建的原则和方法" class="headerlink" title="模型构建的原则和方法"></a>模型构建的原则和方法</h1><p>数学模型包括两个基本要素：<strong>结构和参数</strong>。说白了，结构就是关系，就是所研究的问题中包含的要素（转录因子，基因，酶等等）和要素之间的相互作用与联系（如化学计量学比例，事件发生先后，调控等等）。而每一种要素的状态变化及其相互作用都需要用数学表达式来描述。建模的具体步骤如图1所示。<br><img src="/img/dynamic1_3.webp" alt="35800716e266902e4fe68ab558d981fb.gif"><br>图1. 数学建模的关键步骤下面将通过一个简单的例子来说明建模的必要性和过程（本例子也许不是最合适的，但却能够简单描述建模的过程及意义）：<br><strong>（1）确立研究目标</strong>：A同学研究一个酶促反应的反应特征，并希望通过构建反应速率与底物浓度之间的模型，利用模型预测来指导工程改造酶的特征，以更好地得到产物B。</p>
+<pre class=" language-math"><code class="language-math">S→B
+</code></pre>
+<p><strong>（2）收集信息</strong>：根据前人研究发现，该反应服从米氏动力学特征的不可逆反应。故可以用米氏动力学方程来描述这个反应过程。并且文献记载该酶的最大催化速率V1为2，米氏常数Km1为2。<br><strong>（3）建立模型</strong>：</p>
+<pre class=" language-math"><code class="language-math">v=V*[S]/(Km+[S] )
+</code></pre>
 <p>其中，[S]表示底物浓度；V表示目标酶在特定条件下的最大催化速率；Km表示米氏常数（最大反应速率一半时底物的浓度）；v表示因变量，即在底物S的浓度为[S]时对应的实际反应速率。<br><strong>（4）模型的参数化及验证</strong>：将V1 = 2，Km1 = 2作为参数输入模型，在所有浓度范围内，均可计算出该反应的实际反应速率（图2蓝线所示）。并且文献查找获得了一系列底物浓度条件下该反应的反应速率数据（图2中黑色实心点）。<br><strong>（5）模型预测并提出假设</strong>：通过改变模型中参数V和Km比较反应速率与底物浓度之间的关系，发现改变V时改变了该反应的最大催化能力，而改变Km时改变了催化过程对底物的敏感度。提出假设：在底物浓度高的反应器中需要增加该酶的量，而在反应物浓度比较低的反应器中需要改变酶对底物的敏感性！<br>（6）<strong>用实验构建</strong>分别改变V和Km的酶，测量底物与反应速率之间的关系，如果能和预测结果吻合，说明该模型对于需要研究的目标问题具有一定的预测能力，并且用于实际的化工合成或者生物合成；否则，需要重新建模或者补充信息，直至能吻合为止。<br><img src="/img/dynamic1_4.webp" alt="04"><br>图2. 反应速率与反应物S的浓度在不同特征酶催化条件下的关系。图中的蓝线表示当前条件下模型模拟的关系趋势线，其余的线条表示模型预测改变酶特征后可能的关系；黑色实心圆点表示实验测量在当前酶特征条件下，不同底物浓度时对应的反应速率；彩色实心椭圆点表示改造后最大反应速率的一半以及对应的底物所需浓度。<br><img src="/img/vazyme.png" alt="vazyme"><br><a href="http://m.vazyme.com/Home.html" target="_blank" rel="noopener">南京诺维赞南京诺唯赞生物科技有限公司</a></p>
 
             </div>
@@ -1072,7 +1076,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.7k</span>
+                <span class="white-color">16.3k</span>
             
 
             

@@ -506,25 +506,69 @@
 <li><p>插入表格<br>语法示例：<br>| 帐户类型 | 免费帐户 | 标准帐户 | 高级帐户 |<br>| — | — | — | — |<br>| 帐户流量 | 60M | 1GB | 10GB |<br>| 设备数目 | 2台 | 无限制 | 无限制 |<br>| 当前价格 | 免费 | ￥8.17/月 | ￥12.33/月|</p>
 </li>
 <li><p>插入图表<br>目前支持饼状图、折线图、柱状图和条形图，只需将 type 改为对应的pie、line、column 和 bar。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">,预算,收入,花费,债务</span><br><span class="line">June,5000,8000,4000,6000</span><br><span class="line">July,3000,1000,4000,3000</span><br><span class="line">Aug,5000,7000,6000,3000</span><br><span class="line">Sep,7000,2000,3000,1000</span><br><span class="line">Oct,6000,5000,4000,2000</span><br><span class="line">Nov,4000,3000,5000,</span><br><span class="line">type: pie</span><br><span class="line">title: 每月收益</span><br><span class="line">x.title: Amount</span><br><span class="line">y.title: Month</span><br><span class="line">y.suffix: $</span><br></pre></td></tr></table></figure>
+<pre class=" language-chart"><code class="language-chart">,预算,收入,花费,债务
+June,5000,8000,4000,6000
+July,3000,1000,4000,3000
+Aug,5000,7000,6000,3000
+Sep,7000,2000,3000,1000
+Oct,6000,5000,4000,2000
+Nov,4000,3000,5000,
+type: pie
+title: 每月收益
+x.title: Amount
+y.title: Month
+y.suffix: $
+</code></pre>
 </li>
 <li><p>插入行内代码或代码块<br>印象笔记 Markdown 语法支持几十种编程语言的高亮的显示。<br>语法示例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">line = <span class="string">"Cats are smarter than dogs"</span></span><br><span class="line">matchObj = re.match( <span class="string">r'(.*) are (.*?) .*'</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"matchObj.group() : "</span>, matchObj.group()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"matchObj.group(1) : "</span>, matchObj.group(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"matchObj.group(2) : "</span>, matchObj.group(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"No match!!"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>插入数学公式<br>印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e^&#123;i\pi&#125; + 1 = 0</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/python</span>
+<span class="token keyword">import</span> re
+line <span class="token operator">=</span> <span class="token string">"Cats are smarter than dogs"</span>
+matchObj <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span> r<span class="token string">'(.*) are (.*?) .*'</span><span class="token punctuation">,</span> line<span class="token punctuation">,</span> re<span class="token punctuation">.</span>M<span class="token operator">|</span>re<span class="token punctuation">.</span>I<span class="token punctuation">)</span>
+<span class="token keyword">if</span> matchObj<span class="token punctuation">:</span>
+<span class="token keyword">print</span> <span class="token string">"matchObj.group() : "</span><span class="token punctuation">,</span> matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"matchObj.group(1) : "</span><span class="token punctuation">,</span> matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"matchObj.group(2) : "</span><span class="token punctuation">,</span> matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+<span class="token keyword">print</span> <span class="token string">"No match!!"</span>
+</code></pre>
 </li>
 </ol>
+<ol start="15">
+<li><p>插入数学公式<br>印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式<br>语法示例：</p>
+<pre class=" language-math"><code class="language-math">e^{i\pi} + 1 = 0
+</code></pre>
 <p>更多数学公式的输入可以参考： <a href="https://khan.github.io/KaTeX/docs/supported.html" target="_blank" rel="noopener">https://khan.github.io/KaTeX/docs/supported.html</a></p>
-<ol start="16">
+</li>
 <li><p>插入流程图<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[模块A] --&gt;|A1| B(模块B)</span><br><span class="line">B --&gt; C&#123;判断条件C&#125;</span><br><span class="line">C --&gt;|条件C1| D[模块D]</span><br><span class="line">C --&gt;|条件C2| E[模块E]</span><br><span class="line">C --&gt;|条件C3| F[模块F]</span><br></pre></td></tr></table></figure>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TD
+A[模块A] -->|A1| B(模块B)
+B --> C{判断条件C}
+C -->|条件C1| D[模块D]
+C -->|条件C2| E[模块E]
+C -->|条件C3| F[模块F]
+</code></pre>
 </li>
-<li><p>插入时序图<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">A-&gt;&gt;B: 是否已收到消息？</span><br><span class="line">B--&gt;&gt;A: 已收到消息</span><br></pre></td></tr></table></figure>
+</ol>
+<ol start="17">
+<li>插入时序图<br>语法示例：<pre class=" language-mermaid"><code class="language-mermaid">sequenceDiagram
+A->>B: 是否已收到消息？
+B-->>A: 已收到消息
+</code></pre>
 </li>
+</ol>
+<ol start="18">
 <li><p>插入甘特图<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gantt</span><br><span class="line">title 甘特图</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">section 项目A</span><br><span class="line">任务1 :a1, 2018-06-06, 30d</span><br><span class="line">任务2 :after a1 , 20d</span><br><span class="line">section 项目B</span><br><span class="line">任务3 :2018-06-12 , 12d</span><br><span class="line">任务4 : 24d</span><br></pre></td></tr></table></figure>
+<pre class=" language-mermaid"><code class="language-mermaid">gantt
+title 甘特图
+dateFormat YYYY-MM-DD
+section 项目A
+任务1 :a1, 2018-06-06, 30d
+任务2 :after a1 , 20d
+section 项目B
+任务3 :2018-06-12 , 12d
+任务4 : 24d
+</code></pre>
 </li>
 <li><p>设置目录<br>设置之后可以自动根据设置的分级标题来自动生成目录。<br>语法示例：<br>[TOC]</p>
 </li>
@@ -1164,7 +1208,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.7k</span>
+                <span class="white-color">16.3k</span>
             
 
             
