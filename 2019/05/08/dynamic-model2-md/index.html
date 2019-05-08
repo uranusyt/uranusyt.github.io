@@ -4,12 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="机器学习数据分析极简思路及sklearn算法小试, Universe Biology Girls and Boys">
-    <meta name="description" content="原创：老板，来一打TPU
-
-    
-机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：1）理解和清理数据2）特征选择3）算法建模4）测试评估模型
-机器学习数据分析极简思路1）理解">
+    <meta name="keywords" content="浅说动力学模型（下篇）, Universe Biology Girls and Boys">
+    <meta name="description" content="浅说动力学模型（下篇）原创： 赵洪龙 宇宙实验媛图1. 数学建模在生物学研究中的应用范式书接上文浅说动力学模型（上篇），由于本人主要研究植物学代谢建模，下面就举例说明使用模型在植物生理研究中取得的一些重要成就。在过去的研究中，植物领域对光合">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>机器学习数据分析极简思路及sklearn算法小试 | Universe Biology Girls and Boys</title>
+    <title>浅说动力学模型（下篇） | Universe Biology Girls and Boys</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -32,10 +28,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css"><link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
-<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css"></head>
 
 
 <body>
@@ -264,13 +257,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        机器学习数据分析极简思路及sklearn算法小试
+                        浅说动力学模型（下篇）
                     </div>
                 </div>
             </div>
@@ -381,8 +374,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/algorithm/" target="_blank">
-                                <span class="chip bg-color">algorithm</span>
+                            <a href="/tags/dynamic-model/" target="_blank">
+                                <span class="chip bg-color">dynamic model</span>
                             </a>
                         
                     </div>
@@ -393,8 +386,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Machine-Learning/" class="post-category" target="_blank">
-                                Machine Learning
+                            <a href="/categories/Bio-Cooking/" class="post-category" target="_blank">
+                                Bio Cooking
                             </a>
                         
                     </div>
@@ -405,7 +398,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-05-08
                 </div>
 
                 
@@ -435,82 +428,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>原创：老板，来一打TPU</strong></p>
-
-    <div id="aplayer-kGaRoqmv" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
-<p><strong>机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：<br>1）理解和清理数据<br>2）特征选择<br>3）算法建模<br>4）测试评估模型</strong><br><a id="more"></a></p>
-<h1 id="机器学习数据分析极简思路"><a href="#机器学习数据分析极简思路" class="headerlink" title="机器学习数据分析极简思路"></a>机器学习数据分析极简思路</h1><h2 id="1）理解和清理数据"><a href="#1）理解和清理数据" class="headerlink" title="1）理解和清理数据"></a>1）理解和清理数据</h2><ul>
-<li>理解数据<br>数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降维分析（PCOA、tSNE），理解数据组成主成分贡献度。<pre class=" language-python"><code class="language-python">  <span class="token comment" spellcheck="true">#pip install seaborn</span>
-  <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> pyplot
-  <span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sb
-  <span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-  <span class="token operator">%</span>matplotlib inline
-  data<span class="token operator">=</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'iris.csv'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#pandas 读入数据</span>
-  data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#查看数据</span>
-  data<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#数据基本统计</span>
-  sb<span class="token punctuation">.</span>pairplot<span class="token punctuation">(</span>data<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>hue<span class="token operator">=</span><span class="token string">'Species'</span><span class="token punctuation">)</span> 
-</code></pre>
-鸢尾花数据组成<br><img src="/img/1.png" alt="32bc1a777af3001e5fc1dea42b93c0d1.png"><br>鸢尾花数据所有feature基本数理统计<br><img src="/img/2.png" alt="2b240766f89ac4edf021b4341265784a.png"><br>鸢尾花数据不同feature相互关系<br><img src="/img/3.png" alt="c6662ebd0cefd5735191807c454d879a.png"></li>
-<li>剔除异常值<br>清理数据的目的在于去除原始数据中的异常值和想办法处理缺失值，我们拿到手上的数据不可能尽善尽美，总有一些妖孽作祟，对于异常值我们应当剔除。举个栗子，假设在鸢尾花数据集中，有一个样本显示鸢尾花花瓣长度10m，其他诸如花瓣宽度、花萼长宽值都正常，可以脑补一下这是一朵什么样的花，那么这个样本显然应该剔除。</li>
-<li>处理缺失值<br>缺失值在数据分析中很常见，总有一些样本观测值会因为这那的问题缺失，处理缺失值如果样本数量很大，而包含缺失值的样本又少，这个时候果断去掉这些样本，眼不见为净；如果因为样本有限或者缺失值太多，就要想办法补全缺失值（imputation）,常常利用逻辑回归建立模型，找出这些数据变化的规律，从而预测缺失值。如何合理推断和填回这些缺失值是一门大学问，哪种方法好，我也不敢妄言。</li>
+                <p>浅说动力学模型（下篇）<br>原创： 赵洪龙 宇宙实验媛<br><img src="/img/dynamic_model2-1.png" alt="p"><br>图1. 数学建模在生物学研究中的应用范式<br>书接上文<a href="http://www.universebiologygirl.com/2019/04/09/dynamic-model1" target="_blank" rel="noopener">浅说动力学模型（上篇）</a>，由于本人主要研究植物学代谢建模，下面就举例说明使用模型在植物生理研究中取得的一些重要成就。在过去的研究中，植物领域对光合作用的研究积累了大量的数据，这为光合作用相关的动力学建模提供了数据基础。研究者们已经从<strong>细胞代谢层面(1)、叶片层面(2, 3)、植株水平和群体水平分别构建了模型(4)。</strong> 利用这些模型已经成功预测出了限制光合作用的关键过程，并且部分预测结果已经通过基因工程改造进行了验证。<br>自然条件下，植物生长的环境总是不断变化的，比如一阵微风吹过就会导致植物叶片接收的光发生改变。上层叶片摆动，下层叶片就会处于一明一暗的不断变化中。正如人眼睛的瞳孔在黑暗条件下放大、在明亮条件下会缩小，而闪光对眼睛有很强的刺激作用一样，闪光对植物而言也是一种非常严重的胁迫，会导致光合作用电子传递链出现损伤，从而抑制光合作用。植物有很多机制能耗散过剩的能量和修复这种闪光带来的电子传递链损伤，以防止被‘烧伤’并最大化光能的利用效率。以前没有一个合适的系统模型评估过这种能量耗散途径对作物产量所造成的损失，故而也一直没有明确的方案能通过减少这种损失来提高作物产量的潜力。Zhu等构建的作物群体中叶片光合作用能量分配的动力学模型，结合光线追踪算法对这个过程进行了理论分析。其预测显示，如果能够加快这个修复过程，作物的生产能力能增加20%左右(5)。<br>为了能更好地理解这个原理，我们给出了示意图（图2）。叶片在强光条件下的时候，一般来说植物的光合能力相对要高一些，而过多的能量会通过其他的途径耗散，以免叶片吸收过多的能量无法被转化成化学能导致叶片‘烧伤’。这对大部分植物叶片来讲是一种很好的防御机制（叫做光损伤防御）。然而，当植物从强光条件下转移到低光条件下的时候（t0时刻），能量往往成为光合能力的一种限制条件。此时，那些防御途径仍然“大手大脚”地耗散光能，减少了分配到化学能转化的分量。在数分钟或者数小时（假设为t0 – t2）的低光下，这些防御途径耗散的能量会慢慢减少，光合同化能力慢慢增加，我们把这段时间称之为恢复时间。就像我们从太阳底下走进相对比较暗的房间一样，眼睛会突然感觉到很暗，但过一段时间后房间里面就会变得‘亮起来’。从图2中我们可以很容易理解，如果减少这段恢复时间，就能够增加总的光能利用效率。因此，Zhu等2004年建立的模型主要描述了：<br>**1. 植物冠层中上下不同层次的点在一天的光强变化条件下的太阳辐射截获量；</p>
+<ol start="2">
+<li>截获的太阳辐射与光合能力之间的对应关系；</li>
+<li>接受的太阳辐射量变化时，植物由于光损伤防御机制的存在而引起的能量损失（及温度的影响）；</li>
+<li>通过减少光损伤防御恢复时间能给作物的光合生产能力提升带来的潜在空间。<strong><br><img src="/img/dynamic_model2-2.png" alt="p"><br>图2. 植物叶片从强光变到至弱光条件下时光损伤防御恢复机制的简单示意图。红色箭头表示叶片暴露在不同的光下。如果能把光损伤防御恢复的时间从t2缩短至t1，将有可能提高整个群体光合生产能力的12-30%。历经12年其合作团队通过基因工程手段进行改造，加快了这种光损伤恢复的速度，实现了烟草的光合作用能力及生产能力的大幅增加，成功验证了这一预测(6)。不仅如此，Zhu等建立的卡尔文循环代谢模型结合进化算法，预测了光合作用碳同化代谢过程中限制其效率的关键酶，这些预测与报道的实验结果一致(1)，因此也被采纳为作物改良的主要策略之一(7, 8)。Wang等建立的C4光合作用代谢模型系统解析了C4光合作用代谢过程高效的互作机理(9)。
+</strong>利用动力学模型，还可以为将来合成生物学导入新的代谢途径提供理论分析工具。** 比如通过参考模型计算和分析的结果进行基因工程改造，增加微生物中特定代谢物的产量，这在微生物研究的应用中较为广泛(10)；或者增加植物的次生代谢产物的产量(11) 等。<br>有关复杂代谢系统生物学建模的方法，Zhu(12)和Zhao(13)等均分别进行了综述，感兴趣的读者可参考阅读。<br>展望动力学模型虽然近些年来，随着数据测量技术和计算能力的飞速提升，系统生物学的发展势头迅猛，也取得了一些成就，然而现在动力学模型的构建过程中依然存在一些挑战。首先，动力学模型是基于具体过程的一类模型。而生物学过程总是交织成多维度的复杂网络，针对具体问题解析这些关系是一件繁琐的事情，因此模型构建是一件十分耗时的工作，且对研究的问题需要有深厚的知识背景，况且，现在我们并没有完全了解所有的生命过程。更甚，对于一个模型的参数化和验证而言，难以收集到一套完整而系统的数据集。数据库和文献中收集的数据均非常离散，环境、物种和测量过程的差异都会导致模型参数化和验证过程陷入困境。第三，模型参数化的过程和方法需要进一步提升并规范化。<br>笔者认为，决定未来动力学模型构建与生物学研究耦合的几个重要因素如下：</li>
+</ol>
+<ul>
+<li>第一，生物学测量技术需要进一步发展，高通量、高标准和高质量的数据是模型构建的基石。虽然目前组学数据的增长速度史无前例，但测量方法之间的差异、规范性问题、条件和细胞特异性问题等依旧是建模的重要拦路虎。</li>
+<li>第二，多背景交叉融合需要进一步加强。生物学与化学、物理学、数学、计算机科学等学科之间的交流能在确保重要信息的前提下更好地将复杂生物学问题简单化，从而确保模型具有更强的生物学预测能力和应用价值。</li>
+<li>第三，模型需要不断被优化和更新。所有的模型都不可能是完美的，需要针对具体问题进行结构和参数的进一步优化，因此需要构建一些大型的数据存储和模型分析平台，从而进入用模型帮助数据分析、用数据优化和修正模型的良性循环。至此，方能更好地将模型应用于生物学研究，造福于人类。</li>
 </ul>
-<h2 id="2）特征选择"><a href="#2）特征选择" class="headerlink" title="2）特征选择"></a>2）特征选择</h2><p>工业界广泛流传的一句话是：<strong>数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已</strong>。由此可见，特征选择是机器学习的关键的关键。特征选择目的在于提取跟目标最为有效的信息，降低数据维度和计算成本，同时防止过拟合（overfitting，训练集特征用的太多太细，以致于在测试集中不适）。要知道，并不是特征越多，结果越好，没有严格意义上的特征累加效应，有时候好的几个特征胜于大量零碎的特征取得的效果。<br>在许多大数据挖掘竞赛中（国内的阿里天池和国外的kaggle平台），最复杂的过程莫过于特征工程建立阶段，大概占据了整个竞赛过程的70%的时间和精力，最终建立的模型的好坏大多也取决于特征工程建立的好坏。遗憾的是，特征工程不像模型建立的过程有着固定的套路，特征工程的建立凭借的更多的是经验，因此没有统一的方法。这里抛砖引玉介绍一些常见的办法，更为详细的内容请参考文后链接。<br><strong>a)特征过滤法</strong><br>比较简单，它按照特征的发散性或者相关性指标对各个特征进行评分，设定评分阈值或者待选择阈值的个数，选择合适特征。例如，我们可以简单的计算出每个feature的方差，方差越大说明这个feature在样本中变异大，即有区分性；而越小的（极端时方差为0），即表示在所有样本中一样，特征选择时则可不考虑这些特征。我们可以选择方差最大的前n个feature用于建模，这就是最为简单的方差筛选法。<br><strong>b)包装法</strong><br>根据目标函数，通常是预测效果评分，每次选择部分特征，或者排除部分特征。<br><strong>c)嵌入法</strong><br>则稍微复杂一点，它先使用某些机器学习的算法和模型进行训练，得到各个特征的权值系数，根据权值系数从大到小来选择特征。类似于过滤法，但是它是通过机器学习训练来确定特征的优劣，而不是直接从特征的一些统计学指标来确定特征的优劣。<br><strong>踩雷说：特征选择之后，需要从原始数据矩阵提取相应的特征重构矩阵，那么训练集和测试集的特征经过你各种变换之后，应当保持一一对应，类别和顺序在矩阵中都应该一致。</strong><br>目前，已经有一些套路化的特征选择工具，例如python的FeatureSlector包，见链接。</p>
-<h2 id="3）算法建模"><a href="#3）算法建模" class="headerlink" title="3）算法建模"></a>3）算法建模</h2><p>针对具体的问题，是分类问题？回归问题？还是其他？选择合适的模型，或者使用集成的算法模型。常见的算法模型包括：<br>对于回归问题：<br>a)线性回归（回归，LinearRegression）<br>b)岭回归（回归，Ridge）Ridge是线性回归加L2正则平方，以防止过拟合<br>c)拉索回归（Lasso），加入惩罚函数L1正则绝对值，防止过拟合<br>d)弹性网络回归（回归），同时使用L1和L2正则。<br>e)K近邻（回归和分类，KNeighborsRegressor）<br>f)决策树（回归和分类，DecisionTreeRegressor）<br>g)支持向量机（回归和分类，SVR）</p>
-<p>对于分类问题：<br>a)支持向量机（回归和分类，SVC）<br>b决策树（回归与分类,DecisionTreeClassifier）<br>c)逻辑回归（分类,LogisticRegression)<br>d)LDA线性判别分析（分类,LinearDiscriminantAnalysis)<br>e)K近邻（分类,KNeighborsClassifier)<br>值得一提的是无论是分类还是回归问题，基于决策树和SVM的算法都有比较好的表现。</p>
-<h2 id="4）测试评估模型"><a href="#4）测试评估模型" class="headerlink" title="4）测试评估模型"></a>4）测试评估模型</h2><p>测试评估模型的目的在于，解决模型的欠拟合（under-fitting）和过拟合（over-fitting）问题，通过即时的反馈不断调整模型、优化模型，使得模型更加稳健。<br>实际上，测试评估模型应该在你建模之前就考虑，例如是否需要设置纯粹的外部数据验证集，若没有这样的数据，你怎样划分数据进行建模预测？<br>在实际训练中，模型通常对训练数据好，但是对训练数据之外的数据拟合程度差。用于评价模型的泛化能力（即模型普适性）。交叉验证的基本思想是把在某种意义下将原始数据进行分组,一部分做为训练集(train set),另一部分做为验证集(validation set or test set),首先用训练集对模型进行训练,再利用验证集来测试模型的泛化误差。另外，现实中数据总是有限的，为了对数据形成重用，比较常用的是k-fold交叉验证法。测试评估模型的时候，常常结合AUC曲线判断模型好坏。</p>
-<h1 id="sklearn-算法小试"><a href="#sklearn-算法小试" class="headerlink" title="sklearn 算法小试"></a>sklearn 算法小试</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>sklearn是python中一个强大的机器学习模块,拥有众多的机器学习算法和功能。这里，通过sklearn的datasets构建一个数据集，并用4种常用算法：逻辑回归（LogisticRegression）、支持向量机（SVM）、决策树（DecisionTree）和集成算法（VotingClassifier）对训练集建模，然后对测试集预测，最终通过得分看一下4种算法的差异。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1）构建本次使用的数据集<br>2）将数据拆分成训练集和测试集<br>3）用4种算法分别建模、预测</p>
-<h2 id="代码环境"><a href="#代码环境" class="headerlink" title="代码环境"></a>代码环境</h2><p>python版本：python3<br>1）如果不想被python各种安装包困扰，推荐Jupyter在线python，<a href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter官网</a>，点击”Try Jupyter with Python”，点击“+”号即可。安装包的时候直接pip install packages_name,例如pip install sklearn,点击“Run”，提示“Successfully installed sklearn-0.0”即安装完成。<br><img src="/img/4.png" alt="a3e70c182d26dd77208c02cab6571af5.png"><br>2）Pycharm，专业、高效、强大的python开发端。</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><pre class=" language-python"><code class="language-python">
-    <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-    <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-    <span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets <span class="token comment" spellcheck="true">#built-in datasets</span>
-
-    <span class="token comment" spellcheck="true">#make_moons,generated datasets</span>
-    X<span class="token punctuation">,</span>y <span class="token operator">=</span> datasets<span class="token punctuation">.</span>make_moons<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span>noise<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#plot for datasets</span>
-
-    <span class="token comment" spellcheck="true">#split datasets for train and test part</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
-    X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test<span class="token operator">=</span>train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span>y<span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#1.logistic regression model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LogisticRegression
-    log_clf<span class="token operator">=</span>LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#create LR classifer</span>
-    log_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#train and fit the model</span>
-    log_score<span class="token operator">=</span>log_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#test the model</span>
-
-    <span class="token comment" spellcheck="true">#2.svm model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVC
-    svm_clf<span class="token operator">=</span>SVC<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    svm_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    svm_score<span class="token operator">=</span>svm_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#3.decision tree model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
-    dt_clf<span class="token operator">=</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    dt_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    dt_score<span class="token operator">=</span>dt_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#4.ensemble method</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> VotingClassifier
-    voting_clf<span class="token operator">=</span>VotingClassifier<span class="token punctuation">(</span>estimators<span class="token operator">=</span>
-                                <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'log_clf'</span><span class="token punctuation">,</span>LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                 <span class="token punctuation">(</span><span class="token string">'svm_clf'</span><span class="token punctuation">,</span>SVC<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                 <span class="token punctuation">(</span><span class="token string">'dt_clf'</span><span class="token punctuation">,</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                                 <span class="token punctuation">]</span><span class="token punctuation">,</span>voting<span class="token operator">=</span><span class="token string">"hard"</span><span class="token punctuation">)</span>
-    voting_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    voting_score<span class="token operator">=</span>voting_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"log score:%s"</span><span class="token operator">%</span>log_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"svm score:%s"</span><span class="token operator">%</span>svm_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"dt score:%s"</span><span class="token operator">%</span>dt_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"voting score:%s"</span><span class="token operator">%</span>voting_score<span class="token punctuation">)</span>
-</code></pre>
-<p>构建数据集：<br><img src="/img/5.png" alt="c6e3145820fe446499bfe5166f85b29e.png"><br>4种算法预测结果：<br><img src="/img/6.png" alt="a59578cf44dee88a46ef0bcceabf1b2b.png"><br>可以看到，单一算法SVM比较好，集成算法较单一的算法还是有一定的提高。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/28641663?utm_source=wechat_search&amp;utm_medium=organic" target="_blank" rel="noopener">机器学习中，有哪些特征选择的工程方法？</a><br><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;mid=2247485387&amp;idx=1&amp;sn=d22618f98adae3c9038184b9c4991ea2&amp;chksm=c0698f96f71e06807bbb3c667d50aa87899aa8d7b48bab51be33206390a03cb2e28d3ddb27b4&amp;mpshare=1&amp;scene=24&amp;srcid=0327GWk8nsWdgLT2kYwpeazY#rd" target="_blank" rel="noopener">FeatureSlector:一个可以进行机器学习特征选择的python工具</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzI2MjE3OTA1MA==&amp;mid=2247484860&amp;idx=1&amp;sn=7ea3597474f5ceaf443f10d63a8217ee&amp;chksm=ea4e5439dd39dd2f2f0cd95eca909e2ab255fc5dc6e033e9b2d265bf2124751f32e96279188d&amp;scene=7#rd" target="_blank" rel="noopener">机器学习中的交叉验证</a></p>
+<h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><p>Zhu XG, de Sturler E, &amp; Long SP (2007) Optimizing the distribution of resources between enzymes of carbon metabolism can dramatically increase photosynthetic rate: a numerical simulation using an evolutionary algorithm. Plant physiology 145(2):513-526.Tholen D &amp; Zhu XG (2011) The mechanistic basis of internal conductance: a theoretical analysis of mesophyll cell photosynthesis and CO2 diffusion. Plant physiology 156(1):90-105.Xiao Y, Tholen D, &amp; Zhu XG (2016) The influence of leaf anatomy on the internal light environment and photosynthetic electron transport rate: exploration with a new leaf ray tracing model. Journal of experimental botany 67(21):6021-6035.Song Q, Chu C, Parry MA, &amp; Zhu XG (2016) Genetics-based dynamic systems model of canopy photosynthesis: the key to improve light and resource use efficiencies for crops. Food Energy Secur 5(1):18-25.Zhu XG, Ort DR, Whitmarsh J, &amp; Long SP (2004) The slow reversibility of photosystem II thermal energy dissipation on transfer from high to low light may cause large losses in carbon gain by crop canopies: a theoretical analysis. Journal of experimental botany 55(400):1167-1175.Kromdijk J, et al. (2016) Improving photosynthesis and crop productivity by accelerating recovery from photoprotection. Science 354(6314):857-861.Miyagawa Y, Tamoi M, &amp; Shigeoka S (2001) Overexpression of a cyanobacterial fructose-1,6-/sedoheptulose-1,7-bisphosphatase in tobacco enhances photosynthesis and growth. Nat Biotech 19(10):965-969.Simkin AJ, McAusland L, Headland LR, Lawson T, &amp; Raines CA (2015) Multigene manipulation of photosynthetic carbon assimilation increases CO(2) fixation and biomass yield in tobacco. J Exp Bot 66(13):4075-4090.Wang Y, Brautigam A, Weber AP, &amp; Zhu XG (2014) Three distinct biochemical subtypes of C4 photosynthesis? A modelling analysis. Journal of experimental botany 65(13):3567-3578.Colón AM, Sengupta N, Rhodes D, Dudareva N, &amp; Morgan J (2010) A kinetic model describes metabolic response to perturbations and distribution of flux control in the benzenoid network of Petunia hybrida. The Plant Journal 62(1):64-76.Xin CP, Tholen D, Devloo V, &amp; Zhu XG (2015) The benefits of photorespiratory bypasses: how can they work? Plant physiology 167(2):574-585.Zhu XG (2010) Systems-level modeling–a new approach for engineering efficient photosynthetic machinery. Journal of biotechnology 149(3):201-208.Zhao H, Xiao Y, &amp; Zhu XG (2017) Kinetic Modeling of Photorespiration. Methods Mol Biol 1653:203-216.</p>
 
             </div>
             <hr>
@@ -658,7 +588,7 @@
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Universe Biology Girls and Boys</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/Machine-learnig-KFC/" class="b-link-green">机器学习数据分析极简思路及sklearn算法小试</a>
+                    <a href="/2019/05/08/dynamic-model2-md/" class="b-link-green">浅说动力学模型（下篇）</a>
                 </p>
             </div>
         </div>
@@ -940,23 +870,24 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/03/31/western-blot/">
+                <a href="/2019/05/08/dynamic-model2-md/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="师兄又在胡扯了-Western Blot">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="浅说动力学模型（下篇）">
                         
-                        <span class="card-title">师兄又在胡扯了-Western Blot</span>
+                        <span class="card-title">浅说动力学模型（下篇）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">大家好，阿呆师兄又出现了。不知道上个月说的几本书有几个人看了或准备看的。其实原本我应该深藏功与名，大隐隐于市了，不知道大家还记不记得短腿师妹前阵子说“宇宙实验媛喊你来拿三位数稿费了”阿呆  宇宙实验媛大家好，阿呆师兄又出现了。不知道上个月说</div>
+                    <div class="summary block-with-text">浅说动力学模型（下篇）原创： 赵洪龙 宇宙实验媛图1. 数学建模在生物学研究中的应用范式书接上文浅说动力学模型（上篇），由于本人主要研究植物学代谢建模，下面就举例说明使用模型在植物生理研究中取得的一些重要成就。在过去的研究中，植物领域对光合</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -969,11 +900,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/western-blot/" target="_blank">
-                        <span class="chip bg-color">western blot</span>
+                    <a href="/tags/dynamic-model/" target="_blank">
+                        <span class="chip bg-color">dynamic model</span>
                     </a>
                     
                 </div>
@@ -987,45 +919,33 @@
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/20/UBGBs/">
+                <a href="/2019/05/07/rna-seq-data-analysis1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="UBGBs">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="RNA-seq中的那些统计学问题（一）为什么是负二项分布？">
                         
-                        <span class="card-title">UBGBs</span>
+                        <span class="card-title">RNA-seq中的那些统计学问题（一）为什么是负二项分布？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">Yeap,Family!
-</div>
+                    <div class="summary block-with-text">1. 转录组数据统计推断的难题在RNA-seq中进行两组间的差异分析是最正常不过的了。
+我们在其它实验中同样会遇到类似的分析，通常，我们可以用方差分析判定两组“分布”数据间是否存在显著差异。原理是：当组间方差大于组内方差（误差效应），并且统</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Photo/" class="post-category" target="_blank">
-                                    Photo
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/photo/" target="_blank">
-                        <span class="chip bg-color">photo</span>
-                    </a>
-                    
-                    <a href="/tags/family/" target="_blank">
-                        <span class="chip bg-color">family</span>
-                    </a>
-                    
                 </div>
                 
             </div>
