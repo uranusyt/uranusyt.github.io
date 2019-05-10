@@ -4,12 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="机器学习数据分析极简思路及sklearn算法小试, Universe Biology Girls and Boys">
-    <meta name="description" content="原创：老板，来一打TPU
-
-    
-机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：1）理解和清理数据2）特征选择3）算法建模4）测试评估模型
-机器学习数据分析极简思路1）理解">
+    <meta name="keywords" content="从零开始入门R语言编程, Universe Biology Girls and Boys">
+    <meta name="description" content="R语言编程入门写在前面的
+上期推文介绍了如何使用R语言编程进行样本间相关性分析，主要涉及了R语言矩阵、循环、统计分析函数、ggplot2、corrplot等函数包的使用，涉及的知识面较多，如果不是经常做生物信息或者是编程出家，很难在短时间内">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>机器学习数据分析极简思路及sklearn算法小试 | Universe Biology Girls and Boys</title>
+    <title>从零开始入门R语言编程 | Universe Biology Girls and Boys</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -32,10 +29,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css"><link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
-<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css"></head>
 
 
 <body>
@@ -264,13 +258,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        机器学习数据分析极简思路及sklearn算法小试
+                        从零开始入门R语言编程
                     </div>
                 </div>
             </div>
@@ -381,8 +375,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/algorithm/" target="_blank">
-                                <span class="chip bg-color">algorithm</span>
+                            <a href="/tags/R/" target="_blank">
+                                <span class="chip bg-color">R</span>
                             </a>
                         
                     </div>
@@ -393,8 +387,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Machine-Learning/" class="post-category" target="_blank">
-                                Machine Learning
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                Bioinformatics
                             </a>
                         
                     </div>
@@ -405,21 +399,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-05-10
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        2.5k
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        9 Min
+                        7 Min
                     </div>
                     
                 
@@ -435,82 +429,67 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>原创：老板，来一打TPU</strong></p>
+                <h1 id="R语言编程入门"><a href="#R语言编程入门" class="headerlink" title="R语言编程入门"></a><em>R语言编程入门</em></h1><h3 id="写在前面的"><a href="#写在前面的" class="headerlink" title="写在前面的"></a>写在前面的</h3><blockquote>
+<p>上期推文介绍了如何使用R语言编程进行样本间相关性分析，主要涉及了R语言矩阵、循环、统计分析函数、ggplot2、corrplot等函数包的使用，涉及的知识面较多，如果不是经常做生物信息或者是编程出家，很难在短时间内适应编程模式。其实，一旦适应了编程，很多问题都能轻松迎刃而解。毕竟计算机语言也是一门语言，和人与人之间打交道一样，人与计算机打交道也是很容易的。本次推文以<strong>引导大家入门R语言编程为目的</strong>，用尽可能精炼的内容教学R语言。认识R语言首先认识R语言的数据类型及控制结构。掌握这些基础以后，再认识R语言的函数包。经过一定时间的练习就可以熟悉R语言了。</p>
+</blockquote>
+<h3 id="R语言数据类型1：向量"><a href="#R语言数据类型1：向量" class="headerlink" title="R语言数据类型1：向量"></a>R语言数据类型1：向量</h3><p>向量是R语言最基本的数据类型。R语言中向量和大学时候学的线性代数一样，是由一行或者一列数据组成的变量。</p>
+<pre><code>x&lt;-c(1,2,3,4,5) #把向量赋值给x，c是连接函数。此时x就是由数字1到5组成的向量
+length(x) #获取向量长度
+x[3]#x的第三个元素
+x[-1:-2] #删除x前两个元素
+x&lt;-x[-1:-2] #删除x前两个元素并保存
+b&lt;-seq(from=1,to=100,by=2) #seq是生成等差数列函数，from是数列起始值to是终止值，by是公差
+</code></pre><h3 id="R语言数据类型2：矩阵"><a href="#R语言数据类型2：矩阵" class="headerlink" title="R语言数据类型2：矩阵"></a>R语言数据类型2：矩阵</h3><p>R语言矩阵可以理解为多个长度相同的向量按照行或列排列而成的多维向量，R语言矩阵与线性代数中的矩阵稍有不同，不同点在于矩阵的乘法计算上，线性代数中矩阵乘法计算方法为设A为 mxp 的矩阵，B为 pxn 的矩阵，那么称 mxn 的矩阵C为矩阵A与B的乘积,其中矩阵C中的第 i行第 j列元素可以表示为</p>
+<p>$$AB_{ij}=\sum_{k=1}^p a_{ik}b_{kj}=a_{i1}b_{1j}+a_{i2}b_{2j}+…+a_{ip}b_{pj}$$</p>
+<p>但是R语言中矩阵乘法是对应元素做乘积。举例为</p>
+<pre><code>f&lt;-cbind(c(1,2,3),c(4,5,6)) #将两个向量按列捆绑可得得到矩阵,如果想按照行向量捆绑为矩阵用rbind函数
+z&lt;-cbind(c(1,2,3),c(4,5,6))
+f*z
+ [,1] [,2]
+[1,]    1   16
+[2,]    4   25
+[3,]    9   36
+x&lt;-matrix(c(1,2,3,4,5,6),ncol=2,nrow=3)#另外一种矩阵赋值方式，ncol定义矩阵的列数，nrow定义矩阵行数，另外ncol(x)或者nrow(x)则可以求矩阵的列数或行数。
+x[1,2]#查看矩阵第1行第2列元素,当然如果想查看矩阵第一行则为x[1,]查看第二列为x[,2]。
+</code></pre><h3 id="R语言数据类型3：列表"><a href="#R语言数据类型3：列表" class="headerlink" title="R语言数据类型3：列表"></a>R语言数据类型3：列表</h3><p>列表是一种特殊的向量，不同之前的向量。之前的向量可以理解为原子型，列表中可以保存为不同格式的数据。可以是字符串型、数值型等。举例为</p>
+<pre><code>j&lt;-list(name=&quot;joe&quot;,salary=55000,union=T)#其中name，salary，union理解为列表的标签，等号后面的量理解为列表标签的值，可以一个标签对应多个值，但是列表的标签具有唯一性！
 
-    <div id="aplayer-BLxnDudM" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="28287132" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
-<p><strong>机器学习拥有庞大的知识体系，这里对机器学习的数据分析的整个思路和流程作最最简单的归纳。机器学习的步骤大致包括：<br>1）理解和清理数据<br>2）特征选择<br>3）算法建模<br>4）测试评估模型</strong><br><a id="more"></a></p>
-<h1 id="机器学习数据分析极简思路"><a href="#机器学习数据分析极简思路" class="headerlink" title="机器学习数据分析极简思路"></a>机器学习数据分析极简思路</h1><h2 id="1）理解和清理数据"><a href="#1）理解和清理数据" class="headerlink" title="1）理解和清理数据"></a>1）理解和清理数据</h2><ul>
-<li>理解数据<br>数据是机器学习大餐的原始食材，对数据分析起着至关重要的作用，理解原始数据的含义将有助于进一步分析。例如，甲基化图谱与年龄有着显著的相关性，而与性别关系不大，因此在数据分析中，对这两个特征（faeature）需要区别对待。更好的理解方式是直接可视化某些数据，例如对于经典的鸢尾花数据集，可以通过python seaborn绘图包可视化各个特征（feature）之间的关系；对于大数据，则可以进行降维分析（PCOA、tSNE），理解数据组成主成分贡献度。<pre class=" language-python"><code class="language-python">  <span class="token comment" spellcheck="true">#pip install seaborn</span>
-  <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> pyplot
-  <span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sb
-  <span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-  <span class="token operator">%</span>matplotlib inline
-  data<span class="token operator">=</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'iris.csv'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#pandas 读入数据</span>
-  data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#查看数据</span>
-  data<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#数据基本统计</span>
-  sb<span class="token punctuation">.</span>pairplot<span class="token punctuation">(</span>data<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>hue<span class="token operator">=</span><span class="token string">'Species'</span><span class="token punctuation">)</span> 
-</code></pre>
-鸢尾花数据组成<br><img src="/img/1.png" alt="32bc1a777af3001e5fc1dea42b93c0d1.png"><br>鸢尾花数据所有feature基本数理统计<br><img src="/img/2.png" alt="2b240766f89ac4edf021b4341265784a.png"><br>鸢尾花数据不同feature相互关系<br><img src="/img/3.png" alt="c6662ebd0cefd5735191807c454d879a.png"></li>
-<li>剔除异常值<br>清理数据的目的在于去除原始数据中的异常值和想办法处理缺失值，我们拿到手上的数据不可能尽善尽美，总有一些妖孽作祟，对于异常值我们应当剔除。举个栗子，假设在鸢尾花数据集中，有一个样本显示鸢尾花花瓣长度10m，其他诸如花瓣宽度、花萼长宽值都正常，可以脑补一下这是一朵什么样的花，那么这个样本显然应该剔除。</li>
-<li>处理缺失值<br>缺失值在数据分析中很常见，总有一些样本观测值会因为这那的问题缺失，处理缺失值如果样本数量很大，而包含缺失值的样本又少，这个时候果断去掉这些样本，眼不见为净；如果因为样本有限或者缺失值太多，就要想办法补全缺失值（imputation）,常常利用逻辑回归建立模型，找出这些数据变化的规律，从而预测缺失值。如何合理推断和填回这些缺失值是一门大学问，哪种方法好，我也不敢妄言。</li>
-</ul>
-<h2 id="2）特征选择"><a href="#2）特征选择" class="headerlink" title="2）特征选择"></a>2）特征选择</h2><p>工业界广泛流传的一句话是：<strong>数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已</strong>。由此可见，特征选择是机器学习的关键的关键。特征选择目的在于提取跟目标最为有效的信息，降低数据维度和计算成本，同时防止过拟合（overfitting，训练集特征用的太多太细，以致于在测试集中不适）。要知道，并不是特征越多，结果越好，没有严格意义上的特征累加效应，有时候好的几个特征胜于大量零碎的特征取得的效果。<br>在许多大数据挖掘竞赛中（国内的阿里天池和国外的kaggle平台），最复杂的过程莫过于特征工程建立阶段，大概占据了整个竞赛过程的70%的时间和精力，最终建立的模型的好坏大多也取决于特征工程建立的好坏。遗憾的是，特征工程不像模型建立的过程有着固定的套路，特征工程的建立凭借的更多的是经验，因此没有统一的方法。这里抛砖引玉介绍一些常见的办法，更为详细的内容请参考文后链接。<br><strong>a)特征过滤法</strong><br>比较简单，它按照特征的发散性或者相关性指标对各个特征进行评分，设定评分阈值或者待选择阈值的个数，选择合适特征。例如，我们可以简单的计算出每个feature的方差，方差越大说明这个feature在样本中变异大，即有区分性；而越小的（极端时方差为0），即表示在所有样本中一样，特征选择时则可不考虑这些特征。我们可以选择方差最大的前n个feature用于建模，这就是最为简单的方差筛选法。<br><strong>b)包装法</strong><br>根据目标函数，通常是预测效果评分，每次选择部分特征，或者排除部分特征。<br><strong>c)嵌入法</strong><br>则稍微复杂一点，它先使用某些机器学习的算法和模型进行训练，得到各个特征的权值系数，根据权值系数从大到小来选择特征。类似于过滤法，但是它是通过机器学习训练来确定特征的优劣，而不是直接从特征的一些统计学指标来确定特征的优劣。<br><strong>踩雷说：特征选择之后，需要从原始数据矩阵提取相应的特征重构矩阵，那么训练集和测试集的特征经过你各种变换之后，应当保持一一对应，类别和顺序在矩阵中都应该一致。</strong><br>目前，已经有一些套路化的特征选择工具，例如python的FeatureSlector包，见链接。</p>
-<h2 id="3）算法建模"><a href="#3）算法建模" class="headerlink" title="3）算法建模"></a>3）算法建模</h2><p>针对具体的问题，是分类问题？回归问题？还是其他？选择合适的模型，或者使用集成的算法模型。常见的算法模型包括：<br>对于回归问题：<br>a)线性回归（回归，LinearRegression）<br>b)岭回归（回归，Ridge）Ridge是线性回归加L2正则平方，以防止过拟合<br>c)拉索回归（Lasso），加入惩罚函数L1正则绝对值，防止过拟合<br>d)弹性网络回归（回归），同时使用L1和L2正则。<br>e)K近邻（回归和分类，KNeighborsRegressor）<br>f)决策树（回归和分类，DecisionTreeRegressor）<br>g)支持向量机（回归和分类，SVR）</p>
-<p>对于分类问题：<br>a)支持向量机（回归和分类，SVC）<br>b决策树（回归与分类,DecisionTreeClassifier）<br>c)逻辑回归（分类,LogisticRegression)<br>d)LDA线性判别分析（分类,LinearDiscriminantAnalysis)<br>e)K近邻（分类,KNeighborsClassifier)<br>值得一提的是无论是分类还是回归问题，基于决策树和SVM的算法都有比较好的表现。</p>
-<h2 id="4）测试评估模型"><a href="#4）测试评估模型" class="headerlink" title="4）测试评估模型"></a>4）测试评估模型</h2><p>测试评估模型的目的在于，解决模型的欠拟合（under-fitting）和过拟合（over-fitting）问题，通过即时的反馈不断调整模型、优化模型，使得模型更加稳健。<br>实际上，测试评估模型应该在你建模之前就考虑，例如是否需要设置纯粹的外部数据验证集，若没有这样的数据，你怎样划分数据进行建模预测？<br>在实际训练中，模型通常对训练数据好，但是对训练数据之外的数据拟合程度差。用于评价模型的泛化能力（即模型普适性）。交叉验证的基本思想是把在某种意义下将原始数据进行分组,一部分做为训练集(train set),另一部分做为验证集(validation set or test set),首先用训练集对模型进行训练,再利用验证集来测试模型的泛化误差。另外，现实中数据总是有限的，为了对数据形成重用，比较常用的是k-fold交叉验证法。测试评估模型的时候，常常结合AUC曲线判断模型好坏。</p>
-<h1 id="sklearn-算法小试"><a href="#sklearn-算法小试" class="headerlink" title="sklearn 算法小试"></a>sklearn 算法小试</h1><h2 id="实现目的"><a href="#实现目的" class="headerlink" title="实现目的"></a>实现目的</h2><p>sklearn是python中一个强大的机器学习模块,拥有众多的机器学习算法和功能。这里，通过sklearn的datasets构建一个数据集，并用4种常用算法：逻辑回归（LogisticRegression）、支持向量机（SVM）、决策树（DecisionTree）和集成算法（VotingClassifier）对训练集建模，然后对测试集预测，最终通过得分看一下4种算法的差异。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1）构建本次使用的数据集<br>2）将数据拆分成训练集和测试集<br>3）用4种算法分别建模、预测</p>
-<h2 id="代码环境"><a href="#代码环境" class="headerlink" title="代码环境"></a>代码环境</h2><p>python版本：python3<br>1）如果不想被python各种安装包困扰，推荐Jupyter在线python，<a href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter官网</a>，点击”Try Jupyter with Python”，点击“+”号即可。安装包的时候直接pip install packages_name,例如pip install sklearn,点击“Run”，提示“Successfully installed sklearn-0.0”即安装完成。<br><img src="/img/4.png" alt="a3e70c182d26dd77208c02cab6571af5.png"><br>2）Pycharm，专业、高效、强大的python开发端。</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><pre class=" language-python"><code class="language-python">
-    <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-    <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-    <span class="token keyword">from</span> sklearn <span class="token keyword">import</span> datasets <span class="token comment" spellcheck="true">#built-in datasets</span>
-
-    <span class="token comment" spellcheck="true">#make_moons,generated datasets</span>
-    X<span class="token punctuation">,</span>y <span class="token operator">=</span> datasets<span class="token punctuation">.</span>make_moons<span class="token punctuation">(</span>n_samples<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">,</span>noise<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>X<span class="token punctuation">[</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#plot for datasets</span>
-
-    <span class="token comment" spellcheck="true">#split datasets for train and test part</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
-    X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test<span class="token operator">=</span>train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span>y<span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#1.logistic regression model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LogisticRegression
-    log_clf<span class="token operator">=</span>LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#create LR classifer</span>
-    log_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#train and fit the model</span>
-    log_score<span class="token operator">=</span>log_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#test the model</span>
-
-    <span class="token comment" spellcheck="true">#2.svm model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>svm <span class="token keyword">import</span> SVC
-    svm_clf<span class="token operator">=</span>SVC<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    svm_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    svm_score<span class="token operator">=</span>svm_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#3.decision tree model</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
-    dt_clf<span class="token operator">=</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    dt_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    dt_score<span class="token operator">=</span>dt_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true">#4.ensemble method</span>
-    <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> VotingClassifier
-    voting_clf<span class="token operator">=</span>VotingClassifier<span class="token punctuation">(</span>estimators<span class="token operator">=</span>
-                                <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'log_clf'</span><span class="token punctuation">,</span>LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                 <span class="token punctuation">(</span><span class="token string">'svm_clf'</span><span class="token punctuation">,</span>SVC<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                 <span class="token punctuation">(</span><span class="token string">'dt_clf'</span><span class="token punctuation">,</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                                 <span class="token punctuation">]</span><span class="token punctuation">,</span>voting<span class="token operator">=</span><span class="token string">"hard"</span><span class="token punctuation">)</span>
-    voting_clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
-    voting_score<span class="token operator">=</span>voting_clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
-
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"log score:%s"</span><span class="token operator">%</span>log_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"svm score:%s"</span><span class="token operator">%</span>svm_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"dt score:%s"</span><span class="token operator">%</span>dt_score<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"voting score:%s"</span><span class="token operator">%</span>voting_score<span class="token punctuation">)</span>
-</code></pre>
-<p>构建数据集：<br><img src="/img/5.png" alt="c6e3145820fe446499bfe5166f85b29e.png"><br>4种算法预测结果：<br><img src="/img/6.png" alt="a59578cf44dee88a46ef0bcceabf1b2b.png"><br>可以看到，单一算法SVM比较好，集成算法较单一的算法还是有一定的提高。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/28641663?utm_source=wechat_search&amp;utm_medium=organic" target="_blank" rel="noopener">机器学习中，有哪些特征选择的工程方法？</a><br><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;mid=2247485387&amp;idx=1&amp;sn=d22618f98adae3c9038184b9c4991ea2&amp;chksm=c0698f96f71e06807bbb3c667d50aa87899aa8d7b48bab51be33206390a03cb2e28d3ddb27b4&amp;mpshare=1&amp;scene=24&amp;srcid=0327GWk8nsWdgLT2kYwpeazY#rd" target="_blank" rel="noopener">FeatureSlector:一个可以进行机器学习特征选择的python工具</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzI2MjE3OTA1MA==&amp;mid=2247484860&amp;idx=1&amp;sn=7ea3597474f5ceaf443f10d63a8217ee&amp;chksm=ea4e5439dd39dd2f2f0cd95eca909e2ab255fc5dc6e033e9b2d265bf2124751f32e96279188d&amp;scene=7#rd" target="_blank" rel="noopener">机器学习中的交叉验证</a></p>
+Names(j)#获取列表的所有标签。当然如果想使用其他方法查询列表第2个标签可以使用就j$salary，j[2]，或者j[[2]]。两者的区别读者可以通过实践发现。
+</code></pre><h3 id="R语言数据类型4：数据框"><a href="#R语言数据类型4：数据框" class="headerlink" title="R语言数据类型4：数据框"></a>R语言数据类型4：数据框</h3><p>数据框与矩阵有很多相似之处，很多矩阵适用的函数数据框同样适用。与矩阵不同的是，数据框里面的数据类型可以不一致，但矩阵维数必须相等，即各列数据长度相等。以一个实例简单介绍数据框</p>
+<pre><code>a&lt;-c(&quot;apple&quot;,&quot;pen&quot;)
+b&lt;-c(17,14)
+c&lt;-data.frame(a,b,stringsAsFactors = F) #创建一个简单的数据框，由于矩阵所用的函数多数都适应于数据框，所以这里不再详细介绍。具体操作读者们可以自行在R语言上实践。
+</code></pre><h3 id="R语言数据类型5：因子"><a href="#R语言数据类型5：因子" class="headerlink" title="R语言数据类型5：因子"></a>R语言数据类型5：因子</h3><p>因子在实际的数据分析中用到的场合不多。在R语言中，因子（factor）表示的是一个符号一个编号或者一个等级。以一个实际例子让读者理解因子。</p>
+<pre><code>x&lt;-c(100,1,4,9,1320)
+x&lt;-factor(x) #对向量X进行因子化处理
+[1] 100  1    4    9    1320
+Levels: 1 4 9 100 1320
+</code></pre><p>从例子中可以看出，因子实际是为向量数据中的每一个元素赋予一个级别。例如元素100，它对应的level是100，比第二个元素1对应的level大，所以在level的排序上，100在第三个level上。</p>
+<h2 id="R语言控制结构"><a href="#R语言控制结构" class="headerlink" title="R语言控制结构"></a>R语言控制结构</h2><p>常用的两种控制结构为判断和循环，简单地说掌握了基本控制结构和R语言的数据类型是可以进行数据分析的，毕竟任何一种编程语言只要掌握了语法，剩下的就看个人的数学与逻辑素养了。</p>
+<p>1.判断结构：通常为if（条件）{命令}else{命令}类型，也有if…else if…else。也可以只有一个if。举例介绍判断结构语法，输入一个数，如果它大于等于10，输出Y，如果大于等于5小于10输出T，否则输出N</p>
+<pre><code>x&lt;-6
+if(x&gt;=10){print(&quot;Y&quot;)}else if(x&lt;10 &amp;&amp; x&gt;=5){print(&quot;T&quot;)}else{print(&quot;N&quot;)}
+</code></pre><p>2.循环结构：R语言中for循环使用较多，通常结构为for(条件){命令}。以简单例子举例for循环语法，定义一个数值向量，将向量中每个元素的平方赋值给新向量。</p>
+<pre><code>x&lt;-c(1:9)
+y&lt;-NULL
+for (i in 1:length(x)) {
+   y&lt;-c(y,(x[i])^2)
+}
+print(y)
+[1]  1  4  9 16 25 36 49 64 81
+</code></pre><h2 id="综合运用R语言编程"><a href="#综合运用R语言编程" class="headerlink" title="综合运用R语言编程"></a>综合运用R语言编程</h2><blockquote>
+<p>以上是R语言编程入门最基本的语法，只有逐渐熟悉这些语法，才可以更进一步使用R语言，下面以上次推文的数据为例子，为大家讲一下如何综合运用R语言知识。上次的推文中是利用RNA-seq的reads count数据计算样本间的重复性分析。另外小明师兄的上篇推文RNA-seq中的那些统计学问题(一)为什么是负二项分布，这篇推文从统计学角度出发推理论证了RNA-seq的reads count数据为什么符合负二项分布，<strong>下面我们从R语言编程开始利用实际RNA-seq的readscount数据证明一下为什么是负二项分布</strong></p>
+</blockquote>
+<p>根据负二项分布的性质，均值和方差为<br>$$\mu={pr}/{(1-p)}$$<br>$$\sigma^2={pr}/(1-p)^2$$<br>将P用U表示并带入方差表达式得到</p>
+<p>$$\sigma^2=\mu^2/r+\mu$$<br>根据数学知识可以看出方差是均值的二次函数。所以我们这次综合利用R语言编程的知识进行证明。</p>
+<pre class=" language-R"><code class="language-R">readcount<-read.table("readscount.txt",header=t,sep="\t") #读取readscout数据 readcount<-readcount[,2:4]#由于第2到4列是一个处理的三个生物学重复，所以就以这三个生物重复的readscount值进行分析 readcount<-readcount[rowsums(readcount)>1,] #过滤掉全为0的行
+x<-null #先定义储存每个基因表达均值的变量 y<-null #定义储存每个基因表达方差的变量 for (i in 1:nrow(readcount)) { x<-c(x,mean(as.numeric(readcount[i,]))) #在循环中依次求每个基因表达的均值，并赋值到x向量中 y<-c(y,var(as.numeric(readcount[i,]))) #在循环中依次求每个基因表达的方差，并赋值到y向量中 } data<-data.frame(x="x,y=y)" #将x和y捆绑为数据框 a<-quantile(data[,1],c(0.25,0.75),na.rm="T)" #求基因表达均值的分位数，quantile函数是求分位数函数，na.rm="T是移除NA值，这里的目的是去除掉太大或者太小的数据" b<-quantile(data[,2],c(0.25,0.75),na.rm="T)#求基因表达方差的分位数" data<-data[data[,1]<="as.numeric(a[2])" && data[,1]>=as.numeric(a[1]),]#将data数据框中的基因表达均值列满足在25%~75%分位数之间的行保留
+data<-data[data[,2]<=as.numeric(b[2]) && data[,2]>=as.numeric(b[1]),]#将data数据框中的基因表达方差列满足在25%~75%分位数之间的行保留
+ggplot(data = data2,aes(x=x,y=y))+geom_point()+geom_smooth(method = "gam",formula=y~poly(x,2)) #使用ggplot2绘制均值-方差散点图，并进行拟合，拟合方法为平滑曲线拟合
+</-data[data[,2]<=as.numeric(b[2])></-null></-read.table("readscount.txt",header=t,sep="\t")></code></pre>
+<p><img src="/img/r-language1-1.png" alt="p"><br>从图片中看出，尽管过滤掉部分数据后还是存在个别极端数据，总体的数据分布曲线满足二次函数分布。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>理解R语言编程的五个数据结构：向量、矩阵、列表、数据框、因子，以及两种控制结构，循环和判断。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>《R in action》<br><img src="/img/vazyme.png" alt="vazyme"></p>
 
             </div>
             <hr>
@@ -658,7 +637,7 @@
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Universe Biology Girls and Boys</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/Machine-learnig-KFC/" class="b-link-green">机器学习数据分析极简思路及sklearn算法小试</a>
+                    <a href="/2019/05/10/r-language1/" class="b-link-green">从零开始入门R语言编程</a>
                 </p>
             </div>
         </div>
@@ -940,23 +919,71 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/03/31/western-blot/">
+                <a href="/2019/05/10/r-language1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="师兄又在胡扯了-Western Blot">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="从零开始入门R语言编程">
                         
-                        <span class="card-title">师兄又在胡扯了-Western Blot</span>
+                        <span class="card-title">从零开始入门R语言编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">大家好，阿呆师兄又出现了。不知道上个月说的几本书有几个人看了或准备看的。其实原本我应该深藏功与名，大隐隐于市了，不知道大家还记不记得短腿师妹前阵子说“宇宙实验媛喊你来拿三位数稿费了”阿呆  宇宙实验媛大家好，阿呆师兄又出现了。不知道上个月说</div>
+                    <div class="summary block-with-text">R语言编程入门写在前面的
+上期推文介绍了如何使用R语言编程进行样本间相关性分析，主要涉及了R语言矩阵、循环、统计分析函数、ggplot2、corrplot等函数包的使用，涉及的知识面较多，如果不是经常做生物信息或者是编程出家，很难在短时间内</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-31
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R/" target="_blank">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/05/08/dynamic-model2-md/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="浅说动力学模型（下篇）">
+                        
+                        <span class="card-title">浅说动力学模型（下篇）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">浅说动力学模型（下篇）原创： 赵洪龙 宇宙实验媛图1. 数学建模在生物学研究中的应用范式书接上文浅说动力学模型（上篇），由于本人主要研究植物学代谢建模，下面就举例说明使用模型在植物生理研究中取得的一些重要成就。在过去的研究中，植物领域对光合</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -972,58 +999,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/western-blot/" target="_blank">
-                        <span class="chip bg-color">western blot</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/03/20/UBGBs/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="UBGBs">
-                        
-                        <span class="card-title">UBGBs</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">Yeap,Family!
-</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Photo/" class="post-category" target="_blank">
-                                    Photo
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/photo/" target="_blank">
-                        <span class="chip bg-color">photo</span>
-                    </a>
-                    
-                    <a href="/tags/family/" target="_blank">
-                        <span class="chip bg-color">family</span>
+                    <a href="/tags/dynamic-model/" target="_blank">
+                        <span class="chip bg-color">dynamic model</span>
                     </a>
                     
                 </div>
@@ -1134,6 +1111,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
