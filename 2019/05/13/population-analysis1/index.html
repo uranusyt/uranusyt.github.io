@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Date with Bioawk, Universe Biology Girls and Boys">
-    <meta name="description" content="原创：老板，来一打TPU
-废话这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼">
+    <meta name="keywords" content="群体结构分析三种常用方法 (上篇), Universe Biology Girls and Boys">
+    <meta name="description" content="写在前面在群体遗传学和进化生物学相关的项目中，群体结构分析是最常见也是最初步的分析内容，可以帮助我们确认样本分群是否符合预期以及检测离群样本。群体结构分析最常用的三种方法就是PCA、系统发生树和祖先成分堆叠图，下面我们将使用发表在Genom">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Date with Bioawk | Universe Biology Girls and Boys</title>
+    <title>群体结构分析三种常用方法 (上篇) | Universe Biology Girls and Boys</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +257,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Date with Bioawk
+                        群体结构分析三种常用方法 (上篇)
                     </div>
                 </div>
             </div>
@@ -375,12 +374,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/bioinformatics/" target="_blank">
-                                <span class="chip bg-color">bioinformatics</span>
+                            <a href="/tags/population-genetics/" target="_blank">
+                                <span class="chip bg-color">population genetics</span>
                             </a>
                         
-                            <a href="/tags/bioawk/" target="_blank">
-                                <span class="chip bg-color">bioawk</span>
+                            <a href="/tags/pca/" target="_blank">
+                                <span class="chip bg-color">pca</span>
                             </a>
                         
                     </div>
@@ -391,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Software/" class="post-category" target="_blank">
-                                Software
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                Bioinformatics
                             </a>
                         
                     </div>
@@ -403,21 +402,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-03-16
+                    2019-05-13
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        685
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        3 Min
+                        7 Min
                     </div>
                     
                 
@@ -433,74 +432,91 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>原创：老板，来一打TPU</strong></p>
-<h1 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h1><p>这是生平第一篇blog，因此难免要说点废话，所以前戏，啊不对，前言就叫废话吧。git+hexo搭建的平台杠杠的，感谢师弟MingLian小大佬成功带入<br>写blog的坑。第一篇就拿生信李恒大神的神作bioawk镇楼吧！**<br><a id="more"></a></p>
-<h1 id="bioawk简介"><a href="#bioawk简介" class="headerlink" title="bioawk简介"></a>bioawk简介</h1><p>除了鼎鼎大名的BWA、samtools等，李恒大神应群众呼声又做了出于awk又胜于awk的bioawk<br>供广大生信猿们玩耍。bioawk是用C写的，用法和awk基本一样。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="分步安装"><a href="#分步安装" class="headerlink" title="分步安装"></a>分步安装</h3><pre class=" language-bash"><code class="language-bash">    $ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> byacc <span class="token function">git</span>    <span class="token comment" spellcheck="true">#安装git</span>
-    $ <span class="token function">git</span> clone git://github.com/lh3/bioawk.git  <span class="token comment" spellcheck="true">#默认安装在当前目录</span>
-    <span class="token function">git</span> clone git://github.com/lh3/bioawk.git <span class="token variable">${path}</span>/bioawk <span class="token comment" spellcheck="true">#若加path则必须为空，因此可在想要安装的目录下起一个新名称，git会clone到其下</span>
-    $ <span class="token function">cd</span> bioawk
-    $ <span class="token function">make</span>
-    $ <span class="token keyword">echo</span> <span class="token string">"export PATH=<span class="token variable">${path}</span>/bioawk/:\<span class="token variable">${PATH}</span>"</span> <span class="token operator">>></span> ~/.bashrc
-    $ <span class="token keyword">.</span>  ~/.bashrc
+                <h5 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h5><p>在群体遗传学和进化生物学相关的项目中，群体结构分析是最常见也是最初步的分析内容，可以帮助我们确认样本分群是否符合预期以及检测离群样本。群体结构分析最常用的三种方法就是PCA、系统发生树和祖先成分堆叠图，下面我们将使用发表在Genome Rearch上的<a href="https://genome.cshlp.org/content/24/8/1308.long" target="_blank" rel="noopener">Gou et al,2014</a>中的数据（60只狗全基因组SNP）逐一讲解。</p>
+<h2 id="一、-PCA分析"><a href="#一、-PCA分析" class="headerlink" title="一、 PCA分析"></a>一、 PCA分析</h2><h4 id="1-简单介绍PCA原理"><a href="#1-简单介绍PCA原理" class="headerlink" title="1. 简单介绍PCA原理"></a>1. 简单介绍PCA原理</h4><p>PCA (Principal Component Analysis) ，即主成分分析方法，是一种使用最广泛的数据降维算法，通过正交变换将一组数量庞大且可能存在相关性的变量转换为一组低维的线性不相关的变量。<br>对于一个全基因组测序样本call出的SNP数目通常是百万级甚至是千万级别，比如本文所用数据为17M SNP，如果直接使用这些SNP位点作为指标对个体进行区分，就会由于信息过于冗杂而无法把握重点，并造成计算资源和时间的浪费。PCA分析的过程就是从千万级别的SNP位点中提取关键信息，以便我们使用更少的变量就可以对样本进行有效的刻画和区分。</p>
+<h4 id="2-PCA实践"><a href="#2-PCA实践" class="headerlink" title="2. PCA实践"></a>2. PCA实践</h4><p>在<a href="https://genome.cshlp.org/content/24/8/1308.long" target="_blank" rel="noopener">Gou et al, 2014</a>文章中，作者使用GCTA进行PCA分析，在本文中，还会讲解另外一种主流的PCA分析软件–EIGENSOFT中的smartpca。</p>
+<p>软件下载链接：<br><a href="http://cnsgenomics.com/software/gcta/#Overview" target="_blank" rel="noopener">GCTA</a><br><a href="https://www.hsph.harvard.edu/alkes-price/software/" target="_blank" rel="noopener">EIGENSOFT</a></p>
+<h5 id="GCTA进行PCA分析"><a href="#GCTA进行PCA分析" class="headerlink" title="GCTA进行PCA分析"></a>GCTA进行PCA分析</h5><ol>
+<li>首先准备GCTA中PCA模块所需的输入文件，GCTA可以直接读取.bed , .bim , .fam文件，使用plink将vcf格式文件转换成上述三种文件,同时进行简单的过滤(–geno 0.05)。</li>
+</ol>
+<pre><code>#!/bin/bash
 
-<span class="token comment" spellcheck="true">### 一步安装脚本</span>
-    <span class="token comment" spellcheck="true">#!/bin/bash</span>
-    <span class="token function">read</span> -p  <span class="token string">'Input installed  path: '</span> tmp_path
-    path<span class="token operator">=</span><span class="token variable">${tmp_path/\//}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -d <span class="token string">"<span class="token variable">${path}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token keyword">echo</span> <span class="token string">"No such file:<span class="token variable">${path}</span>"</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">exit</span> <span class="token punctuation">;</span><span class="token keyword">fi</span>
-    <span class="token function">git</span> clone git://github.com/lh3/bioawk.git <span class="token variable">${path}</span>/bioawk <span class="token operator">&amp;&amp;</span> \
-    <span class="token function">cd</span> <span class="token variable">${path}</span>/bioawk <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token operator">&amp;&amp;</span> \
-    <span class="token keyword">echo</span> <span class="token string">"export PATH=<span class="token variable">${path}</span>/bioawk/:\<span class="token variable">${PATH}</span>"</span> <span class="token operator">>></span> ~/.bashrc  <span class="token operator">&amp;&amp;</span> <span class="token keyword">.</span>  ~/.bashrc <span class="token operator">&amp;&amp;</span> \
-    <span class="token keyword">echo</span> <span class="token string">'Successfully install bioawk!'</span> <span class="token operator">||</span> <span class="token keyword">echo</span> <span class="token string">'Failed install bioawk'</span>
-</code></pre>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>bioawk基本思想是把组成不同类型的文件（sam、bam、fasta、fastq、vcf etc）的基本元<br>素封装成变量，直接调用即可。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre class=" language-bash"><code class="language-bash">usage: bioawk <span class="token punctuation">[</span>-F fs<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v var<span class="token operator">=</span>value<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c fmt<span class="token punctuation">]</span> <span class="token punctuation">[</span>-tH<span class="token punctuation">]</span> <span class="token punctuation">[</span>-f progfile <span class="token operator">|</span> <span class="token string">'prog'</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>file <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+plink=/software/biosoft/software/plink/plink
+time $plink --vcf 60_dog.merge.vcf --geno 0.05 --dog --make-bed --out 60_dog_geno0.05 &amp;&amp; echo &quot;---- vcf2bed done -----&quot;
+</code></pre><ol start="2">
+<li>然后使用GCTA软件，–make-grm 生成个体对之间的遗传关系矩阵(genetic relationship matrix),并将GRM的下三角元素保存为二进制文件.grm.id , .grm.bin ， .grm.N.bin。<br>这里要强调一点，对于非人物种，要设定好染色体数目参数，–autosome-num。否则会因为不识别26以上的染色体编号而报错。</li>
+</ol>
+<pre><code>gcta=/software/biosoft/software/gcta_1.92.1beta6/gcta64
+time $gcta --bfile 60_dog_geno0.05 --make-grm --autosome-num 38 --out 60_dog_geno0.05 &amp;&amp; echo &quot;----make-grm done----&quot;
+</code></pre><ol start="3">
+<li>最后就是要进行PCA分析<br>使用 –pca 设置要生成主成分的数目，这里设置为4，一般来说就可以刻画出群体结构。<br>这一步会生成 .eigenval 和 .eigenvec 两个文件。.eigenval文件为各主成分可解释遗传信息的比例，.eigenvec文件为每个样本在top4主成分上的分解值。</li>
+</ol>
+<pre><code>time $gcta --grm 60_dog_geno0.05 --pca 4 --out 60_dog_geno0.05 &amp;&amp; echo &quot;----gcta-pca done----&quot;
+</code></pre><ol start="4">
+<li>补充样本所属子群信息<br>在生成的.eigenvec文件中，并没有包含样本所属子群信息，在进行可视化之前，需要添加上样本群体信息。样本较少时可以手动添加，样本数目较多时推荐写代码完成，避免错误。文章<a href="https://genome.cshlp.org/content/24/8/1308.long" target="_blank" rel="noopener">Gou et al,2014</a>中根据采样地点划分子群。添加上子群信息后，.eigenvec长这个样子。<br><img src="/img/population_analysis1-2.png" alt="p"><h5 id="EIGENSOFT进行PCA分析"><a href="#EIGENSOFT进行PCA分析" class="headerlink" title="EIGENSOFT进行PCA分析"></a>EIGENSOFT进行PCA分析</h5></li>
+<li>使用plink将vcf格式文件转换成.bed , .bim , .fam文件，步骤同上，这里不再赘述。</li>
+<li>smartpca需要提供三种输入文件，文件1记录每个样本在每个SNP位点的信息，文件2记录每个SNP位点的信息，文件3记录每个样本的性别和所属子群信息。<br>熟悉plink格式的同学应该知道.bed文件储存的就是genotype信息，.bim文件存储的就是SNP位点信息，那么我们只需要自己生成文件3就可以了。文件3格式如下，第一列为样本ID，第二列为性别（M，F，U），第三列为所属子群。<br><img src="/img/population_analysis1-3.png" alt="p"></li>
+<li>接下来把所有参数写入一个文件中，就可以运行smartpca了，其中 numoutevec 是输出主成分的数目。<br><img src="/img/population_analysis1-4.png" alt="p"></li>
+<li>运行smartpca，生成 .evec 和 .eval 文件。<pre><code>time /software/biosoft/software/EIG-6.1.4/bin/smartpca -p PCA.par &gt; smartpca.log &amp;&amp; echo &quot;----smartpca----done&quot;
+</code></pre>截图来看下 .evec 文件，两种软件运行结果差不多。<br><img src="/img/population_analysis1-5.png" alt="p"></li>
+</ol>
+<h4 id="3-绘制PCA散点图"><a href="#3-绘制PCA散点图" class="headerlink" title="3. 绘制PCA散点图"></a>3. 绘制PCA散点图</h4><p>通过得到的.evec和eval两个文件，这里使用python完成可视化，代码如下：</p>
+<pre><code>import matplotlib.pyplot as plt
+import collections
+import re
 
--c 支持输入文件格式，查看帮助：
+hash = collections.OrderedDict()
+eval_file = open(&quot;60_dog_geno0.05.eigenval&quot;,&quot;r&quot;)
+evec_file = open(&quot;60_dog_geno0.05.eigenvec&quot;,&quot;r&quot;)
 
-    bioawk -c -h
+###  从.eval文件中读取top4主成分
+eval_1 = eval_file.readline()
+eval_2 = eval_file.readline()
+eval_3 = eval_file.readline()
+eval_4 = eval_file.readline()
 
-bed:
-        1:chrom 2:start 3:end 4:name 5:score 6:strand 7:thickstart 8:thickend 9:rgb 10:blockcount 11:blocksizes 12:blockstarts
-sam:
-        1:qname 2:flag 3:rname 4:pos 5:mapq 6:cigar 7:rnext 8:pnext 9:tlen 10:seq 11:qual
-vcf:
-        1:chrom 2:pos 3:id 4:ref 5:alt 6:qual 7:filter 8:info
-gff:
-        1:seqname 2:source 3:feature 4:start 5:end 6:score 7:strand 8:frame 9:attribute
-fastx:
-        1:name 2:seq 3:qual 4:comment
-</code></pre>
-<p><strong>上面出现的名称即可引用其变量</strong></p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
-<li><p>打印fasta序列ID、序列、长度、GC含量</p>
-<pre class=" language-bash"><code class="language-bash">bioawk -cfastx <span class="token string">'{print "ID: "<span class="token variable">$name</span>"\tlength: "length(<span class="token variable">$seq</span>)"\tGC: "gc(<span class="token variable">$seq</span>)"\t"<span class="token variable">$seq</span>}'</span> demo.fa
-</code></pre>
-<p>结果:<br>  ID: g1  length: 18      GC: 0.722222    atcccccccccccccttt<br>  ID: g2  length: 26      GC: 0.0769231   cattatatcttatttttttttttttt<br>  ID: g3  length: 48      GC: 0.229167    acccccccccctttttttttttttcatttttttttttttttttttttt<br>原始文件：</p>
-<blockquote>
-<p>g1<br>  atcccccccccccccttt<br>g2 enzyme<br>  cattatatcttatttttttttttttt<br>g3<br>  accccccccccttttttttttttt<br>  catttttttttttttttttttttt<br>注意：<br><strong>可以看到bioawk在提取ID的时候只提取了空格分隔后的第一个字段，默认输出域分割符是\t</strong></p>
-</blockquote>
-</li>
-<li><p>输出反向互补序列</p>
-<pre class=" language-bash"><code class="language-bash">bioawk -cfastx <span class="token string">'{print <span class="token variable">$name</span>,<span class="token variable">$seq</span>,revcomp(<span class="token variable">$seq</span>)}'</span> demo.fa
-</code></pre>
-<p>结果：<br>  g1      atcccccccccccccttt      aaagggggggggggggat<br>  g2      cattatatcttatttttttttttttt      aaaaaaaaaaaaaataagatataatg<br>  g3      acccccccccctttttttttttttcatttttttttttttttttttttt        aaaaaaaaaaaaaaaaaaaaaatgaaaaaaaaaaaaaggggggggggt</p>
-</li>
-<li><p>根据序列ID提取序列，这个是最爱的功能</p>
-<pre class=" language-bash"><code class="language-bash">bioawk -cfastx <span class="token string">'BEGIN{while((getline k &lt;"id.txt")>0)i[k]=1}{if(i[<span class="token variable">$name</span>])print ">"<span class="token variable">$name</span>"\n"<span class="token variable">$seq</span>}'</span> demo.fa
-</code></pre>
-<p>id.txt:<br>  g1<br>  g2<br>  g2 enzyme</p>
-<blockquote>
-<p>g3</p>
-</blockquote>
-</li>
-</ul>
-<p>结果：<br>    &gt;g1<br>    atcccccccccccccttt<br>    &gt;g2<br>    cattatatcttatttttttttttttt<br>注意：id.txt 需要去掉&gt;</p>
-<ul>
-<li>当然还有其他的花样，大家自己去探索吧</li>
-</ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://github.com/lh3/bioawk" target="_blank" rel="noopener">https://github.com/lh3/bioawk</a></p>
+
+###  从.evec文件中读取在pc上的值
+for i in evec_file:
+    if re.match(r&#39;#&#39;,i.strip()):
+        continue
+    tmp = i.strip().split()[1:]
+    if tmp[-1] in hash.keys():
+        hash[tmp[-1]][&#39;1st&#39;].append(eval(tmp[1]))
+        hash[tmp[-1]][&#39;2nd&#39;].append(eval(tmp[2]))
+        hash[tmp[-1]][&#39;3rd&#39;].append(eval(tmp[3]))
+        hash[tmp[-1]][&#39;4th&#39;].append(eval(tmp[4]))
+    else:
+        hash[tmp[-1]] = hash.get(tmp[-1],collections.OrderedDict())
+        hash[tmp[-1]][&#39;1st&#39;] = hash[tmp[-1]].get(&#39;1st&#39;,[])
+        hash[tmp[-1]][&#39;2nd&#39;] = hash[tmp[-1]].get(&#39;2nd&#39;,[])
+        hash[tmp[-1]][&#39;3rd&#39;] = hash[tmp[-1]].get(&#39;3rd&#39;,[])
+        hash[tmp[-1]][&#39;4th&#39;] = hash[tmp[-1]].get(&#39;4th&#39;,[])
+        hash[tmp[-1]][&#39;1st&#39;].append(eval(tmp[1]))
+        hash[tmp[-1]][&#39;2nd&#39;].append(eval(tmp[2]))
+        hash[tmp[-1]][&#39;3rd&#39;].append(eval(tmp[3]))
+        hash[tmp[-1]][&#39;4th&#39;].append(eval(tmp[4]))
+
+### 绘制散点图，这里只绘制pc1和pc2,其他pc可按照下面代码逐一画出。
+fig = plt.figure(figsize=(20,10))
+ax = fig.add_subplot(1, 1, 1)            ### 2D figure
+#ax = fig.add_subplot(111,projection=&#39;3d&#39;)              ### 3D figure
+mark = [&#39;o&#39;,&#39;v&#39;,&#39;s&#39;,&#39;*&#39;,&#39;x&#39;,&#39;+&#39;]*10         ### 设置散点性状
+col = [&#39;b&#39;,&#39;g&#39;,&#39;y&#39;,&#39;r&#39;,&#39;c&#39;]*10               ### 设置散点颜色
+for m,n in enumerate(hash.keys()):    ### 逐点画出
+    ax.scatter(hash[n][&#39;1st&#39;],hash[n][&#39;2nd&#39;],c=col[m],s=75,marker=mark[m],label=n,alpha=0.7)
+ax.legend(loc=&#39;best&#39;,scatterpoints=1,fontsize=&#39;12&#39;,framealpha=0)
+ax.set_xlabel(&#39;Eigenvector1 ({}%)&#39;.format(float(&#39;%.2f&#39; % eval(eval_1))),fontsize=13,fontweight=&#39;bold&#39;)
+ax.set_ylabel(&#39;Eigenvector2 ({}%)&#39;.format(float(&#39;%.2f&#39; % eval(eval_2))),fontsize=13,fontweight=&#39;bold&#39;)
+
+#### 保存图片
+save_FileName = &#39;60dog_geno0.05_gcta_pc1_pc2.png&#39;
+plt.savefig(save_FileName,dpi=400,bbox_inches=&#39;tight&#39;)
+</code></pre><p>PCA散点图如下<br><img src="/img/population_analysis1-1.png" alt="p">#### 小结<br>PCA运用方差分解，将海量SNP的差异反映在二维坐标图上，坐标轴轴取对样品差异性解释度最高的两个或三个特征值，样本SNP位点信息越相似，反映在PCA图中的距离越近。PCA可以帮助我们清楚掌握手上样本的群体结构，并有效检测出离群样本，为下游分析减少不必要的麻烦，同时，实现PCA分析的方法很多，PCA结果图也简单易懂，称得上是低调实力派。<br>最后强调一点，PCA分析是降维，不是聚类，希望大家不要搞混了。<br>对PCA理论和分析过程感兴趣的同学，可以进一步看下<a href="https://blog.csdn.net/zhongkelee/article/details/44064401" target="_blank" rel="noopener">这篇文章</a>。</p>
+<p><strong>谢谢大家赏脸看到这里，在本篇文章中，主要学习了PCA分析的基本过程，在下篇文章中，我们将接着学习系统发生树构建和祖先成分分析，精彩不容错过，请持续关注我们！</strong></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>Genome Res. 2014 Aug;24(8):1308-15. doi: 10.1101/gr.171876.113. Epub 2014 Apr 10.</p>
+<p><a href="http://blog.csdn.net/zhongkelee/article/details/44064401" target="_blank" rel="noopener">http://blog.csdn.net/zhongkelee/article/details/44064401</a></p>
+<p><img src="/img/vazyme.png" alt="vazyme"></p>
 
             </div>
             <hr>
@@ -648,7 +664,7 @@ fastx:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Universe Biology Girls and Boys</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/16/Date-with-Bioawk/" class="b-link-green">Date with Bioawk</a>
+                    <a href="/2019/05/13/population-analysis1/" class="b-link-green">群体结构分析三种常用方法 (上篇)</a>
                 </p>
             </div>
         </div>
@@ -930,40 +946,46 @@ fastx:
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/03/19/paper-submit-experience/">
+                <a href="/2019/05/13/population-analysis1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="浅谈科研论文发表与投稿-下篇">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="群体结构分析三种常用方法 (上篇)">
                         
-                        <span class="card-title">浅谈科研论文发表与投稿-下篇</span>
+                        <span class="card-title">群体结构分析三种常用方法 (上篇)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">原创： 伊颜落芸  宇宙实验媛生物医学科学研究的过程犹如马拉松长跑，投稿的经历更是具有西天取经般的朝圣感。上线发表的文章只是最后的工作总结之一，背后的故事&gt;往往更精彩。 上篇我们已经就期刊筛选分享了初步经验，本期将以发表在Nature</div>
+                    <div class="summary block-with-text">写在前面在群体遗传学和进化生物学相关的项目中，群体结构分析是最常见也是最初步的分析内容，可以帮助我们确认样本分群是否符合预期以及检测离群样本。群体结构分析最常用的三种方法就是PCA、系统发生树和祖先成分堆叠图，下面我们将使用发表在Genom</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Paper-Writing/" class="post-category" target="_blank">
-                                    Paper Writing
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/paper-writing/" target="_blank">
-                        <span class="chip bg-color">paper writing</span>
+                    <a href="/tags/population-genetics/" target="_blank">
+                        <span class="chip bg-color">population genetics</span>
+                    </a>
+                    
+                    <a href="/tags/pca/" target="_blank">
+                        <span class="chip bg-color">pca</span>
                     </a>
                     
                 </div>
@@ -977,27 +999,28 @@ fastx:
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/16/MARKDOWN-s-KFC/">
+                <a href="/2019/05/10/r-language1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="MARKDOWN's KFC">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="从零开始入门R语言编程">
                         
-                        <span class="card-title">MARKDOWN's KFC</span>
+                        <span class="card-title">从零开始入门R语言编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown</div>
+                    <div class="summary block-with-text">R语言编程入门写在前面的
+上期推文介绍了如何使用R语言编程进行样本间相关性分析，主要涉及了R语言矩阵、循环、统计分析函数、ggplot2、corrplot等函数包的使用，涉及的知识面较多，如果不是经常做生物信息或者是编程出家，很难在短时间内</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Software/" class="post-category" target="_blank">
-                                    Software
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
                                 </a>
                             
                             
@@ -1007,8 +1030,8 @@ fastx:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/markdown-usage/" target="_blank">
-                        <span class="chip bg-color">markdown usage</span>
+                    <a href="/tags/R/" target="_blank">
+                        <span class="chip bg-color">R</span>
                     </a>
                     
                 </div>
