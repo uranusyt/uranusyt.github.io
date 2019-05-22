@@ -1,0 +1,1234 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="群体结构分析三种常用方法 (下篇), Universe Biology Girls and Boys">
+    <meta name="description" content="写在前面在上篇文章中，我们学习了PCA分析基本过程，接下来接着学习系统发育树的构建和祖先成分分析。
+二、 邻接法构建系统发生树基于SNP数据构建系统发生树，省略了序列比对的步骤，这里推荐使用邻接法（Neighbour-Joining，NJ）">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>群体结构分析三种常用方法 (下篇) | Universe Biology Girls and Boys</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Universe Biology Girls and Boys</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="http://lc-aok3pCDe.cn-n1.lcfile.com/5d59cceb6c0ae4cee779/ubg_wechat.jpg" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="http://www.vazyme.com" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Universe Biology Girls and Boys</div>
+        <div class="logo-desc">
+            
+            Developing Technologies to Improve Human Health
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="http://lc-aok3pCDe.cn-n1.lcfile.com/5d59cceb6c0ae4cee779/ubg_wechat.jpg" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="http://www.vazyme.com" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        群体结构分析三种常用方法 (下篇)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                Bioinformatics
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-05-22
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
+                        1.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
+                        7 Min
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h5 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h5><p>在上篇文章中，我们学习了PCA分析基本过程，接下来接着学习系统发育树的构建和祖先成分分析。</p>
+<h2 id="二、-邻接法构建系统发生树"><a href="#二、-邻接法构建系统发生树" class="headerlink" title="二、 邻接法构建系统发生树"></a>二、 邻接法构建系统发生树</h2><p>基于SNP数据构建系统发生树，省略了序列比对的步骤，这里推荐使用邻接法（Neighbour-Joining，NJ）。</p>
+<h4 id="1-简单介绍邻接法和系统发生树"><a href="#1-简单介绍邻接法和系统发生树" class="headerlink" title="1.  简单介绍邻接法和系统发生树"></a>1.  简单介绍邻接法和系统发生树</h4><p>系统发生树（Phylogenetic tree）又称为演化树（evolutionary tree），是表明被认为具有共同祖先的各物种间演化关系的树，是一种亲缘分支分类方法（cladogram）。在树中，每个节点代表其各分支的最近共同祖先，而节点间的线段长度对应演化距离（如估计的演化时间）<br>NJ法是基于最小进化原理经常被使用的一种算法，它不检验所有可能的拓扑结构，能同时给出拓扑结构和分支长度。在重建系统发育树时，它取消了UPGMA法所做的假定，认为在进化分支上，发生趋异的次数可以不同。该方法通过确定距离最近(或相邻)的成对分类单位来使系统树的总距离达到最小。它的特点是重建的树相对准确，假设少，计算速度快，只得到一棵树。</p>
+<h4 id="2-数据处理和准备"><a href="#2-数据处理和准备" class="headerlink" title="2. 数据处理和准备"></a>2. 数据处理和准备</h4><ol>
+<li>过滤缺失率较高（–geno 0.05）和强连锁SNP位点（–indep-pairwise)</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+plink<span class="token operator">=</span>/software/biosoft/software/plink/plink
+
+<span class="token function">time</span> <span class="token variable">$plink</span> --vcf 60_dog.merge.vcf --geno 0.05 --dog --autosome --set-missing-var-ids @:<span class="token comment" spellcheck="true"># --indep-pairwise 50 10 0.3 --out 60_dog &amp;&amp; echo "----prune SNP done----"</span>
+
+<span class="token function">time</span> <span class="token variable">$plink</span> --vcf 60_dog.merge.vcf --geno 0.05 --dog --autosome --set-missing-var-ids @:<span class="token comment" spellcheck="true"># --extract 60_dog.prune.in --recode vcf-iid --out 60dog_geno0.05_prune_in "----extract prune in SNP done----"</span>
+
+</code></pre>
+<ol start="2">
+<li>计算样本间IBS距离，这里会生成.mdist.id和.mdist两个文件。.mdist.id文件记录样本名称，.mdist文件记录样本间IBS距离<pre class=" language-bash"><code class="language-bash"><span class="token function">time</span> <span class="token variable">$plink</span> --vcf 60dog_geno0.05_prune_in.vcf --distance 1-ibs --double-id --dog --autosome --out 60dog_geno0.05_prune_in
+</code></pre>
+</li>
+<li>将.mdist.id和.mdist两个文件处理成MEGA软件可以读入的.meg格式，处理代码如下</li>
+</ol>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/python</span>
+
+<span class="token keyword">import</span> sys<span class="token punctuation">,</span>re<span class="token punctuation">,</span>os
+
+<span class="token comment" spellcheck="true">###  读取样本id</span>
+ID_file <span class="token operator">=</span> open<span class="token punctuation">(</span>r<span class="token string">"60dog_geno0.05_prune_in.mdist.id"</span><span class="token punctuation">,</span><span class="token string">""</span>r"<span class="token punctuation">)</span>
+arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> ID_file<span class="token punctuation">:</span>
+    arr<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+head <span class="token operator">=</span> map<span class="token punctuation">(</span>str<span class="token punctuation">,</span>range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>len<span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ID_file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">### 读取样本间IBS距离</span>
+dist_file <span class="token operator">=</span>open<span class="token punctuation">(</span>r<span class="token string">"60dog_geno0.05_prune_in.mdist"</span><span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"#mega\n!Title: fasta file;\n!Format DataType=Distance DataFormat=LowerLeft NTaxa=%d;\n"</span> <span class="token operator">%</span> len<span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span>j <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'['</span><span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">']'</span><span class="token operator">+</span><span class="token string">' #'</span><span class="token operator">+</span>j<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#print</span>
+
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'[    '</span><span class="token operator">+</span><span class="token string">'    '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">' ]'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'[1]'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> l<span class="token punctuation">,</span>m <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>infile2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tmp <span class="token operator">=</span> m<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#tmp[-1] = ''</span>
+    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'['</span><span class="token operator">+</span>str<span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">']    '</span><span class="token operator">+</span><span class="token string">'    '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+dist_file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="4">
+<li>将上面生成的.meg文件导入到MEGA软件中，可以看到数据长这个样子<br><img src="/img/population_analysis2-1.jpg" alt="p"><h4 id="3-系统发生树可视化"><a href="#3-系统发生树可视化" class="headerlink" title="3. 系统发生树可视化"></a>3. 系统发生树可视化</h4></li>
+<li>在MEGA软件中，读取数据后，选择NJ法进行构建进化树，在弹出的窗口中可以看到树形轮廓基本构建出来<br><img src="/img/population_analysis2-2.jpg" alt></li>
+<li>接下来将树形图导出为nwk格式文件，进行下一步美化。nwk文件记录样本间亲缘关系相对远近，可以被大部分树形图软件识别。可以看一下我们这里的nwk文件。直接输出在这里，60个样本。<pre><code>(((DQZA01,(((DQZA06,DQZA12),((((DQZA18,DQZA55),(DQZA80,DQZA81)),DQZA23),DQZA19)),DQZA33)),((((((DQ25,((DQ28,DQ33),DQ52)),(DQ32,DQ54)),DQ45),DQ29),DQ60),DQ59)),(((((YJ01,YJ10),YJ03),((YJ08,YJ16),(YJ14,YJ26))),YJ17),(YJ15,YJ21)),((((((KD106,KD117),(KD110,KD113)),(KD107,(KD207,KD208))),((DKD301,DKD302),((((((DKD303,DKD307),DKD304),DKD306),(DKD305,DKD309)),DKD308),DKD310))),(KD215,(KD222,KD223))),(WM3,(YL1,(LJ6,((YL5,YL7),(((LJ1,LJ2),LJ12),(LJ13,LJ8))))))));
+</code></pre></li>
+<li>使用FigureTree软件进行美化。首先用FigureTree打开nwk文件<br><img src="/img/population_analysis2-3.jpg" alt><br>然后，选择树形为针叶状<br><img src="/img/population_analysis2-4.jpg" alt><br>最后为不同子群样本分配颜色，就可以得到文章发表级别的图片了。<br><img src="/img/population_analysis2-5.jpg" alt><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4>这里构建的是物种树，和基因树有所不同。基于单个同源基因差异构建的系统发生树应称之为基因树，因为这种树代表的仅仅是单个基因的进化历史，而不是它所在物种的进化历史。物种树一般最好是从多个基因数据的分析中得到。<br>此外，NJ法构建发生树适用于进化距离不大的样本，这也算是缺点之一。</li>
+</ol>
+<h2 id="三、-祖先成分分析"><a href="#三、-祖先成分分析" class="headerlink" title="三、 祖先成分分析"></a>三、 祖先成分分析</h2><p>祖先成分分析主要是探究个体的混血程度和群体间的基因交流程度。目前，可以做祖先成分分析的软件主要有 STRUCTURE，frqppe 和 admixture。 admixture运算速度快，操作简单，成为了主流的分析软件。<br>软件下载链接 <a href="http://software.genetics.ucla.edu/admixture/download.html" target="_blank" rel="noopener">admixture</a></p>
+<h4 id="1-简单介绍admixture算法原理"><a href="#1-简单介绍admixture算法原理" class="headerlink" title="1. 简单介绍admixture算法原理"></a>1. 简单介绍admixture算法原理</h4><p>admixture用于从多位点SNP基因型数据集对个体祖先进行最大似然估计，虽然与STRUCTURE使用相同的统计模型，但其快速数值优化算法可以更快速地进行计算估计。具体来说，admixture使用 block relaxation 方法来交替更新等位基因频率和血统比例参数。通过解决大量独立凸优化问题来处理每个block更新，而这些凸优化问题则使用快速序列二次规划算法来解决。通常来说，SNP基因型数据集中的个体应该是不相关的，例如case-control相关性研究中的个体。</p>
+<h4 id="2-数据处理和祖先成分估计"><a href="#2-数据处理和祖先成分估计" class="headerlink" title="2. 数据处理和祖先成分估计"></a>2. 数据处理和祖先成分估计</h4><ol>
+<li><p>数据过滤</p>
+<pre class=" language-bash"><code class="language-bash">plink<span class="token operator">=</span>/software/biosoft/software/plink/plink
+<span class="token function">time</span> <span class="token variable">$plink</span> --vcf 60_dog.merge.vcf --dog --geno 0.05 --maf 0.05 --hwe 0.0001 --make-bed --out 60_dog_qc <span class="token operator">&amp;&amp;</span> <span class="token keyword">echo</span> <span class="token string">"----QC and vcf2bed done"</span>
+</code></pre>
+</li>
+<li><p>估计最优祖先个数，即群体分为几个亚群更合理，这里亚群数目称为K。通常情况下，由于不知道这个群体实际包含几个亚群，可以预设K的范围为2~n。软件就会模拟在K=x的情况下，推算群体是如何分群的，以及每个个个体的血统构成比例。对每个K值模拟的结果，软件都会计算出一个CV error值和最大似然值，error值和最大似然值两个指标都可以挑选最佳K值。对于error值来说</p>
+</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">admixture<span class="token operator">=</span>/software/biosoft/software/admixture_linux-1.3.0/admixture
+<span class="token keyword">for</span> K <span class="token keyword">in</span> <span class="token punctuation">{</span>2<span class="token punctuation">..</span>5<span class="token punctuation">}</span>
+<span class="token keyword">do</span>
+    <span class="token function">time</span> <span class="token variable">$admixture</span> --cv 60_dog_qc.bed <span class="token variable">$K</span> <span class="token operator">|</span><span class="token function">tee</span> log<span class="token variable">${K}</span>.out <span class="token operator">&amp;&amp;</span> <span class="token keyword">echo</span> <span class="token string">"----admixture K=<span class="token variable">$K</span> done----"</span>
+<span class="token keyword">done</span>
+</code></pre>
+<p>对每个K值模拟的结果，软件都会计算出一个CV error值和最大似然值，error值越小越好，似然值越大越好，两个指标都可以挑选最佳K值。一般而言就是要挑选出error值最小和K值最小的分群策略或者挑选出似然值最大和K值最小的分群策略，即”拐点”。<u><strong>然而，目前学界对于如何判断分群最佳仍有很大争议，CV error值和最大似然值只是参考，无法起决定性作用，因为，目前主流做法是把K值（2~n）都画出来，分别解释。</strong></u>这里取K=2~5，来看下具体结果。<br><img src="/img/population_analysis2-6.jpg" alt><br><img src="/img/population_analysis2-7.jpg" alt><br>很不幸，这里error值和似然值都是单调的，没有所谓的拐点，可以都画出来看一下。</p>
+<ol start="3">
+<li>admixture运行结束后，会产生.Q文件，记录每个个体不同群体祖先成分信息，以K=2为例截图看下</li>
+</ol>
+<p><img src="/img/population_analysis2-8.jpg" alt><br>添加上样本ID和所属分组ID，进行可视化。这里以K=2时，来看下处理后的文件<br><img src="/img/population_analysis2-9.jpg" alt></p>
+<h4 id="3-祖先成分堆叠图可视化"><a href="#3-祖先成分堆叠图可视化" class="headerlink" title="3. 祖先成分堆叠图可视化"></a>3. 祖先成分堆叠图可视化</h4><p>这里使用R完成祖先成分堆叠图可视化，由于篇幅限制，这里只放主体部分</p>
+<pre class=" language-R"><code class="language-R">library(ggplot2)
+library(cowplot)
+
+plotFile<-read.table("dog_qc.2.sample.pop.q.plot",header=f,stringsasfactors = f) colorarr<-c("#d32d2d","#4e68ae") sortplot<-plotfile[order(plotfile[,2],plotfile[,3]),] ##根据样本所属分组和祖先成分比例进行排序 sortplot[,4]<-as.factor(sortplot[,4]) pop<-sortplot[!duplicated(sortplot[,2]),2] ##提取出所有群体id knum<-length(plotfile[!duplicated(plotfile[,4]),4]) ##统计亚群数目 ##统计每个分组起始位置 popindex<-c(0) for(i in pop) { tmp<-which(sortplot[,2]="=i)" popindex<-c(popindex,tmp[length(tmp)]) } popindex<-popindex knum sample<-sortplot[!duplicated(sortplot[,1]),1] ##提取样本id sortplot[,1]<-factor(sortplot[,1],levels="sample)" ### 画堆叠图 p2<-ggplot(sortplot,aes(x="V1,y=V3,fill=V4))+" geom_bar(stat="identity" ,width="1)+" theme(panel.grid.major="element_blank()," panel.grid.minor="element_blank()," panel.background="element_blank()," axis.ticks="element_blank()," axis.text="element_blank()," axis.title="element_blank())+" guides(fill="FALSE)+" scale_fill_manual(values="colorArr)" 画分组标志线 popindex) x="i+0.5" p2<-p2+annotate("segment",x="x,xend" x,y="0,yend" 1,size="1,colour=" black"," arrow="arrow(ends" "both",length="unit(0," cm")))" < code></-read.table("dog_qc.2.sample.pop.q.plot",header=f,stringsasfactors></code></pre>
+<p>所以K=2时，堆叠图是这样的<br><img src="/img/population_analysis2-10.jpg" alt><br>按照上述代码，依次画出k=2~5的堆叠图p2,p3,p4,p5，并使用R包cowplot 组合在一起，代码如下</p>
+<pre class=" language-R"><code class="language-R">combine_bar<-ggdraw() + draw_plot(p2,0.05,0.7,0.95,0.25) draw_plot(p3,0.05,0.5,0.95,0.25) draw_plot(p4,0.05,0.3,0.95,0.25) draw_plot(p5,0.05,0.1,0.95,0.25) draw_plot_label(c("k="2" ," "k="3" c(0, 0, 0), c(0.9, 0.7, 0.5,0.3), size="12)" combine_bar < code></-ggdraw()></code></pre>
+<p>合并之后，可视化就基本完成了。<br><img src="/img/population_analysis2-11.jpg" alt></p>
+<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><p>在实际项目中，这三种分析方法得到的结果通常放在一起来看。三种分析均采用不同算法，从不同角度对群体结构进行解释，理解样本间亲缘关系，可以通过PCA散点图和系统发生树来观测样本的分布，但是要了解分组间的基因交流程度和个体混血程度就要依赖祖先成分分析了。三种分析方法相辅相成，可以帮助我们更好的理解样本间的关系，剔除离群样本。<br><img src="/img/vazyme.png" alt></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Reprint please specify:
+                    </span>
+                    <a href="http://yoursite.com" class="b-link-green">Universe Biology Girls and Boys</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/05/22/population-analysis2/" class="b-link-green">群体结构分析三种常用方法 (下篇)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '',
+        appKey: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: '' === 'true',
+        avatar: 'mm',
+        pageSize: '',
+        lang: 'en',
+        placeholder: '小姐姐、小哥哥，快来夸我啊!'
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019/05/22/r-language2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="R语言编程入门（爬虫函数包的使用）">
+                        
+                        <span class="card-title">R语言编程入门（爬虫函数包的使用）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">R语言编程入门（爬虫函数包的使用）写在前面的
+上期推文介绍了R语言编程入门，从了解R语言的5种数据结构和两种控制结构开始，再到借上上篇推文的Readscount数据综合利用R语言编程证明Readscount属于负二项分布。现在再回顾一下R语</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Uranusyt
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/r/" target="_blank">
+                        <span class="chip bg-color">r</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/05/13/population-analysis1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="群体结构分析三种常用方法 (上篇)">
+                        
+                        <span class="card-title">群体结构分析三种常用方法 (上篇)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">写在前面在群体遗传学和进化生物学相关的项目中，群体结构分析是最常见也是最初步的分析内容，可以帮助我们确认样本分群是否符合预期以及检测离群样本。群体结构分析最常用的三种方法就是PCA、系统发生树和祖先成分堆叠图，下面我们将使用发表在Genom</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Bioinformatics/" class="post-category" target="_blank">
+                                    Bioinformatics
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/population-genetics/" target="_blank">
+                        <span class="chip bg-color">population genetics</span>
+                    </a>
+                    
+                    <a href="/tags/pca/" target="_blank">
+                        <span class="chip bg-color">pca</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">36.5k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/neptuneyt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:Neptuneyt@icloud.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=88888888" class="tooltipped" data-tooltip="QQ联系我: 88888888" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
